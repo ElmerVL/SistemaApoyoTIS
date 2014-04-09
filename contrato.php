@@ -91,3 +91,7 @@
         echo "<script language='javascript'>window.open('contrato.pdf','_self');</script>"; //para ver el archivo pdf generado
         
         exit;
+
+        
+        
+        
