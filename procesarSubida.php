@@ -8,7 +8,3 @@ echo "subido exitosamente";
 //echo "<img src=\"Archivos/$nombre\"><br>";
 //echo $_FILES['nombre_archivo_cliente']['name']."<br>";
 //echo $_FILES['nombre_archivo_cliente']['type']."<br>";
-
-
-
-
