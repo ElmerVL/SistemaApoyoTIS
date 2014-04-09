@@ -9,6 +9,7 @@
         $listaDocentes = "AQUI LA LISTA DE DOCENTES ACTIVOS";
         $nombreDocente = "AQUI NOMBRE DEL DOCENTE";
         
+        
         include ('fpdf/fpdf.php');
         $pdf = new FPDF();
         $pdf->AddPage();
