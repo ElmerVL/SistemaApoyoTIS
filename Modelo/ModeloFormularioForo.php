@@ -1,9 +1,9 @@
 <?php
 
-require('Conexion.php');
+require('../Controlador/Conexion.php');
     //put your code here
     
- function agregar($a,$b,$c)
+function agregar($a,$b,$c)
 {
     $conec=new Conexion(); 
     $con=$conec->getConection();
