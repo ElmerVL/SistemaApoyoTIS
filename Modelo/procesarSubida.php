@@ -1,5 +1,5 @@
 <?php   
-$carpeta="Archivos/";
+$carpeta="../Archivos/";
 opendir($carpeta);
 $destino=$carpeta.$_FILES['nombre_archivo_cliente']['name'];
 copy($_FILES['nombre_archivo_cliente']['tmp_name'],$destino);
