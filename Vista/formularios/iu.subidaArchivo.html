@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="../css/estilos_basicos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="principal">
+  <div id="cabecera"><img src="../imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="../imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
+  <div id="contenido_usuarios">
+    <h1> Subir Archivo</h1>
+    <div id="subirArchivo"><form action="../../Controlador/controladorSubidaArchivo.php" method="post" enctype="multipart/form-data"><table width="605" border="0">
+  <tr>
+    <td width="295" align="right">Titulo:</td>
+    <td align="left"><label for="textFieldTituloSubida"></label>
+      <input name="text_titulo" type="text" id="text_TituloSubida" size="50" maxlength="200" /></td>
+  </tr>
+  <tr>
+    <td align="right">Descripción:</td>
+    <td width="300"><label for="text_descripcion"></label>
+      <input name="text_descripcion" type="text" id="text_descripcionSubida" size="50" /></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td width="300"><p>
+      <input name="nombre_archivo_cliente" type="file"  size="37" />
+    </p></td>
+  </tr>
+  <tr>
+    <td height="23">
+    </td>
+    <td align="right"><input type="submit" name="enviar" value="Subir" />
+    </td>
+  </tr>
+</table>
+</form></div>
+  </div>
+  <div id="pie">
+    <p>Sistema Apoyo T.I.S.  </p>
+  </div>
+</div>
+</body>
+</html>
