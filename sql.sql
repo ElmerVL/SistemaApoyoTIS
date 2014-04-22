@@ -244,6 +244,7 @@ CREATE TABLE Proyecto (
   Consultor_Usuario_idUsuario INTEGER NOT NULL,
   Consultor_idConsultor INTEGER NOT NULL,
   nombreProyecto VARCHAR(120) NULL,
+  vigente boolean,
   PRIMARY KEY(idProyecto, Consultor_Usuario_idUsuario, Consultor_idConsultor),
   FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
     REFERENCES Consultor(idConsultor, Usuario_idUsuario)
