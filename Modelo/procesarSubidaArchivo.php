@@ -13,6 +13,7 @@ $destino=$carpetaRaiz.$_FILES['nombre_archivo_cliente']['name'];
 //echo $destino."<br>";
 copy($_FILES['nombre_archivo_cliente']['tmp_name'],$destino);
 //echo "subido exitosamente";
+ header('Location:../Vista/iu.consultor.html');
 }
 else{
     header('Location:../Vista/iu.consultor.html');
