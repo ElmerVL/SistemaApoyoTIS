@@ -1,11 +1,17 @@
 <?php
-        //Aqui las variables del contrato    
-        $nombreLargo = "AQUI NOMBRE LARGO";
-        $nombreCorto = "AQUI NOMBRE CORTO";
-        $nombreProyecto = "AQUI NOMBRE DEL PROYECTO";
-        $codigoCPTIS = "AQUI CODIGO DE CPTIS";
-        $nombreRLegal = "AQUI NOMBRE DEL REPRESENTANTE LEGAL";
-        $fecha = "AQUI LA FECHA";
+
+require '../Modelo/modeloContrato.php';
+$a=$_GET['a'];
+
+        $nombreLargo = conseguirNombreLargo($a);
+        $nombreCorto = conseguirNombreCorto($a);
+        $nombreProyecto = conseguirProyecto();
+        $codigoCPTIS = conseguirCodigoProyecto();
+        $nombreRLegal = conseguirRepresentanteLegal($a);
+        
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+ 
+        $fecha = date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
         $listaDocentes = "AQUI LA LISTA DE DOCENTES ACTIVOS";
         $nombreDocente = "AQUI NOMBRE DEL DOCENTE";
         
@@ -16,7 +22,7 @@
         $pdf->SetMargins(25, 25);
         $pdf->Ln(12);
         $pdf->SetFont('Times', 'B', 24);
-        $pdf->MultiCell(170, 10,'CONTRATO DE PRESTACION DE SERVICIOS - CONSULTORIA' , 0, 'C', FALSE);
+        $pdf->MultiCell(170, 10,' CONTRATO DE PRESTACION DE SERVICIOS - CONSULTORIA' , 0, 'C', FALSE);
         $pdf->Ln(12);
         $pdf->SetFont('Times', null, 14);
         $pdf->Cell(160, 2, $fecha , 0, 1, 'C');
@@ -86,12 +92,8 @@
         $pdf->SetXY(120, 100);
         $pdf->MultiCell(70, 6, "REPRESENTANTE\nCONSULTORA", 0, 'C', FALSE);
         
-        $pdf->Output("contrato.pdf");
+        $pdf->Output("../contrato".$nombreLargo.".pdf");
         
-        echo "<script language='javascript'>window.open('contrato.pdf','_self');</script>"; //para ver el archivo pdf generado
+        echo "<script language='javascript'>window.open('../contrato".$nombreLargo.".pdf','_self');</script>"; //para ver el archivo pdf generado
         
         exit;
-
-        
-        
-        
