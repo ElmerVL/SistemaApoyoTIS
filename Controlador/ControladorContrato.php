@@ -8,11 +8,8 @@ $a=$_GET['a'];
         $nombreProyecto = conseguirProyecto();
         $codigoCPTIS = conseguirCodigoProyecto();
         $nombreRLegal = conseguirRepresentanteLegal($a);
-        
-$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
- 
-//echo $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
-
+        date_default_timezone_set("America/La_Paz");
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
         $fecha = date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
         $listaDocentes = "AQUI LA LISTA DE DOCENTES ACTIVOS";
         $nombreDocente = "AQUI NOMBRE DEL DOCENTE";
