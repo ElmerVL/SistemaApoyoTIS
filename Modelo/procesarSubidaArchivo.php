@@ -1,28 +1,26 @@
 <?php   
 
+$titulo =$_POST['text_titulo'];
+$descripcion=$_POST['text_descripcion'] ;
 
-if($_FILES['nombre_archivo_cliente']['type']=='application/pdf')
+if($_FILES['nombre_archivo_subir']['type']=='application/pdf'&& $titulo!=""&&$descripcion!="")
 {
 $carpetaRaiz="../Archivos/";
 opendir($carpetaRaiz);
-$titulo =$_POST['text_titulo'];
+
 //echo $titulo."<br>";
-$descripcion=$_POST['text_descripcion'] ;
+
 //echo $descripcion."<br>";
-$destino=$carpetaRaiz.$_FILES['nombre_archivo_cliente']['name'];
+$destino=$carpetaRaiz.$_FILES['nombre_archivo_subir']['name'];
 //echo $destino."<br>";
-copy($_FILES['nombre_archivo_cliente']['tmp_name'],$destino);
-//echo "subido exitosamente";
+copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+echo "subido exitosamente";
  header('Location:../Vista/iu.consultor.html');
 }
 else{
     header('Location:../Vista/iu.consultor.html');
-    //echo 'no es pdf'."<br>";
+    
 }
 
 
-//$nombre=$_FILES['nombre_archivo_cliente']['name'];
-//echo "<img src=\"Archivos/$nombre\"><br>";
-//echo $_FILES['nombre_archivo_cliente']['name']."<br>";
-//echo $_FILES['nombre_archivo_cliente']['type']."<br>";
 
