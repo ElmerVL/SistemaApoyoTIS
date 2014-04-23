@@ -1,7 +1,7 @@
 <?php
 
 require('../Controlador/Conexion.php');
-    //put your code here
+    
     
 function agregar($a,$b,$c)
 {
