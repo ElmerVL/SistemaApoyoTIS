@@ -12,7 +12,11 @@
   <div id="contenido_usuarios">
       <div id="menu_consultor"><a href="../Vista/iuListaEmpresas.php"><img src="imagenes/btn_listaEmpresas.jpg" width="225" height="46" alt="btn_verListaEmpresas" /></a><a href="formularios/iu.addActividad.html"><img src="imagenes/btn_añadirActividad.jpg" width="225" height="46" alt="btn_añadirActividad" /></a><a href="formularios/iu.subidaArchivo.html"><img src="imagenes/btn_subirArchivo.jpg" width="225" height="46" alt="btn_btn_subirArchivo" /></a>
     </div>
-    <div id="noticias_consultor">Content for  id "noticias_consultor" Goes Here</div>
+    <div id="noticias_consultor">
+        <?php 
+        include 'Otros/actividades.data'; 
+          ?>
+    </div>
   </div>
   <div id="pie">
     <p>Sistema Apoyo T.I.S.  </p>
@@ -20,3 +24,4 @@
 </div>
 </body>
 </html>
+
