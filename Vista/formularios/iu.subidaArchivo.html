@@ -9,11 +9,9 @@
 <body>
 <div id="principal">
   <div id="cabecera"><img src="../imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="../imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
-  <div id="menu_consultor"><a href="../Vista/iuListaEmpresas.php"><img src="imagenes/btn_listaEmpresas.jpg" width="225" height="46" alt="btn_verListaEmpresas" /></a><a href="formularios/iu.addActividad.html"><img src="imagenes/btn_añadirActividad.jpg" width="225" height="46" alt="btn_añadirActividad" /></a><a href="formularios/iu.subidaArchivo.html"><img src="imagenes/btn_subirArchivo.jpg" width="225" height="46" alt="btn_btn_subirArchivo" /></a>
-    </div>
   <div id="contenido_usuarios">
-    <h1> Subir Archivo</h1>
-    <div id="subirArchivo"><form action="../../Controlador/controladorSubidaArchivo.php" method="post" enctype="multipart/form-data"><table width="605" border="0">
+  <div id="menu_consultor"><a href="iu.subidaArchivo.html"><img src="../imagenes/btn_subirArchivo.jpg" width="225" height="46" alt="btn_subirArchivos" /><a href="iu.addActividad.html"><img src="../imagenes/btn_añadirActividad.jpg" width="225" height="46" alt="btn_addActividad" /><a href="../iuListaEmpresas.php"><img src="../imagenes/btn_listaEmpresas.jpg" width="225" height="46" alt="btn_listaEmpresas" /></a></div> 
+  <div id="subirArchivo"><form action="../../Controlador/controladorSubidaArchivo.php" method="post" enctype="multipart/form-data"> <h2> Subir Archivo</h2><table width="605" border="0">
   <tr>
     <td width="295" align="right">Titulo:</td>
     <td align="left"><label for="textFieldTituloSubida"></label>
@@ -38,10 +36,10 @@
   </tr>
 </table>
 </form></div>
-  </div>
-  <div id="pie">
+</div>              
+<div id="pie">
     <p>Sistema Apoyo T.I.S.  </p>
-  </div>
+</div>
 </div>
 </body>
 </html>
