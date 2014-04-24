@@ -11,22 +11,25 @@ opendir($carpetaRaiz);
 $datos[0]=$_FILES['nombre_archivo_subir']['name'];
 
 $destino=$carpetaRaiz.$_FILES['nombre_archivo_subir']['name'];
-
+$n=1;
+$nombre_parcial=$datos[0];
+while(file_exists($destino))
+{  $n++;
+   $pieces = explode(".", $datos[0]);
+   $destino=$carpetaRaiz.$pieces[0].$n.".".$pieces[1];    
+   $nombre_parcial=$pieces[0].$n.".".$pieces[1];
+}
 $datos[1]=$destino;
 $datos[2]=$titulo;
 $datos[3]=$descripcion;
-copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+//copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+move_uploaded_file($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+
 echo "subido exitosamente";
-
-echo $datos[0]."<br>";
-echo $datos[1]."<br>";
-echo $datos[2]."<br>";
-echo $datos[3]."<br>";
-
-header("Location: ../Controlador/controladorDescargaArchivo.php?nombre=$datos[0]&destino=$datos[1]&titulo=$datos[2]&descripcion=$datos[3]");
+header("Location: ../Controlador/controladorDescargaArchivo.php?nombre=$nombre_parcial&destino=$destino&titulo=$datos[2]&descripcion=$datos[3]");
 }
 else{
-   header('Location:../Vista/formularios/iu.subidaArchivo.html');
+  header('Location:../Vista/formularios/iu.subidaArchivo.html');
     
 }
 
