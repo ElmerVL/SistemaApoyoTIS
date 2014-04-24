@@ -8,17 +8,28 @@ if($_FILES['nombre_archivo_subir']['type']=='application/pdf'&& $titulo!=""&&$de
 $carpetaRaiz="../Archivos/";
 opendir($carpetaRaiz);
 
-//echo $titulo."<br>";
+$datos[0]=$_FILES['nombre_archivo_subir']['name'];
 
-//echo $descripcion."<br>";
 $destino=$carpetaRaiz.$_FILES['nombre_archivo_subir']['name'];
-//echo $destino."<br>";
-copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+$n=1;
+$nombre_parcial=$datos[0];
+while(file_exists($destino))
+{  $n++;
+   $pieces = explode(".", $datos[0]);
+   $destino=$carpetaRaiz.$pieces[0].$n.".".$pieces[1];    
+   $nombre_parcial=$pieces[0].$n.".".$pieces[1];
+}
+$datos[1]=$destino;
+$datos[2]=$titulo;
+$datos[3]=$descripcion;
+//copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+move_uploaded_file($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+
 echo "subido exitosamente";
- header('Location:../Vista/iu.consultor.html');
+header("Location: ../Controlador/controladorDescargaArchivo.php?nombre=$nombre_parcial&destino=$destino&titulo=$datos[2]&descripcion=$datos[3]");
 }
 else{
-    header('Location:../Vista/iu.consultor.html');
+  header('Location:../Vista/formularios/iu.subidaArchivo.html');
     
 }
 
