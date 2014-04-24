@@ -1,5 +1,5 @@
 CREATE TABLE foro (
-  codforo INTEGER NOT NULL,
+  codforo SERIAL NOT NULL,
   autor VARCHAR(45) NULL,
   titulo VARCHAR(45) NULL,
   mensaje TEXT NULL,
