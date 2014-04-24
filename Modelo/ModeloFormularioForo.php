@@ -1,7 +1,7 @@
 <?php
 
 require('../Controlador/Conexion.php');
-    
+    //put your code here
     
 function agregar($a,$b,$c)
 {
@@ -24,9 +24,23 @@ function agregar($a,$b,$c)
     $sql = "INSERT INTO foro (autor, titulo, mensaje)";
     $sql.= "VALUES ('$autor','$titulo','$mensaje')";
      pg_query($con,$sql) or die ("ERROR ====> al grabar el sms :( " .pg_last_error());
-    
+     
+ //crear su archivo.data
+    $codForo = retornarCodForo($autor);
+    $miarchivo=fopen('../Vista/Otros/'.$codForo.'.data','w');
+    fclose($miarchivo);
 }
-    
+  function retornarCodForo($autor){
+  $au = $autor;  
+  $conexion = new Conexion();
+  $con = $conexion->getConection();
+  //SELECT codforo FROM foro WHERE autor= 'ELMER VALENCIA';
+  $consulta = pg_query($con,"SELECT codforo FROM foro WHERE autor='$au';");
+  $row = pg_fetch_object($consulta);
+  $AUX = $row->codforo;
+  echo $AUX;
+  return $AUX;
+}  
 
 
 ?>
