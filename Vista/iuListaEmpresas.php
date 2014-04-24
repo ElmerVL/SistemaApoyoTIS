@@ -9,7 +9,7 @@
   <div id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
   <div id="contenido_usuarios">
       
-      <div id="menu_consultor" ><a href="../Vista/iuListaEmpresas.php"><img src="imagenes/btn_listaEmpresas.jpg" width="225" height="46" alt="btn_verListaEmpresas" /></a><a href="formularios/iu.addActividad.html"><img src="imagenes/btn_añadirActividad.jpg" width="225" height="46" alt="btn_añadirActividad" /></a><a href="formularios/iu.subidaArchivo.html"><img src="imagenes/btn_subirArchivo.jpg" width="225" height="46" alt="btn_btn_subirArchivo" /></a></div>
+      <div id="menu_consultor" ><a href="../Vista/iuListaEmpresas.php"><img src="imagenes/btn_listaEmpresas.jpg" width="225" height="46" alt="btn_verListaEmpresas" /></a><a href="formularios/iu.addActividad.html"><img src="imagenes/btn_añadirActividad.jpg" width="225" height="46" alt="btn_añadirActividad" /></a><a href="formularios/iu.subidaArchivo.html"><img src="imagenes/btn_subirArchivo.jpg" width="225" height="46" alt="btn_btn_subirArchivo" /></a><a href=""><img src="imagenes/btn_backup.jpg" width="225" height="46" alt="btn_backup" /></a></div>
     <div id="noticias_consultor">
         <h2> Lista de Grupo Empresas </h2>
         <form name="f" action="../Controlador/ControladorGrupoEmpresa.php" method="post">
