@@ -62,3 +62,10 @@ body {
 	float: left;
 	width: 675px;
 }
+h2 {
+	font-family: Corbel, Arial, Candara;
+	color: #6F2836;
+	text-align: left;
+	text-decoration: underline;
+}
+
