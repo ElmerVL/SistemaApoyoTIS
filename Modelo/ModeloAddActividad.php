@@ -15,14 +15,17 @@ function AddActividad($fecha_ini,$fecha_fin,$titulo,$descripcion)
     $titulo_actividad=$titulo;
     $descripcion_actividad=$descripcion;
     
-
+     if($fecha_inicio_actividad!="" && $fecha_fin_actividad!=""&& $titulo_actividad!=""&& $descripcion_actividad!=""){
+        //echo "visible para:".$actividad_visible_para."requiere respuesta:".$actividad_requiere_respuesta."fecha inicio:".$fecha_inicio_actividad."fecha fin:".$fecha_fin_actividad."titulo Actividad".$titulo_actividad."Descripcion Actividad:".$descripcion_actividad; 
+        $sql = "INSERT INTO actividad (calendario_grupo_empresa_usuario_idusuario,calendario_grupo_empresa_codgrupo_empresa,calendario_codcalendario,fechainicio,fechafin,titulo,descripcion)";
+        $sql.= "VALUES (1,1,1,'$fecha_inicio_actividad','$fecha_fin_actividad','$titulo_actividad','$descripcion_actividad')";
+        pg_query($con,$sql) or die ("ERROR :( " .pg_last_error());
+        echo insertarActividad($titulo_actividad,$fecha_inicio_actividad,$fecha_fin_actividad,$descripcion_actividad);    
+     }else{
+         header("Location: ../Vista/formularios/iu.addActividad.html");
+     }
     
-    //echo "visible para:".$actividad_visible_para."requiere respuesta:".$actividad_requiere_respuesta."fecha inicio:".$fecha_inicio_actividad."fecha fin:".$fecha_fin_actividad."titulo Actividad".$titulo_actividad."Descripcion Actividad:".$descripcion_actividad; 
-    $sql = "INSERT INTO actividad (calendario_grupo_empresa_usuario_idusuario,calendario_grupo_empresa_codgrupo_empresa,calendario_codcalendario,fechainicio,fechafin,titulo,descripcion)";
-    $sql.= "VALUES (1,1,1,'$fecha_inicio_actividad','$fecha_fin_actividad','$titulo_actividad','$descripcion_actividad')";
-     pg_query($con,$sql) or die ("ERROR :( " .pg_last_error());
-    
-     echo insertarActividad($titulo_actividad,$fecha_inicio_actividad,$fecha_fin_actividad,$descripcion_actividad);    
+   
 }
 
 function insertarActividad($titulo1,$fecha_ini1,$fecha_fin1,$descripcion1)
