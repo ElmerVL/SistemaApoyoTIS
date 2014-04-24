@@ -12,11 +12,10 @@
   <div id="menu"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="225" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.html"><img src="imagenes/btn_noticias.jpg" width="225" height="46" alt="btn_noticias" /></a><a href="iu.Foro.php"><img src="imagenes/btn_foro.jpg" width="225" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="225" height="46" alt="btn_nosotros" /></a></div>
   <div id="contenido">foro
       
-      <form action="../Modelo/comentar.php" method="post"> (Obligatorio)<b>Nombre</b>: <input name="nombre"><br> 
+      <form id="valorNombre" action="../Modelo/ModeloComentario.php" method="post"> (Obligatorio)<b>Nombre</b>: <input name="nombre"><br> 
 <br> 
 <textarea name="comentario" cols=34>Escribe tu Comentario...</textarea><br/> 
-<input type="submit" value="Enviar Comentario"/> 
-
+<input type="submit" name="Submit"  value="Enviar Comentario" /> 
 
 </form> 
 
@@ -24,16 +23,29 @@
 
 <table align="left" border="2" class="encabezado" width="850">   
 <td> 
-<?php require('../Controlador/ControladorMostrarTema.php');echo $aux; ?> 
+<?php
+require '../Controlador/ControladorMostrarTema.php';
+
+   $ax=$_GET['codforo'];
+
+   echo a($ax);
+    //echo "<div id='menu_consultor' ><a href='../Controlador/ControladorMostrarTema.php?a=$ax</a></div>";
+   
+?> 
 </td> 
 </table> 
  
 
 <b>Comentarios de los Visitantes</b> 
 
-<table align="left" border="2" class="encabezado" width="850">   
+<table  align="left" border="2" class="encabezado" width="850">   
 <td> 
-<?php include 'Otros/data.data'; ?> 
+<?php
+
+$archivo = $_GET['codforo'];
+include ("Otros/".$archivo.".data");
+ 
+?> 
 </td> 
 </table> 
   
@@ -42,6 +54,7 @@
   </div>
   <div id="pie">Sistema Apoyo TIS</div>
 </div>
+ <?php // header("Location: ../Controlador/ControladorComentario.php?valor=$ax");?>   
 </body>
     
 </html>

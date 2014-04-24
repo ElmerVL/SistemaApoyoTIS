@@ -1,5 +1,12 @@
 <?php
 require '../Modelo/mostrarTema.php';
-global $aux;
-$aux = listaTemas();
+
+function a($ax){
+$a=$ax;//$listaTemasRespuestas;
+    $listaTemas = mostrarTema($a);
+
+return $listaTemas;    
+} 
+
+
 ?>

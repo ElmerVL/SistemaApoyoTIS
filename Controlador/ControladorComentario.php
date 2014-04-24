@@ -1,10 +1,9 @@
 <?php
-require '../Vista/ListaRespuestasForo.php';
-require '../Modelo/comentar.php'; 
 
+$nombre= $_POST['nombre'];
 $comentario = $_POST['comentario']; 
-$nombre = $_POST['nombre'];
-global $aux2;
-
+$ab=$_GET['valor'];
+echo "nombre:".$nombre."comentario:".$comentario."";
+header("Location: ../Modelo/ModeloComentario.php?valor1=$ab");
 
 ?>
