@@ -9,11 +9,13 @@
 <body>
 <div id="principal">
   <div id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
-  <div id="menu"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="225" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.html"><img src="imagenes/btn_noticias.jpg" width="225" height="46" alt="btn_noticias" /></a><a href="iu.Foro.php"><img src="imagenes/btn_foro.jpg" width="225" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="225" height="46" alt="btn_nosotros" /></a></div>
+  <div id="menu"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="225" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.php"><img src="imagenes/btn_noticias.jpg" width="225" height="46" alt="btn_noticias" /></a><a href="iu.Foro.php"><img src="imagenes/btn_foro.jpg" width="225" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="225" height="46" alt="btn_nosotros" /></a></div>
   <div id="contenido">  
       <table align="left" border="2" class="encabezado" width="850">
           <td>
-          <?php include 'Otros/datosNoticias.data'; 
+          <?php 
+          include 'Otros/datosNoticias.data';
+          include 'Otros/actividades.data'; 
           ?>
           </td>
       </table>

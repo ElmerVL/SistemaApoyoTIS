@@ -225,7 +225,7 @@ CREATE TABLE Hito_Pago (
 );
 
 CREATE TABLE Actividad (
-  idActividad INTEGER NOT NULL,
+  idActividad SERIAL NOT NULL,
   Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
   Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Calendario_codCalendario INTEGER NOT NULL,

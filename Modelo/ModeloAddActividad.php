@@ -7,7 +7,6 @@ function AddActividad($fecha_ini,$fecha_fin,$titulo,$descripcion)
 {
     $conec=new Conexion(); 
     $con=$conec->getConection();
-
      
     //$actividad_visible_para=$visible_para;
     //$actividad_requiere_respuesta = $req_repuesta;
@@ -19,11 +18,11 @@ function AddActividad($fecha_ini,$fecha_fin,$titulo,$descripcion)
 
     
     //echo "visible para:".$actividad_visible_para."requiere respuesta:".$actividad_requiere_respuesta."fecha inicio:".$fecha_inicio_actividad."fecha fin:".$fecha_fin_actividad."titulo Actividad".$titulo_actividad."Descripcion Actividad:".$descripcion_actividad; 
-    $sql = "INSERT INTO actividad (idactividad,calendario_grupo_empresa_usuario_idusuario,calendario_grupo_empresa_codgrupo_empresa,calendario_codcalendario,fechainicio,fechafin,titulo,descripcion)";
-    $sql.= "VALUES (3,1,1,1,'$fecha_inicio_actividad','$fecha_fin_actividad','$titulo_actividad','$descripcion_actividad')";
+    $sql = "INSERT INTO actividad (calendario_grupo_empresa_usuario_idusuario,calendario_grupo_empresa_codgrupo_empresa,calendario_codcalendario,fechainicio,fechafin,titulo,descripcion)";
+    $sql.= "VALUES (1,1,1,'$fecha_inicio_actividad','$fecha_fin_actividad','$titulo_actividad','$descripcion_actividad')";
      pg_query($con,$sql) or die ("ERROR :( " .pg_last_error());
     
-     echo insertarActividad($titulo_actividad,$fecha_inicio_actividad,$fecha_fin_actividad,$descripcion_actividad);
+     echo insertarActividad($titulo_actividad,$fecha_inicio_actividad,$fecha_fin_actividad,$descripcion_actividad);    
 }
 
 function insertarActividad($titulo1,$fecha_ini1,$fecha_fin1,$descripcion1)
