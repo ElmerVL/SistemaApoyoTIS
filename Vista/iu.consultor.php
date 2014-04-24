@@ -15,6 +15,7 @@
     <div id="noticias_consultor">
         <?php 
         include 'Otros/actividades.data'; 
+        include 'Otros/datosNoticias.data';
           ?>
     </div>
   </div>
