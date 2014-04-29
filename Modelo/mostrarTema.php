@@ -2,27 +2,39 @@
 
 <?php
  require ('../Controlador/Conexion.php');
- 
- function listaTemas(){
+ function mostrarTema($codForo){
   // Conectar con la base de datos y seleccionarla
     $conec=new Conexion(); 
     $con=$conec->getConection(); 
- 
   // Ejecutar la consulta SQL
-  $result = pg_query($con,'SELECT titulo,autor,mensaje FROM foro');
+  $result = pg_query($con,"SELECT titulo,autor,mensaje FROM foro WHERE codforo='$codForo';");
   // Crear el array de elementos para la capa de la vista
 
 
-  $row = pg_fetch_object($result);
+while  ($row = pg_fetch_object($result)){
       
   $retornar = "<l1>AUTOR: ".$row->autor."</l1><br>";
   $retornar.="<l1>TITULO: ". $row->titulo."</l1><br>";
   $retornar.="<l1>MENSAJE: ". $row->mensaje."</l1>";
 
-
+}
     // Closing connection
   pg_close($con);
   return $retornar;
 }
 
+function insertaRespuesta($a,$b,$nombreArchivo){
+ $nombre = $a;
+$comentario = $b;
+$archivo=$nombreArchivo;
+$leer = fopen("../Vista/Otros/".$archivo.".data", "r"); 
+$aleer = fread($leer ,filesize("../Vista/Otros/".$archivo.".data")); 
+
+$escribir =  fopen("../Vista/Otros/".$archivo.".data","w"); 
+fwrite($escribir,"<b>Nombre:</b> $nombre<br><b>Comentario:</b><p>$comentario</p><hr>$aleer"); 
+fclose($escribir);
+
+return $archivo;
+include '../Vista/ListaRespuestasForo.php';
+}
 ?>

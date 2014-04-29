@@ -2,25 +2,27 @@
 
 <?php
  require ('../Controlador/Conexion.php');
- function listaForo(){
+ function mostrarListaForo(){
   // Conectar con la base de datos y seleccionarla
     $conec=new Conexion(); 
     $con=$conec->getConection();  
     
   // Ejecutar la consulta SQL
-  $result = pg_query($con,'SELECT titulo,autor FROM foro');
+  $result = pg_query($con,'SELECT codforo,titulo,autor FROM foro');
+  
+  while ($row = pg_fetch_object($result)){
+        $cod = $row->codforo;
+        $t = $row->titulo;
+        $a = $row->autor;
+        echo "<tr>"
+        . "<td><a href = '../Vista/ListaRespuestasForo.php?codforo=$cod'>$t</a></td>"
+                . "<td>$a</td>"
+                . "</tr>";
+    }
+    exit();
+    pg_close($con);
 
-  // Crear el array de elementos para la capa de la vista
-  $posts = array();
-  while($row = pg_fetch_array($result))
-  {
-     $posts[] = $row;
-  }
-  // Closing connection
-  pg_close($con);
-  return $posts;
 }
-
 ?>
 
 

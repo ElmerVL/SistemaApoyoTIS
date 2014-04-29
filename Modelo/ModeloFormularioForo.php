@@ -3,12 +3,11 @@
 require('../Controlador/Conexion.php');
     //put your code here
     
-function agregar($a,$b,$c)
+function insertarForo($a,$b,$c)
 {
     $conec=new Conexion(); 
     $con=$conec->getConection();
 
-     
     $autor=$a;
     $titulo=$b;
     $mensaje=$c;
@@ -34,13 +33,11 @@ function agregar($a,$b,$c)
   $au = $autor;  
   $conexion = new Conexion();
   $con = $conexion->getConection();
-  //SELECT codforo FROM foro WHERE autor= 'ELMER VALENCIA';
   $consulta = pg_query($con,"SELECT codforo FROM foro WHERE autor='$au';");
   $row = pg_fetch_object($consulta);
   $AUX = $row->codforo;
   echo $AUX;
   return $AUX;
 }  
-
-
+header("Location: ../Vista/iu.Foro.php");
 ?>
