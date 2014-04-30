@@ -1,5 +1,5 @@
 CREATE TABLE foro (
-  codforo INTEGER NOT NULL,
+  codforo SERIAL NOT NULL,
   autor VARCHAR(45) NULL,
   titulo VARCHAR(45) NULL,
   mensaje TEXT NULL,
@@ -225,7 +225,7 @@ CREATE TABLE Hito_Pago (
 );
 
 CREATE TABLE Actividad (
-  idActividad INTEGER NOT NULL,
+  idActividad SERIAL NOT NULL,
   Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
   Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Calendario_codCalendario INTEGER NOT NULL,
