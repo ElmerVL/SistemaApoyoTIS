@@ -14,7 +14,8 @@ $destino=$carpetaRaiz.$_FILES['nombre_archivo_subir']['name'];
 $n=1;
 $nombre_parcial=$datos[0];
 while(file_exists($destino))
-{  $n++;
+{  
+   $n++;
    $pieces = explode(".", $datos[0]);
    $destino=$carpetaRaiz.$pieces[0].$n.".".$pieces[1];    
    $nombre_parcial=$pieces[0].$n.".".$pieces[1];
@@ -30,7 +31,6 @@ header("Location: ../Controlador/controladorDescargaArchivo.php?nombre=$nombre_p
 }
 else{
   header('Location:../Vista/formularios/iu.subidaArchivo.html');
-    
 }
 
 
