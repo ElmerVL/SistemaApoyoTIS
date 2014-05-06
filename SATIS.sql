@@ -7,7 +7,7 @@ CREATE TABLE foro (
 );
 
 CREATE TABLE Usuario (
-  idUsuario INTEGER NOT NULL,
+  idUsuario SERIAL NOT NULL,
   login VARCHAR(45) NULL,
   passwd VARCHAR(45) NULL,
   PRIMARY KEY(idUsuario)
@@ -38,7 +38,7 @@ CREATE TABLE App (
 );
 
 CREATE TABLE Grupo_Empresa (
-  CodGrupo_Empresa INTEGER NOT NULL,
+  CodGrupo_Empresa SERIAL NOT NULL,
   Usuario_idUsuario INTEGER NOT NULL,
   nombrelargoGE VARCHAR(45) NULL,
   nombreCortoGE VARCHAR(45) NULL,
@@ -88,6 +88,7 @@ CREATE TABLE Consultor (
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
+
 
 CREATE TABLE Calendario (
   codCalendario INTEGER NOT NULL,
@@ -240,6 +241,25 @@ CREATE TABLE Actividad (
       ON UPDATE NO ACTION
 );
 
+CREATE TABLE Cons_Actividad (
+  codCons_Actividad SERIAL NOT NULL,
+  Consultor_Usuario_idUsuario INTEGER NOT NULL,
+  Consultor_idConsultor INTEGER NOT NULL,
+  visiblePara VARCHAR(30) NULL,
+  requiereRespuesta VARCHAR(15) NULL,
+  fechaInicio TIMESTAMP NULL,
+  fechaFin TIMESTAMP NULL,
+  horaInicio TIME NULL,
+  horaFin TIME NULL,
+  titulo VARCHAR(30) NULL,
+  descripcion TEXT NULL,
+  PRIMARY KEY(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor),
+  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
+    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
 CREATE TABLE Proyecto (
   idProyecto VARCHAR(10) NOT NULL,
   Consultor_idConsultor INTEGER NOT NULL,
@@ -254,14 +274,15 @@ CREATE TABLE Proyecto (
 );
 
 CREATE TABLE Cons_Documento (
-  idCons_Documento INTEGER NOT NULL,
-  Consultor_idConsultor INTEGER NOT NULL,
-  Consultor_Usuario_idUsuario INTEGER NOT NULL,
+  idCons_Documento SERIAL NOT NULL,
+  Cons_Actividad_Consultor_idConsultor INTEGER NOT NULL,
+  Cons_Actividad_Consultor_Usuario_idUsuario INTEGER NOT NULL,
+  Cons_Actividad_codCons_Actividad INTEGER NOT NULL,
   nombreDocumento VARCHAR(45) NULL,
   pathDocumentoConsultor VARCHAR(120) NULL,
-  PRIMARY KEY(idCons_Documento, Consultor_idConsultor, Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
+  PRIMARY KEY(idCons_Documento, Cons_Actividad_Consultor_idConsultor, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_codCons_Actividad),
+  FOREIGN KEY(Cons_Actividad_codCons_Actividad, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor)
+    REFERENCES Cons_Actividad(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
