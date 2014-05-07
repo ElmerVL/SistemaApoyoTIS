@@ -52,18 +52,7 @@ CREATE TABLE Grupo_Empresa (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE GE_Documento (
-  idGE_Documento INTEGER NOT NULL,
-  Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  nombreDocumento VARCHAR(45) NULL,
-  pathDocumentoGE VARCHAR(120) NULL,
-  PRIMARY KEY(idGE_Documento, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario),
-  FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
-);
+
 
 CREATE TABLE Telf_GE (
   idTelf_GE INTEGER NOT NULL,
@@ -224,23 +213,6 @@ CREATE TABLE Hito_Pago (
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
-
-CREATE TABLE Actividad (
-  idActividad SERIAL NOT NULL,
-  Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Calendario_codCalendario INTEGER NOT NULL,
-  fechaInicio TIMESTAMP NULL,
-  fechaFin TIMESTAMP NULL,
-  titulo VARCHAR(45) NULL,
-  descripcion TEXT NULL,
-  PRIMARY KEY(idActividad, Calendario_Grupo_Empresa_Usuario_idUsuario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_codCalendario),
-  FOREIGN KEY(Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Calendario(codCalendario, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
-);
-
 CREATE TABLE Cons_Actividad (
   codCons_Actividad SERIAL NOT NULL,
   Consultor_Usuario_idUsuario INTEGER NOT NULL,
@@ -253,22 +225,30 @@ CREATE TABLE Cons_Actividad (
   horaFin TIME NULL,
   titulo VARCHAR(30) NULL,
   descripcion TEXT NULL,
+  activo BOOL NULL,
+  contestada BOOL NULL,
   PRIMARY KEY(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor),
   FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
     REFERENCES Consultor(idConsultor, Usuario_idUsuario)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
-
-CREATE TABLE Proyecto (
-  idProyecto VARCHAR(10) NOT NULL,
-  Consultor_idConsultor INTEGER NOT NULL,
-  Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  nombreProyecto VARCHAR(120) NULL,
-  vigente BOOL NULL,
-  PRIMARY KEY(idProyecto, Consultor_idConsultor, Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
+CREATE TABLE GE_Documento (
+  idGE_Documento INTEGER NOT NULL,
+  Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
+  Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
+  Cons_Actividad_Consultor_idConsultor INTEGER NOT NULL,
+  Cons_Actividad_Consultor_Usuario_idUsuario INTEGER NOT NULL,
+  Cons_Actividad_codCons_Actividad INTEGER NOT NULL,
+  nombreDocumento VARCHAR(45) NULL,
+  pathDocumentoGE VARCHAR(120) NULL,
+  PRIMARY KEY(idGE_Documento, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_codCons_Actividad),
+  FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
+    REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Cons_Actividad_codCons_Actividad, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor)
+    REFERENCES Cons_Actividad(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
@@ -283,6 +263,20 @@ CREATE TABLE Cons_Documento (
   PRIMARY KEY(idCons_Documento, Cons_Actividad_Consultor_idConsultor, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_codCons_Actividad),
   FOREIGN KEY(Cons_Actividad_codCons_Actividad, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor)
     REFERENCES Cons_Actividad(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+);
+
+
+CREATE TABLE Proyecto (
+  idProyecto VARCHAR(10) NOT NULL,
+  Consultor_idConsultor INTEGER NOT NULL,
+  Consultor_Usuario_idUsuario INTEGER NOT NULL,
+  nombreProyecto VARCHAR(120) NULL,
+  vigente BOOL NULL,
+  PRIMARY KEY(idProyecto, Consultor_idConsultor, Consultor_Usuario_idUsuario),
+  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
+    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
