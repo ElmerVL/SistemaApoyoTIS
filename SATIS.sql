@@ -83,7 +83,6 @@ CREATE TABLE Calendario (
   codCalendario INTEGER NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  acrtividad VARCHAR(120) NULL,
   fecha DATE NULL,
   PRIMARY KEY(codCalendario, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario),
   FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
