@@ -18,11 +18,11 @@ function insertarNoticia($nombre_archivo,$titulo_archivo,$destino_archivo,$descr
  
 
  $escribir =  fopen("../Vista/Otros/datosNoticias.data", "a"); 
- fwrite($escribir,"<b>Archivo subido:</b> $fecha</b><br/>
+ fwrite($escribir,"<p style=background-image:url(C:/xampp/htdocs/SistemaApoyoTIS/Vista/imagenes/imagen.jpg);><b>Archivo subido:</b> $fecha</b><br/>
                    <b>Titulo:</b>$titulo_archivo</b><br/>
                    <b>Descripción:</b>$descripcion_archivo</b><br/>
                    <b>Nombre:</b>$nombre_archivo</b><br/>
-                   <a href='$destino_archivo'>descargar</a><b></p><hr>");
+                   <a href='$destino_archivo'>descargar</a><b></p><hr></p>");
  //fwrite($escribir,"<b>Nombre:</b> $nombre_archivo <br><b><a href='$destino_archivo'></a></b></p><hr>");
  fclose($escribir);
  header('Location:../Vista/iu.consultor.php');

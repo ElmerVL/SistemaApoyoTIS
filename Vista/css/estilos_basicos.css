@@ -51,7 +51,10 @@ body {
 
 #noticias_consultor {
 	float: left;
-	width: 675px;
+	width: 655px;
+        overflow-wrap: break-word;
+        padding-left: 10px;
+        padding-right: 10px;
 }
 #addActividad {
 	float: left;

@@ -19,7 +19,7 @@ function AddActividad($visible_para,$req_repuesta,$fecha_ini,$fecha_fin,$hora_in
     $actividad_activa=$activa;
     $actividad_contestada=$contestada;
     
-     if($fecha_inicio_actividad!="" && $fecha_fin_actividad!=""&&$hora_inicio_actividad!=""&&$hora_fin_actividad!=""&& $titulo_actividad!=""&& $descripcion_actividad!=""){
+    
      if($fecha_fin>$fecha_ini){
         echo "visible para:".$actividad_visible_para."requiere respuesta:".$actividad_requiere_respuesta."fecha inicio:".$fecha_inicio_actividad."fecha fin:".$fecha_fin_actividad."hora inicio:".$hora_inicio_actividad."hora fin:".$hora_fin_actividad."titulo Actividad".$titulo_actividad."Descripcion Actividad:".$descripcion_actividad; 
         $sql = "INSERT INTO cons_actividad (consultor_usuario_idusuario,consultor_idconsultor,visiblepara,requiererespuesta,fechainicio,fechafin,horainicio,horafin,titulo,descripcion,activo,contestada)";
@@ -39,9 +39,7 @@ function AddActividad($visible_para,$req_repuesta,$fecha_ini,$fecha_fin,$hora_in
              header("Location: ../Vista/formularios/iu.addActividad.html");
          }
 
-     }else{
-         header("Location: ../Vista/formularios/iu.addActividad.html");
-     }
+     
     
    
 }
@@ -55,7 +53,7 @@ function insertarActividad($titulo1,$fecha_ini1,$fecha_fin1,$descripcion1)
  
 
  $escribir =  fopen("../Vista/Otros/actividades.data", "a"); 
- fwrite($escribir,"<b>Titulo:</b>$titulo1<br><b>Fecha de inicio:</b>$fecha_ini1<br><b>Fecha fin:</b>$fecha_fin1<br><b>Descripción:</b>$descripcion1<br></p><hr>");
+ fwrite($escribir,"<b>Titulo:</b>$titulo1<br><b>Fecha de inicio:</b>$fecha_ini1<br><b>Fecha fin:</b>$fecha_fin1<br><b>Descripción:</b>$descripcion1<br></p><hr><br>");
  fclose($escribir);
  header("Location: ../Vista/iu.consultor.php");
 }

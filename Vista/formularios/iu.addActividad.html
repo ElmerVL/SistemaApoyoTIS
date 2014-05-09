@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
@@ -58,23 +58,23 @@ $(document).ready(function(){
       </tr>                  
       <tr>
        <td align="right">Fecha inicio:</td>
-        <td width="491"><input type="text" name="fecha_inicio" id="fecha_inicio" /> 
+        <td width="491"><input title="Requiere fecha AA/MM/DD " type="text" name="fecha_inicio" id="fecha_inicio"  required /> 
         Hra.
-        <input name="hora_ini" type="text" id="hora_inicio" data-format="hh:mm A" class="input-small"/></td>
+        <input title="Se necesita una hora de inicio para la actividad" name="hora_ini" type="text" id="hora_inicio" data-format="hh:mm A" class="input-small" required/></td>
       </tr>
       <tr>
         <td align="right">Fecha conclusion:</td>
-        <td width="491"><input type="text" name="fecha_fin" id="fecha_fin" />
+        <td width="491"><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" required/>
         Hra. 
-          <input name="hora_fin"type="text" id="hora_fin" data-format="hh:mm A" class="input-small"/></td>
+          <input title="Se necesita una hora de coclusión para la actividad" name="hora_fin"type="text" id="hora_fin" data-format="hh:mm A" class="input-small"required/></td>
       </tr>
       <tr>
         <td align="right">Título:</td>
-        <td width="491"><input type="text" name="txt_titulo" id="titulo" /></td>
+        <td width="491"><input title="Se necesita un título para la actividad" type="text" name="txt_titulo" id="titulo" required /></td>
       </tr>
       <tr>
         <td align="right">Descripción:</td>
-        <td width="491"><textarea name="ctxt_descripcion" id="descripcion" cols="45" rows="5"></textarea></td>
+        <td width="491"><textarea name="ctxt_descripcion" id="descripcion" cols="45" rows="5" required=""></textarea></td>
       </tr>
       <tr>
       <td></td>    
