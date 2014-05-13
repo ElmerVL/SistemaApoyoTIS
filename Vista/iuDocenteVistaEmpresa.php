@@ -16,14 +16,12 @@
         $a=$_GET['cge'];
         echo "<div id='menu_consultor' ><a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='225' height='46' alt='btn_1' /></a></div>";
   ?>
-  <!--div id="menu_consultor" ><a href="../Controlador/ControladorContrato.php"><img src="imagenes/btn_generarContrato.jpg" width="225" height="46" alt="btn_1" /></a></div-->
   <?php  
         //$a=$_GET['cge'];
         require '../Controlador/ControladorGrupoEmpresa.php';
         $campo = mostrarDatosEmp($a);
         echo "<div id='noticias_consultor'>$campo</div>";
     ?>  
-  <!--div id="noticias_consultor">Empresa $campo</div-->
   </div>
   <div id="pie">
     <p>Sistema Apoyo T.I.S.  </p>

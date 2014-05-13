@@ -32,3 +32,19 @@ function mostrarDatosEmpresa($codEmpresa) {
     exit();
     pg_close($c);
 }
+
+function mostrarEmpresas() {
+    $con = new Conexion();
+    $c=$con->getConection();
+    $consulta = pg_query($c, 'select codgrupo_empresa, nombrelargoge from grupo_empresa');
+    while ($f = pg_fetch_object($consulta)){
+        $a = $f->codgrupo_empresa;
+        $nge = $f->nombrelargoge;
+        echo "<tr>"
+        . "<td><a href = '../Vista/iuGrupoEmpresa.php?a=$a'>$a</a></td>"
+                . "<td>$nge</td>"
+                . "</tr>";
+    }
+    exit();
+    pg_close($c);
+}

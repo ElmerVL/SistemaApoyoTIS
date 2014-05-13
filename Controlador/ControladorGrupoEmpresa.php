@@ -10,5 +10,9 @@
         $nombreRepLegal = mostrarDatosEmpresa($codGE);
         echo $nombreRepLegal;
     }
-    
+    function mostrarEmpresa(){
+        global $listaDocentes;
+        $listaEmpresas = mostrarEmpresas();
+        require_once '../Vista/ListaEmpresas.html';
+    }
 ?>

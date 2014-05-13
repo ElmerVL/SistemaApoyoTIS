@@ -131,6 +131,10 @@
 	margin: 0;
 	line-height: 1;
 }
+.calendar .specific-day-scheme-event p[data-role=cod] {
+	margin: 0;
+	line-height: 1;
+}
 [data-color=normal] select,[data-color=normal] .calendar-month-view, [data-role=sub] nav a[data-color=normal], [data-color=normal] .checkbox-outer, [data-color=normal] .radio-outer,[data-color=normal] textarea,input:not([type=file])[data-color=normal], [data-color=normal] input:not([type=file]),[data-color=normal] .calendar-day,[data-color=normal] button, button[data-color=normal],[data-color=normal] a[data-role=button], a[data-role=button][data-color=normal],[data-color=normal] input[type=submit],[data-color=normal].accordion li, [data-color=normal].list li, [data-color=normal].olist li, [data-color=normal] .specific-day,[data-color=normal] .chart-bar,[data-color=normal] .calendar-specific .specific-day-scheme-event {
 	background-color: #459C97;
 }
