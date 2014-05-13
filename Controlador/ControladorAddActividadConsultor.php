@@ -8,7 +8,7 @@ $hora_ini=$_POST["hora_ini"];
 $hora_fin=$_POST["hora_fin"];
 $titulo=$_POST["txt_titulo"];
 $descripcion=$_POST["ctxt_descripcion"];
-$activa= "TRUE";
+$activa= "FALSE";
 $contestada="FALSE";
 
 AddActividad($visible_para, $req_repuesta,$fecha_ini,$fecha_fin,$hora_ini,$hora_fin,$titulo, $descripcion,$activa,$contestada);

@@ -1,0 +1,42 @@
+@charset "u%f-8";
+#body{
+    background-image: url(../imagenes/fondo.jpg);
+}
+#principal_consultor {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#cabecera_consultor{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#contenido_consultor {
+	background-color: #FFF;
+        margin-left: 15%;
+	float: left;
+	width: 70%;
+}
+#menu_consultor {
+	width:21.5%;
+        background-color: #000;
+	float: left;
+}
+#menu_consultor img:hover{
+    border: solid 2px #6B2C37;
+}
+#noticias_consultor {
+	width: 75%;
+        float: left;
+}
+ #pie_consultor{
+    width: 70%;
+    height: 80px;
+    background-image: url(../imagenes/pie_fondo.jpg);
+    float: left;
+    margin-top: 0.3%;
+    margin-left: 15%;
+    text-align: center;
+    color: #FFF;
+}

@@ -1,0 +1,81 @@
+@charset "u%f-8";
+#body{
+    background-image: url(../imagenes/fondo.jpg);
+}
+#principal_foro {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#cabecera_foro{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#menu_foro{
+    width: 70%;
+    margin-right: auto;
+    margin_left:auto;
+    padding-left: 15.3%;
+}
+#menu_foro img:hover{
+    border: solid 1px #6B2C37;
+}
+#principal_foro #contenido_foro {
+    width: 70%;
+    margin-left: 15%;
+    background-color: #FFF;
+    float: left;
+}
+ #body #principal_foro #pie_foro{
+    width: 70%;
+    height: 80px;
+    background-image: url(../imagenes/pie_fondo.jpg);
+    float: left;
+    margin-top: 0.3%;
+    margin-left: 15%;
+    text-align: center;
+    color: #FFF;
+}
+/*============================================================FORMULARIO FORO=========================================================*/
+#principal_formulario_foro {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#cabecera_formulario_foro{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#menu_formulario_foro{
+    width: 70%;
+    margin-right: auto;
+    margin_left:auto;
+    padding-left: 15.3%;
+}
+#menu_formulario_foro img:hover{
+    border: solid 1px #6B2C37;
+}
+#principal_formulario_foro #contenido_formulario_foro {
+    width: 70%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 15%;
+    background-color: #FFF;
+    float: left;
+}
+ #body #principal_formulario_foro #pie_formulario_foro{
+    width: 70%;
+    height: 80px;
+    background-image: url(../imagenes/pie_fondo.jpg);
+    float: left;
+    margin-top: 0.3%;
+    margin-left: 15%;
+    text-align: center;
+    color: #FFF;
+}
+
+
