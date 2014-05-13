@@ -66,18 +66,18 @@ CREATE TABLE Telf_GE (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE Consultor (
-  idConsultor INTEGER NOT NULL,
-  Usuario_idUsuario INTEGER NOT NULL,
-  nombreConsultor VARCHAR(45) NULL,
-  correoConsultor VARCHAR(45) NULL,
-  PRIMARY KEY(idConsultor, Usuario_idUsuario),
-  FOREIGN KEY(Usuario_idUsuario)
-    REFERENCES Usuario(idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE consultor
+(
+  idconsultor integer NOT NULL,
+  usuario_idusuario integer NOT NULL,
+  nombreconsultor character varying(45),
+  correoconsultor character varying(45),
+  CONSTRAINT consultor_pkey PRIMARY KEY (idconsultor, usuario_idusuario),
+  CONSTRAINT consultor_usuario_idusuario_fkey FOREIGN KEY (usuario_idusuario)
+      REFERENCES usuario (idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT consultor_idconsultor_key UNIQUE (idconsultor)
 );
-
 
 CREATE TABLE Calendario (
   codCalendario INTEGER NOT NULL,
@@ -128,24 +128,19 @@ CREATE TABLE User_Rol (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE Evaluacion_Semanal (
-  codEvaluacion_Semanal INTEGER NOT NULL,
-  Consultor_idConsultor INTEGER NOT NULL,
-  Calendario_codCalendario INTEGER NOT NULL,
-  Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  fecha DATE NULL,
-  PRIMARY KEY(codEvaluacion_Semanal, Consultor_idConsultor, Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario, Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-  FOREIGN KEY(Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Calendario(codCalendario, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE evaluacion_semanal
+(
+  codevaluacion_semanal serial NOT NULL,
+  calendario_codcalendario integer NOT NULL,
+  calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
+  calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
+  fecha date,
+  CONSTRAINT evaluacion_semanal_pkey PRIMARY KEY (codevaluacion_semanal, calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario),
+  CONSTRAINT evaluacion_semanal_calendario_codcalendario_fkey FOREIGN KEY (calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario)
+      REFERENCES calendario (codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
+
 
 CREATE TABLE Evaluacion_final (
   codEvaluacion_final INTEGER NOT NULL,
@@ -280,36 +275,39 @@ CREATE TABLE Proyecto (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE Detalle_GE (
-  idDetalle_GE INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Calendario_codCalendario INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Consultor_idConsultor INTEGER NOT NULL,
-  Evaluacion_final_Semanal_codEvaluacion_Semanal INTEGER NOT NULL,
-  Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Evaluacion_Semanal_Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  comentarioGE VARCHAR(120) NULL,
-  PRIMARY KEY(idDetalle_GE, Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa, Evaluacion_final_Semanal_Calendario_codCalendario, Evaluacion_final_Semanal_Consultor_idConsultor, Evaluacion_final_Semanal_codEvaluacion_Semanal, Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario, Evaluacion_Semanal_Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Evaluacion_final_Semanal_codEvaluacion_Semanal, Evaluacion_final_Semanal_Consultor_idConsultor, Evaluacion_final_Semanal_Calendario_codCalendario, Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa, Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario, Evaluacion_Semanal_Consultor_Usuario_idUsuario)
-    REFERENCES Evaluacion_Semanal(codEvaluacion_Semanal, Consultor_idConsultor, Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario, Consultor_Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE detalle_ge
+(
+  iddetalle_ge serial NOT NULL,
+  evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
+  evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
+  evaluacion_semanal_calendario_codcalendario integer NOT NULL,
+  evaluacion_semanal_codevaluacion_semanal integer NOT NULL,
+  rol character varying(120),
+  esperado character varying(120),
+  CONSTRAINT detalle_ge_pkey PRIMARY KEY (iddetalle_ge, evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario, evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa, evaluacion_semanal_calendario_codcalendario, evaluacion_semanal_codevaluacion_semanal),
+  CONSTRAINT detalle_ge_evaluacion_semanal_codevaluacion_semanal_fkey FOREIGN KEY (evaluacion_semanal_codevaluacion_semanal, evaluacion_semanal_calendario_codcalendario, evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa, evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario)
+      REFERENCES evaluacion_semanal (codevaluacion_semanal, calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE TABLE Detalle_Cons (
-  idDetalle_Cons INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Calendario_codCalendario INTEGER NOT NULL,
-  Evaluacion_final_Semanal_Consultor_idConsultor INTEGER NOT NULL,
-  Evaluacion_final_Semanal_codEvaluacion_Semanal INTEGER NOT NULL,
-  Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Evaluacion_Semanal_Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  evaluacionConsultor VARCHAR(120) NULL,
-  PRIMARY KEY(idDetalle_Cons, Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa, Evaluacion_final_Semanal_Calendario_codCalendario, Evaluacion_final_Semanal_Consultor_idConsultor, Evaluacion_final_Semanal_codEvaluacion_Semanal, Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario, Evaluacion_Semanal_Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Evaluacion_final_Semanal_codEvaluacion_Semanal, Evaluacion_final_Semanal_Consultor_idConsultor, Evaluacion_final_Semanal_Calendario_codCalendario, Evaluacion_final_Semanal_Calendario_Grupo_Empresa_CodGrupo_Empresa, Evaluacion_Semanal_Calendario_Grupo_Empresa_Usuario_idUsuario, Evaluacion_Semanal_Consultor_Usuario_idUsuario)
-    REFERENCES Evaluacion_Semanal(codEvaluacion_Semanal, Consultor_idConsultor, Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario, Consultor_Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE detalle_cons
+(
+  iddetalle_cons serial NOT NULL,
+  consultor_idconsultor integer NOT NULL,
+  detalle_ge_evaluacion_semanal_codevaluacion_semanal integer NOT NULL,
+  detalle_ge_evaluacion_semanal_calendario_codcalendario integer NOT NULL,
+  detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo integer NOT NULL,
+  detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_ integer NOT NULL,
+  detalle_ge_iddetalle_ge integer NOT NULL,
+  realizado character varying(120),
+  observaciones character varying(120),
+  CONSTRAINT detalle_cons_pkey PRIMARY KEY (iddetalle_cons, consultor_idconsultor, detalle_ge_evaluacion_semanal_codevaluacion_semanal, detalle_ge_evaluacion_semanal_calendario_codcalendario, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_, detalle_ge_iddetalle_ge),
+  CONSTRAINT detalle_cons_consultor_idconsultor_fkey FOREIGN KEY (consultor_idconsultor)
+      REFERENCES consultor (idconsultor) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT detalle_cons_detalle_ge_iddetalle_ge_fkey FOREIGN KEY (detalle_ge_iddetalle_ge, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo, detalle_ge_evaluacion_semanal_calendario_codcalendario, detalle_ge_evaluacion_semanal_codevaluacion_semanal)
+      REFERENCES detalle_ge (iddetalle_ge, evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario, evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa, evaluacion_semanal_calendario_codcalendario, evaluacion_semanal_codevaluacion_semanal) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE Pago_Consultor (
