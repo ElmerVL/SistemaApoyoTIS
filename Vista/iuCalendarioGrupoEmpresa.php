@@ -18,15 +18,19 @@
         $a;
         $a=$_GET['a'];
       echo "<div id='menu_grupoEmpresa'>"
-        . "<a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>"
-              . "<a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>"
-              . "<a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a></div>";
+        ."<a href='iu.propuestaDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_planDePagos.jpg'/></a>
+                            <a href='iu.mostrarPlanDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>    
+                            <a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>"
+              . "</div>";
       ?>
         <div id="noticias_grupoEmpresa"><h2>GRUPO EMPRESA X</h2></div>
       <div id="calendario_grupoEmpresa" class="calendar" data-color="normal">Calendario de la grupo empresa
        <?php
                 include '../Controlador/ControladorCalendarioGrupoEmpresa.php';
-                mostrarReuniones();
+                mostrar_reuniones();
+                mostrar_hitos();
                 ?>
       </div>
       
