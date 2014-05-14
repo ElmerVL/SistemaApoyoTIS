@@ -91,6 +91,20 @@ CREATE TABLE Calendario (
       ON UPDATE NO ACTION
 );
 
+CREATE TABLE plan_pago
+(
+  codplan_pago integer NOT NULL,
+  calendario_codcalendario integer NOT NULL,
+  calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
+  calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
+  montototal real,
+  porcentajesatisfaccion integer,
+  CONSTRAINT plan_pago_pkey PRIMARY KEY (codplan_pago, calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario),
+  CONSTRAINT plan_pago_calendario_codcalendario_fkey FOREIGN KEY (calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario)
+      REFERENCES calendario (codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
 CREATE TABLE Socio (
   idSocio INTEGER NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
@@ -193,20 +207,24 @@ CREATE TABLE Rol_Funcion (
       ON UPDATE NO ACTION
 );
 
-CREATE TABLE Hito_Pago (
-  codHito_Pago INTEGER NOT NULL,
-  Calendario_codCalendario INTEGER NOT NULL,
-  Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  montoPago REAL NULL,
-  actividad VARCHAR(120) NULL,
-  fecha DATE NULL,
-  PRIMARY KEY(codHito_Pago, Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario),
-  FOREIGN KEY(Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Calendario(codCalendario, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE hito_pagable
+(
+  codhito_pagable integer NOT NULL,
+  plan_pago_calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
+  plan_pago_calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
+  plan_pago_calendario_codcalendario integer NOT NULL,
+  plan_pago_codplan_pago integer NOT NULL,
+  hitoevento character varying(120),
+  porcentajepago integer,
+  monto real,
+  fechapago date,
+  entregables character varying(120),
+  CONSTRAINT hito_pagable_pkey PRIMARY KEY (codhito_pagable, plan_pago_calendario_grupo_empresa_usuario_idusuario, plan_pago_calendario_grupo_empresa_codgrupo_empresa, plan_pago_calendario_codcalendario, plan_pago_codplan_pago),
+  CONSTRAINT hito_pagable_plan_pago_codplan_pago_fkey FOREIGN KEY (plan_pago_codplan_pago, plan_pago_calendario_codcalendario, plan_pago_calendario_grupo_empresa_codgrupo_empresa, plan_pago_calendario_grupo_empresa_usuario_idusuario)
+      REFERENCES plan_pago (codplan_pago, calendario_codcalendario, calendario_grupo_empresa_codgrupo_empresa, calendario_grupo_empresa_usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
+
 CREATE TABLE Cons_Actividad (
   codCons_Actividad SERIAL NOT NULL,
   Consultor_Usuario_idUsuario INTEGER NOT NULL,
@@ -310,24 +328,23 @@ CREATE TABLE detalle_cons
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE TABLE Pago_Consultor (
-  codPago_Consultor INTEGER NOT NULL,
-  Consultor_idConsultor INTEGER NOT NULL,
-  Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  Hito_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Hito_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Hito_Pago_Calendario_codCalendario INTEGER NOT NULL,
-  Hito_Pago_codHito_Pago INTEGER NOT NULL,
-  estadoPago VARCHAR(45) NULL,
-  PRIMARY KEY(codPago_Consultor, Consultor_idConsultor, Consultor_Usuario_idUsuario, Hito_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario, Hito_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Hito_Pago_Calendario_codCalendario, Hito_Pago_codHito_Pago),
-  FOREIGN KEY(Hito_Pago_Calendario_codCalendario, Hito_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Hito_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario, Hito_Pago_codHito_Pago)
-    REFERENCES Hito_Pago(Calendario_codCalendario, Calendario_Grupo_Empresa_CodGrupo_Empresa, Calendario_Grupo_Empresa_Usuario_idUsuario, codHito_Pago)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE pago_consultor
+(
+  codpago_consultor integer NOT NULL,
+  consultor_idconsultor integer NOT NULL,
+  hito_pagable_plan_pago_codplan_pago integer NOT NULL,
+  hito_pagable_plan_pago_calendario_codcalendario integer NOT NULL,
+  hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres integer NOT NULL,
+  hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar integer NOT NULL,
+  hito_pagable_codhito_pagable integer NOT NULL,
+  estadopago character varying(45),
+  CONSTRAINT pago_consultor_pkey PRIMARY KEY (codpago_consultor, consultor_idconsultor, hito_pagable_plan_pago_codplan_pago, hito_pagable_plan_pago_calendario_codcalendario, hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres, hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar, hito_pagable_codhito_pagable),
+  CONSTRAINT pago_consultor_consultor_idconsultor_fkey FOREIGN KEY (consultor_idconsultor)
+      REFERENCES consultor (idconsultor) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT pago_consultor_hito_pagable_codhito_pagable_fkey FOREIGN KEY (hito_pagable_codhito_pagable, hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar, hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres, hito_pagable_plan_pago_calendario_codcalendario, hito_pagable_plan_pago_codplan_pago)
+      REFERENCES hito_pagable (codhito_pagable, plan_pago_calendario_grupo_empresa_usuario_idusuario, plan_pago_calendario_grupo_empresa_codgrupo_empresa, plan_pago_calendario_codcalendario, plan_pago_codplan_pago) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 
