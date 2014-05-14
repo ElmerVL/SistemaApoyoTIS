@@ -21,19 +21,19 @@
       <div id="subirArchivo">
         <fieldset id="fieldsetSubirArchivo">   
         <legend>Subir Archivo</legend>
-        <form action="../../Controlador/controladorSubidaArchivo.php" method="post" enctype="multipart/form-data"> 
-        <table width="605" border="0">
+        <form action="../Controlador/ControladorSubidaArchivo.php" method="post" enctype="multipart/form-data"> 
+        <table id="tabla_formulario_subir_archivos">
            <tr>
-               <td width="295" align="right">Titulo:</td>
-               <td align="left"><label for="textFieldTituloSubida"></label><input name="text_titulo" type="text" id="text_TituloSubida" size="50" maxlength="200" /></td>
-           </tr>
+                       <td align="right">Título:</td>
+                       <td ><input title="Se necesita un título para la subida" type="text" name="text_titulo" id="titulo_subida" required /></td>
+                   </tr>
            <tr>
-               <td align="right">Descripción:</td>
-               <td width="300"><label for="text_descripcion"></label><input name="text_descripcion" type="textArea" id="text_descripcionSubida" size="50" /></td>
-           </tr>
+                       <td align="right">Descripción:</td>
+                       <td ><textarea name="text_descripcion" id="descripcion_subida" cols="45" rows="5" required="/"></textarea></td>
+                   </tr>
            <tr>
                <td align="right">&nbsp;</td>
-               <td width="300"><p><input name ="nombre_archivo_subir" type="file"  size="37" /></p></td>
+               <td width="300"><p><input name ="nombre_archivo_subir" type="file"  size="37" required="" /></p></td>
           </tr>
           <tr>
               <td height="23"></td>

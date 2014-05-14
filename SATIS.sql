@@ -347,4 +347,22 @@ CREATE TABLE pago_consultor
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+CREATE TABLE consultor_proyecto_grupo_empresa
+(
+  consultor_idconsultor integer NOT NULL,
+  grupo_empresa_usuario_idusuario integer NOT NULL,
+  grupo_empresa_codgrupo_empresa integer NOT NULL,
+  proyecto_consultor_idconsultor integer NOT NULL,
+  proyecto_codproyecto character varying(10) NOT NULL,
+  CONSTRAINT consultorproyectogrupoempresa_pkey PRIMARY KEY (consultor_idconsultor, grupo_empresa_usuario_idusuario, grupo_empresa_codgrupo_empresa, proyecto_consultor_idconsultor, proyecto_codproyecto),
+  CONSTRAINT consultorproyectogrupoempresa_consultor_idconsultor_fkey FOREIGN KEY (consultor_idconsultor)
+      REFERENCES consultor (idconsultor) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT consultorproyectogrupoempresa_grupo_empresa_codgrupo_empre_fkey FOREIGN KEY (grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario)
+      REFERENCES grupo_empresa (codgrupo_empresa, usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT consultorproyectogrupoempresa_proyecto_codproyecto_fkey FOREIGN KEY (proyecto_codproyecto, proyecto_consultor_idconsultor)
+      REFERENCES proyecto (codproyecto, consultor_idconsultor) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
 
