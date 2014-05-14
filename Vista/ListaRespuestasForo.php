@@ -1,60 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-<link href="css/estilos_basicos.css" rel="stylesheet" type="text/css" />
+<title>NUEVO TEMA</title>
+<link href="css/foro.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="imagenes/favicon.ico">
 </head>
-
-<body>
-<div id="principal">
-  <div id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
-  <div id="menu"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="225" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.html"><img src="imagenes/btn_noticias.jpg" width="225" height="46" alt="btn_noticias" /></a><a href="iu.Foro.php"><img src="imagenes/btn_foro.jpg" width="225" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="225" height="46" alt="btn_nosotros" /></a></div>
-  <div id="contenido">foro
+        <?php
+            $ax=$_GET['codforo'];
+            //echo "este es el cod :$ax<br>";
+        ?>
+<body id="body">
+<div id="principal_formulario_foro">
+  <header id="cabecera_formulario_foro"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
+  <nav id="menu_formulario_foro"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="24%" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.php"><img src="imagenes/btn_noticias.jpg" width="25%" height="46" alt="btn_noticias" /></a><a href="iu.foro.php"><img src="imagenes/btn_foro.jpg" width="25%" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="25%" height="46" alt="btn_nosotros" /></a></nav>
+  <article id="contenido_formulario_foro">
       
-      <form id="valorNombre" action="../Modelo/ModeloComentario.php" method="post"> (Obligatorio)<b>Nombre</b>: <input name="nombre"><br> 
-<br> 
-<textarea name="comentario" cols=34>Escribe tu Comentario...</textarea><br/> 
-<input type="submit" name="Submit"  value="Enviar Comentario" /> 
-
-</form> 
-
-<br> 
-
-<table align="left" border="2" class="encabezado" width="850">   
-<td> 
-<?php
-require '../Controlador/ControladorMostrarTema.php';
-
-   $ax=$_GET['codforo'];
-
-   echo a($ax);
-    //echo "<div id='menu_consultor' ><a href='../Controlador/ControladorMostrarTema.php?a=$ax</a></div>";
-   
-?> 
-</td> 
-</table> 
- 
-
-<b>Comentarios de los Visitantes</b> 
-
-<table  align="left" border="2" class="encabezado" width="850">   
-<td> 
-<?php
-
-$archivo = $_GET['codforo'];
-include ("Otros/".$archivo.".data");
- 
-?> 
-</td> 
-</table> 
-  
-
-
-  </div>
-  <div id="pie">Sistema Apoyo TIS</div>
-</div>
- <?php // header("Location: ../Controlador/ControladorComentario.php?valor=$ax");?>   
-</body>
-    
+       <?php echo "$ax<br>";?>
+        <fieldset id="fieldsetForo"> 
+        <legend>RESPONDER FORO</legend>
+            <form id="valorNombre" action="../Controlador/ControladorComentario.php" method="get">
+                <table align="left" border="0" class="encabezado" width="100%">      
+                    <tr>
+                        <td width="1%"><b>Nombre:</b></td><td><input name="nombre"></td>  
+                        <input name="codigo" value="<?=$_GET['codforo'];?>" >
+                    </tr>
+                    <tr>
+                        <td width="1%"><b>Comentario:</b></td> <td><textarea name="comentario" cols="100%" rows="5%"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="Submit"  value="Enviar Comentario" /></td>  
+                    </tr>
+                </table>
+            </form>    
+        </fieldset>
+        <br> 
+        <div id="contenido" >
+            <fieldset id="fieldsetForo"> 
+            <legend>TEMA DE CONVERSACION</legend>
+            <table align="left" border="0" class="encabezado" width="100%"> 
+                <td> 
+                    <?php
+                    require '../Controlador/ControladorMostrarTema.php';
+                    echo a($ax);
+                    ?> 
+                </td> 
+            </table>
+            </fieldset>
+        </div> 
+        <div id="contenido" >  
+            <fieldset id="fieldsetForo"> 
+            <legend>Comentarios de los Visitantes</legend>
+            <table  align="left" border="0" class="encabezado" width="100%">   
+                <td> 
+                    <?php
+                    $archivo = $_GET['codforo'];
+                    include ("Otros/".$archivo.".data");
+                    ?> 
+                </td> 
+            </table>
+            </fieldset>
+        </div>
+  </article>
+  <footer id="pie_formulario_foro"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
+ </body>
 </html>

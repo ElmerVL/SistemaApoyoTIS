@@ -2,33 +2,35 @@
 #body{
     background-image: url(../imagenes/fondo.jpg);
 }
-#principal_foro {
+#principal_grupoEmpresa {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
-#cabecera_foro{
+#cabecera_grupoEmpresa{
     width:70%;
     margin-right: auto;
     margin-left: auto;
 }
-
-#menu_foro{
-    width: 70%;
-    margin-right: auto;
-    margin_left:auto;
-    padding-left: 15.3%;
+#contenido_grupoEmpresa{
+	background-color: #FFF;
+        margin-left: 15%;
+	float: left;
+	width: 70%;
 }
-#menu_foro img:hover{
-    border: solid 1px #6B2C37;
+#menu_grupoEmpresa{
+	width:21.5%;
+        background-color: #000;
+	float: left;
 }
-#principal_foro #contenido_foro {
-    width: 70%;
-    margin-left: 15%;
-    background-color: #FFF;
-    float: left;
+#menu_grupoEmpresa img:hover{
+    border: solid 2px #6B2C37;
 }
- #body #principal_foro #pie_foro{
+#noticias_grupoEmpresa {
+	width: 75%;
+        float: left;
+}
+ #pie_grupoEmpresa{
     width: 70%;
     height: 80px;
     background-image: url(../imagenes/pie_fondo.jpg);
@@ -38,46 +40,6 @@
     text-align: center;
     color: #FFF;
 }
-/*============================================================FORMULARIO FORO=========================================================*/
-#principal_formulario_foro {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-}
-#cabecera_formulario_foro{
-    width:70%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-#menu_formulario_foro{
-    width: 70%;
-    margin-right: auto;
-    margin_left:auto;
-    padding-left: 15.3%;
-}
-#menu_formulario_foro img:hover{
-    border: solid 1px #6B2C37;
-}
-#principal_formulario_foro #contenido_formulario_foro {
-    width: 70%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin-left: 15%;
-    background-color: #FFF;
-    float: left;
-}
- #body #principal_formulario_foro #pie_formulario_foro{
-    width: 70%;
-    height: 80px;
-    background-image: url(../imagenes/pie_fondo.jpg);
-    float: left;
-    margin-top: 0.3%;
-    margin-left: 15%;
-    text-align: center;
-    color: #FFF;
-}
-
 /* CSS PARA TABLAS --> (EVL)*/
 .CSSTableGenerator {
         font-family: Corbel;

@@ -13,9 +13,9 @@
 
 while  ($row = pg_fetch_object($result)){
       
-  $retornar = "<l1>AUTOR: ".$row->autor."</l1><br>";
-  $retornar.="<l1>TITULO: ". $row->titulo."</l1><br>";
-  $retornar.="<l1>MENSAJE: ". $row->mensaje."</l1>";
+  $retornar = "<l1><strong>".$row->autor."</strong></l1><br>";
+  $retornar.="<l1><strong>". $row->titulo."</strong></l1><br>";
+  $retornar.="<l1>". $row->mensaje."</l1>";
 
 }
     // Closing connection
