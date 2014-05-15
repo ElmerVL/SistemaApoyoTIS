@@ -24,11 +24,11 @@
                       </nav>"
                 ?>
                 <div id="noticias_grupoEmpresa">
-                <?php
-        require '../Controlador/ControladorGrupoEmpresa.php';
-        $campo = mostrarDatosEmp($a);
-        echo "<div id='noticias_consultor'>$campo</div>";
-       ?> 
+                    <?php
+                    require '../Controlador/ControladorGrupoEmpresa.php';
+                    $campo = mostrarDatosEmp($a);
+                    echo "<div id='noticias_consultor'>$campo</div>";
+                    ?> 
                 </div>   
             </article>
             <footer id="pie_grupo_empresa"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>

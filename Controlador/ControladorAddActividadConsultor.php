@@ -1,6 +1,6 @@
 <?php
 require ('../Modelo/ModeloAddActividadConsultor.php');
-$visible_para= $_POST["visible_para"];
+$visible_para= $_POST["combo_visible"];
 $req_repuesta= $_POST["requiere"];
 $fecha_ini=$_POST["fecha_inicio"];
 $fecha_fin=$_POST["fecha_fin"];

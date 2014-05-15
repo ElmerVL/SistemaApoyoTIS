@@ -11,7 +11,7 @@
         <script src="js/jquery-ui-1.8.20.js"></script>
         <script>
             $(document).ready(function() {
-                $("#fecha_inicio").datepicker({dateFormat: "yy/mm/dd"});
+                $("#fecha_inicio").datepicker({dateFormat: "yy/mm/dd", minDate: '0'});
 
                 var endingDate = $(this).attr('endingDate');
 
@@ -19,7 +19,7 @@
         </script>
         <script>
             $(document).ready(function() {
-                $("#fecha_fin").datepicker({dateFormat: "yy/mm/dd"});
+                $("#fecha_fin").datepicker({dateFormat: "yy/mm/dd", minDate: '0'});
 
                 var endingDate = $(this).attr('endingDate');
 
@@ -41,7 +41,7 @@
                 <div id="addActividad">
                     <fieldset id="fieldsetActividad">   
                         <legend>Añadir Actividad</legend>
-                        <form action="../../Controlador/ControladorAddActividadConsultor.php" method="post" enctype="multipart/form-data">
+                        <form action="../Controlador/ControladorAddActividadConsultor.php" method="post" enctype="multipart/form-data">
                             <table id="tabla__formulario_actividades">
                                 <tr>
                                     <td width="186" align="right">Visible para:</td>
@@ -53,7 +53,6 @@
                                                 <?php
                                                 require ('../Controlador/ControladorComboGrupoEmpresas.php');
                                                 require ('../Vista/Otros/grupos.data');
-                                                 
                                                 ?>
                                             </select>          
                                         </p></td>
@@ -69,22 +68,22 @@
 
                                 <tr>
                                     <td align="right">Fecha inicio:</td>
-                                    <td ><input title="Requiere fecha AA/MM/DD " type="text" name="fecha_inicio" id="fecha_inicio"  required /> Hra.<input title="Se necesita una hora de inicio para la actividad" name="hora_ini" type="text" id="hora_inicio" data-format="hh:mm A" class="input-small" required/></td>
+                                    <td ><input title="Requiere fecha AA/MM/DD " type="text" name="fecha_inicio" id="fecha_inicio"  rmaxlength="8" equired /> Hra.<input title="Se necesita una hora de inicio para la actividad" name="hora_ini" type="time" id="hora_inicio" data-format="hh:mm A" class="input-small" required/></td>
                                 </tr>
 
                                 <tr>
                                     <td align="right">Fecha conclusion:</td>
-                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" required/>Hra.<input title="Se necesita una hora de coclusión para la actividad" name="hora_fin" type="text" id="hora_fin" data-format="hh:mm A" class="input-small" required/></td>
+                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" required/>Hra.<input title="Se necesita una hora de coclusión para la actividad" name="hora_fin" type="time" id="hora_fin" data-format="hh:mm A" class="input-small" required/></td>
                                 </tr>
 
                                 <tr>
                                     <td align="right">Título:</td>
-                                    <td ><input title="Se necesita un título para la actividad" type="text" name="txt_titulo" id="titulo" required /></td>
+                                    <td ><input title="Se necesita un título para la actividad" type="text" name="txt_titulo" id="titulo" placeholder="Actividad descriptiva" required /></td>
                                 </tr>
 
                                 <tr>
                                     <td align="right">Descripción:</td>
-                                    <td ><textarea name="ctxt_descripcion" id="descripcion" cols="45" rows="5" required=""></textarea></td>
+                                    <td ><textarea name="ctxt_descripcion" id="descripcion" cols="45" rows="5" placeholder="Descripción breve de la actividad..."required=""></textarea></td>
                                 </tr>
 
                                 <tr>

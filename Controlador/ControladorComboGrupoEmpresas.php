@@ -16,7 +16,7 @@ function obtenerGrupoEmpresas() {
         $row = $rows[$i];
         $cod_grupo=$row['codgrupo_empresa'];
         $nombre_grupo=$row['nombrelargoge'];
-        $caden ="<option value=$cod_grupo>$nombre_grupo</option>";
+        $caden ="<option value=$nombre_grupo>$nombre_grupo</option>";
         $escribir =  fopen("../Vista/Otros/grupos.data", "a"); 
         fwrite($escribir,"$caden");
     }
