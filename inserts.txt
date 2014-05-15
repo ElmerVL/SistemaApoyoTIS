@@ -1,0 +1,99 @@
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (1, 'Camaleon', 'camaleon');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (2, 'Brain', 'brain');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (3, 'Sauro', 'sauro');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (4, 'Jala', 'jala'); 
+   
+INSERT INTO grupo_empresa(
+            codgrupo_empresa, usuario_idusuario, nombrelargoge, nombrecortoge, 
+            tothlogoge, correoge, direccionge)
+    VALUES (1, 1, 'Camaleon Software', 'On Soft', 
+            null, 'onsoft@tis.com', 'crisantemos');
+
+INSERT INTO grupo_empresa(
+            codgrupo_empresa, usuario_idusuario, nombrelargoge, nombrecortoge, 
+            tothlogoge, correoge, direccionge)
+    VALUES (2, 2, 'Brain Software', 'B Soft', 
+            null, 'brain@tis.com', 'campo ferial');
+
+INSERT INTO grupo_empresa(
+            codgrupo_empresa, usuario_idusuario, nombrelargoge, nombrecortoge, 
+            tothlogoge, correoge, direccionge)
+    VALUES (3, 3, 'Sauro Software', 'Sauro', 
+            null, 'sauro@tis.com', 'av. republica');
+
+INSERT INTO grupo_empresa(
+            codgrupo_empresa, usuario_idusuario, nombrelargoge, nombrecortoge, 
+            tothlogoge, correoge, direccionge)
+    VALUES (4, 4, 'Jala Soft', 'Jala', 
+            null, 'jala@tis.com', 'america final');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (5, 'Leticia', 'leticia');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (6, 'Corina', 'corina');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES (7, 'Americo', 'americo');
+   
+INSERT INTO consultor(
+            idconsultor, usuario_idusuario, nombreconsultor, correoconsultor)
+    VALUES (1, 5, 'Leticia Blanco Coca', 'leticia@memi.com');
+
+INSERT INTO consultor(
+            idconsultor, usuario_idusuario, nombreconsultor, correoconsultor)
+    VALUES (2, 6, 'Corina Flores', 'corina@memi.com');
+
+INSERT INTO consultor(
+            idconsultor, usuario_idusuario, nombreconsultor, correoconsultor)
+    VALUES (3, 7, 'Americo Fiorilo', 'americo@umss.com');
+
+INSERT INTO calendario(
+            codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario, 
+            dia_reunion_fijado)
+    VALUES (1, 1, 1, 
+            FALSE);
+
+INSERT INTO calendario(
+            codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario, 
+            dia_reunion_fijado)
+    VALUES (2, 2, 2, 
+            FALSE);
+
+INSERT INTO calendario(
+            codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario, 
+            dia_reunion_fijado)
+    VALUES (3, 3, 3, 
+            FALSE);
+
+INSERT INTO calendario(
+            codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario, 
+            dia_reunion_fijado)
+    VALUES (4, 4, 4, 
+            FALSE);
+
+INSERT INTO proyecto(
+            codproyecto, consultor_idconsultor, nombreproyecto, fechafinproyecto, 
+            vigente)
+    VALUES (1, 1, 'Sistema de Videos', '2014-06-30', 
+            TRUE);
+
+INSERT INTO proyecto(
+            codproyecto, consultor_idconsultor, nombreproyecto, fechafinproyecto, 
+            vigente)
+    VALUES ('123-2014', 1, 'Sistema de Almacenes', '2014-06-30', 
+            TRUE);
