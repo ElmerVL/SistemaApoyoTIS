@@ -73,7 +73,7 @@
 
                                 <tr>
                                     <td align="right">Fecha conclusion:</td>
-                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" placeholder="Seleccione una fecha" required/>Hra.<input title="formato correcto hh:mm 24HRS." name="hora_fin" type="text" id="hora_fin" data-format="hh:mm " class="input-small" placeholder="HH:MM " pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" id="24h" required/></td>
+                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" placeholder="Seleccione una fecha" required />Hra.<input title="formato correcto hh:mm 24HRS." name="hora_fin" type="text" id="hora_fin" data-format="hh:mm " class="input-small" placeholder="HH:MM " pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" id="24h" required/></td>
                                 </tr>
 
                                 <tr>

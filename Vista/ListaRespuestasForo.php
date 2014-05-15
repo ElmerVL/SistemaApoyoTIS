@@ -23,10 +23,10 @@
                 <table align="left" border="0" class="encabezado" width="100%">      
                     <tr>
                         <td width="1%"><b>Nombre:</b></td><td><input name="nombre"></td>  
-                        <input name="codigo" value="<?=$_GET['codforo'];?>" >
+                        <input name="codigo" value="<?=$_GET['codforo'];?>" type="hidden">
                     </tr>
                     <tr>
-                        <td width="1%"><b>Comentario:</b></td> <td><textarea name="comentario" cols="100%" rows="5%"></textarea></td>
+                        <td width="1%"><b>Comentario:</b></td> <td><textarea name="comentario" cols="100%" rows="5%" required></textarea></td>
                     </tr>
                     <tr>
                         <td><input type="submit" name="Submit"  value="Enviar Comentario" /></td>  
