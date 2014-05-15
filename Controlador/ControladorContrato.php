@@ -5,16 +5,12 @@ $a=$_GET['a'];
 
     $nombreLargo = conseguirNombreLargo($a);
         $nombreCorto = conseguirNombreCorto($a);
-        $nombreProyecto = conseguirProyecto();
-        $codigoCPTIS = conseguirCodigoProyecto();
+        $nombreProyecto = conseguirProyecto($a);
+        $codigoCPTIS = conseguirCodigoProyecto($a);
         $nombreRLegal = conseguirRepresentanteLegal($a);
         date_default_timezone_set("America/La_Paz");
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
         $fecha = date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
-        $listaDocentes = "AQUI LA LISTA DE DOCENTES ACTIVOS";
-        $nombreDocente = "AQUI NOMBRE DEL DOCENTE";
-        
-        
         include ('fpdf/fpdf.php');
         $pdf = new FPDF();
         $pdf->AddPage();
@@ -77,7 +73,9 @@ $a=$_GET['a'];
                 . "ra otros fines que no sea el desarrollo del proyecto.");
         $pdf->MultiCell(160, 6, $p10 , 0, 'J', FALSE);
         $p11 = utf8_decode("DECIMO.- TIS representada por su directorio "
-                .$listaDocentes.", y por otra la consultora ".$nombreCorto."rep"
+                ."Lic. Corina Flores V., Liz. M. Leticia Blanco C., Lic. David "
+                . "Escalera F., Lic. Patricia Rodriguez e Ing. Americo Fiorilo,"
+                . " y por otra la consultora ".$nombreCorto."rep"
                 . "resentada por su representante legal ".$nombreRLegal.", dan "
                 . "su plena conformidad a los términos y condiciones establecid"
                 . "os en el presente Contrato de Prestación de Servicios y Cons"

@@ -18,14 +18,13 @@
                     <caption> GRUPO - EMPRESAS </caption>
                    <thead>
                        <tbody align="center" style="font:  1.1em/1.1em 'FB Armada' arial">
-                       <tr><th>Codigo</th><th>Nombre Empresa</th></tr>
+                       <tr><th>Nombre de la Grupo Empresa</th></tr>
                        
                         <?php 
                         include '../Controlador/ControladorGrupoEmpresa.php'; 
                         $fila= mostrarListaEmp();
                         foreach ($fila as $elemento){ ?>
                         <tr>
-                            <td><?php echo $elemento['cod'] ?></td>
                             <td><?php echo $elemento['grupoempresa'] ?></td>
                             </tr>
                         <?php } ?>

@@ -22,18 +22,19 @@
 <div id="principal_grupoEmpresa">
     <header id="cabecera_grupoEmpresa"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_grupoEmpresa">
-    <nav id="menu_grupoEmpresa" >
-            <a href="iuListaEmpresas.php"><img width="100%" height="48" src="imagenes/btn_listaEmpresas.jpg"/></a>
-            <a href="iu.mostrarPlanDePago.php"><img width="100%" height="48" src="imagenes/btn_verPlanDePagos.jpg"/></a>
-            <a href="iu.foro.php"><img width="100%" height="48" src="imagenes/btn_foro.jpg"/></a>
-            <a href="iu.subidaArchivo.html"><img width="100%" height="48" src="imagenes/btn_subirArchivo.jpg"/></a>
-            <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
-    </nav>
+                <?php
+                $a = $_GET['a'];
+                echo "<nav id='menu_grupoEmpresa'>
+                            <a href='iu.propuestaDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_planDePagos.jpg'/></a>
+                            <a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>  
+                      </nav>"
+                ?>
     <div id="noticias_grupoEmpresa">
         <fieldset id="fieldsetForo" > 
         <legend>Formulario De Plan De Pagos</legend>
             <?php 
-            $a = $_GET['a'];
             echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&2' method='post'>"; 
             ?>
             <h2>Registro de Plan de Pagos</h2>
@@ -43,31 +44,31 @@
                         <table width="300" border="0">
                             <tr>
                                 <td align="right">Hito o Evento:</td>
-                                <td width="130"><input type="text" name="hito_evento" id="hito_evento" /></td>
+                                <td width="130"><input type="text" name="hito_evento" id="hito_evento" required/></td>
                             </tr>
                             <tr>
                                 <td align="right">Porcentaje de Pago:</td>
-                                <td width="130"><input type="text" name="porcentaje_pago" id="porcentaje_pago" /></td>
+                                <td width="130"><input type="text" name="porcentaje_pago" id="porcentaje_pago" required pattern="[0-9.]+"/></td>
                             </tr>
                             <tr>
                                 <td align="right">Fecha de Pago:</td>
-                                <td width="130"><input type="text" name="fecha_pago" id="fecha_pago" /></td>
+                                <td width="130"><input type="text" name="fecha_pago" id="fecha_pago" placeholder="Seleccione una fecha" required/></td>
                             </tr>
                             <tr>
-                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['cod'];?>" ></td>
+                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['cod'];?>" type="hidden"></td>
                             </tr>   
                         </table>
                     </td>
                     <td>    
                         <table width="300" border="0">
                             <tr>
-                                <td align="center">Monto Total:</td>         
+                                <td align="center">Monto Restante:</td>         
                             </tr>
                             <tr>
                                 <td width="100" align="center"><input value="<?=$_GET['m_t'];?>" type="text" name="monto_total" id="monto_total" readonly="readonly"/></td>  
                             </tr>
                             <tr>
-                                <td align="center">Porcentaje de Satisfaccion:</td>         
+                                <td align="center">Porcentaje Restante:</td>         
                             </tr>
                             <tr>
                                 <td width="100" align="center"><strong><input size="3" value="<?=$_GET['p_s'];?>" type="text" name="porcentaje_satisfaccion" id="porcentaje_satisfaccion" readonly="readonly"/> %</strong></td>  

@@ -42,8 +42,11 @@
     color: #FFF;
 }
 #cbox_dias{
-    margin-top: 5%;
+    width: 100px;
+    height: 25px;
+    margin-top: 3%;
     margin-left: 6%;
+    
 }
 h2 {
 	font-family: Corbel, Arial, Candara;
@@ -109,4 +112,13 @@ lbl2{
     font-size: 16;
     margin-left: 10px;
     margin-bottom: 10px;
+}
+lbl3{
+    font-weight: bold;
+    color: darkred;
+    font-family: Corbel;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
 }

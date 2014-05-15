@@ -21,7 +21,8 @@ if(isset($_REQUEST['2'])){
     $entregables = $_POST['entregables'];
     $monto = (($monto_total * $porcentaje_pago) / $porcentaje_satisfaccion);
     insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $entregables, $codigoPlan, $cod_grupoE);
-    if ($monto!=0) {
+       
+    if ($monto>0) {
         if($porcentaje_pago<=$porcentaje_satisfaccion){
         $M_T = $monto_total-$monto;
         $P_S = $porcentaje_satisfaccion-$porcentaje_pago;
@@ -29,11 +30,12 @@ if(isset($_REQUEST['2'])){
         } else {
             header("Location: ../Vista/iu.registroDePlanDePagos.php?a=$cod_grupoE&m_t=$monto_total&p_s=$porcentaje_satisfaccion&cod=$codigoPlan");
         }
-        
-    } else{
+        if ($M_T == 0){
+            header("Location: ../Vista/iu.mostrarPlandePago.php?a=$cod_grupoE&cod=$codigoPlan");
+        }
+    } else {
         header("Location: ../Vista/iu.mostrarPlandePago.php?a=$cod_grupoE&cod=$codigoPlan");
     }
-
 }
 
 ?>

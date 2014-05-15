@@ -39,10 +39,10 @@ function conseguirRepresentanteLegal($codEmpresa) {
     pg_close($c);
 }
 
-function conseguirProyecto() {
+function conseguirProyecto($cod_grupoempresa) {
     $con = new Conexion();
     $c=$con->getConection();
-    $consulta = pg_query($c, 'select nombreproyecto from proyecto where vigente = TRUE;');
+    $consulta = pg_query($c, 'select p.nombreproyecto from consultor_proyecto_grupo_empresa cpge, proyecto p where cpge.proyecto_codproyecto = p.codproyecto and grupo_empresa_codgrupo_empresa = '.$cod_grupoempresa.';');
     while ($f = pg_fetch_object($consulta)){
         $nproyecto = $f->nombreproyecto;
         return $nproyecto;
@@ -51,12 +51,12 @@ function conseguirProyecto() {
     pg_close($c);
 }
 
-function conseguirCodigoProyecto() {
+function conseguirCodigoProyecto($cod_grupoempresa) {
     $con = new Conexion();
     $c=$con->getConection();
-    $consulta = pg_query($c, 'select idproyecto from proyecto where vigente = TRUE;');
+    $consulta = pg_query($c, 'select p.codproyecto from consultor_proyecto_grupo_empresa cpge, proyecto p where cpge.proyecto_codproyecto = p.codproyecto and grupo_empresa_codgrupo_empresa = '.$cod_grupoempresa.';');
     while ($f = pg_fetch_object($consulta)){
-        $idproyecto = $f->idproyecto;
+        $idproyecto = $f->codproyecto;
         return $idproyecto;
     }
     exit();

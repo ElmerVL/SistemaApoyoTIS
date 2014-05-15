@@ -8,8 +8,7 @@ function mostrarListaEmpresas() {
         $cge = $f->codgrupo_empresa;
         $nge = $f->nombrelargoge;
         echo "<tr>"
-        . "<td><a href = '../Vista/iuDocenteVistaEmpresa.php?cge=$cge'>$cge</a></td>"
-                . "<td>$nge</td>"
+        . "<td><a href = '../Vista/iuDocenteVistaEmpresa.php?cge=$cge'>$nge</a></td>"
                 . "</tr>";
     }
     exit();

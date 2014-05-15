@@ -19,8 +19,8 @@ function insertarProyecto($np,$cp,$ffp)
 
     
     //echo $nombre_proyecto."titulo:".$codigo_proyecto."mensaje:".$fecha_fin_proyecto;
-    $sql = "INSERT INTO proyecto (codproyecto, consultor_idconsultor, consultor_usuario_idusuario,nombreproyecto, fechafinproyecto, vigente)";
-    $sql.= "VALUES ('$codigo_proyecto','1','1','$nombre_proyecto','$fecha_fin_proyecto','TRUE')";
+    $sql = "INSERT INTO proyecto (codproyecto, consultor_idconsultor, nombreproyecto, fechafinproyecto, vigente)";
+    $sql.= "VALUES ('$codigo_proyecto','1','$nombre_proyecto','$fecha_fin_proyecto','TRUE')";
      pg_query($con,$sql) or die ("ERROR ====> en registro del proyecto :( " .pg_last_error());
     
 }
