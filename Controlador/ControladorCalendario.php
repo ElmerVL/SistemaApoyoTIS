@@ -28,6 +28,6 @@ function registrar_fechas_semanales(){
                 insertar_fecha($codigo_ge, $dia_insertar);
             }
         }
-    
+        marcar_dia_fijado($codigo_ge);
 }
 

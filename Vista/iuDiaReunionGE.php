@@ -16,26 +16,36 @@
                 $a = $_GET['a'];
 
                 echo "<nav id='menu_grupo_empresa'>
-            <a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
-            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
-            <a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>  
-        </nav>"
+                            <a href='iu.propuestaDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_planDePagos.jpg'/></a>
+                            <a href='iu.mostrarPlanDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>    
+                            <a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>  
+                      </nav>"
                 ?>
                 <div id="noticias_grupoEmpresa">
-                    Seleccione un dia de reunion:
                     <?php
-                    echo "<form name='formulario' method='POST' action='../Controlador/ControladorCalendario.php?a=$a'>";
-                    ?>
-                    <select  id ="cbox_dias" name="cbox_dias" size=1> 
-                        <option value="1">Lunes</option>
-                        <option value="2">Martes</option>
-                        <option value="3">Miercoles</option>
-                        <option value="4">Jueves</option>
-                        <option value="5">Viernes</option>
-                        <option value="6">Sábado</option>
+                    include '../Controlador/ControladorCalendarioGrupoEmpresa.php';
+                    if(dia_fijado()){
+                        echo '<br />'
+                        . '<lbl3>YA SELECCIONO UN DIA DE REUNIÓN</lbl3>';
+                    }else{
+                    echo "<br /><lbl3>Seleccione un dia de reunión:</lbl3>"
+                        . "<br /><lbl2>Una vez seleccionado, no podra cambiarlo.</lbl2>"
+                        
+                        . "<form name='formulario' method='POST' action='../Controlador/ControladorCalendario.php?a=$a'>
+                        <select  id ='cbox_dias' name='cbox_dias' size=1> 
+                        <option value='1'>Lunes</option>
+                        <option value='2'>Martes</option>
+                        <option value='3'>Miercoles</option>
+                        <option value='4'>Jueves</option>
+                        <option value='5'>Viernes</option>
+                        <option value='6'>Sábado</option>
                     </select>
-                    <input type="submit" value="Registrar"> 
-                    </form> 
+                    <input type='submit' value='Registrar'> 
+                    </form> ";
+                    }
+                            ?>
                 </div>   
             </article>
             <footer id="pie_grupo_empresa"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
