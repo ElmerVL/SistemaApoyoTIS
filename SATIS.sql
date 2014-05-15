@@ -79,16 +79,16 @@ CREATE TABLE consultor
   CONSTRAINT consultor_idconsultor_key UNIQUE (idconsultor)
 );
 
-CREATE TABLE Calendario (
-  codCalendario INTEGER NOT NULL,
-  Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  fecha DATE NULL,
-  PRIMARY KEY(codCalendario, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario),
-  FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE calendario
+(
+  codcalendario integer NOT NULL,
+  grupo_empresa_codgrupo_empresa integer NOT NULL,
+  grupo_empresa_usuario_idusuario integer NOT NULL,
+  dia_reunion_fijado boolean DEFAULT false,
+  CONSTRAINT calendario_pkey PRIMARY KEY (codcalendario, grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario),
+  CONSTRAINT calendario_grupo_empresa_codgrupo_empresa_fkey FOREIGN KEY (grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario)
+      REFERENCES grupo_empresa (codgrupo_empresa, usuario_idusuario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE plan_pago
@@ -280,17 +280,17 @@ CREATE TABLE Cons_Documento (
 );
 
 
-CREATE TABLE Proyecto (
-  idProyecto VARCHAR(10) NOT NULL,
-  Consultor_idConsultor INTEGER NOT NULL,
-  Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  nombreProyecto VARCHAR(120) NULL,
-  vigente BOOL NULL,
-  PRIMARY KEY(idProyecto, Consultor_idConsultor, Consultor_Usuario_idUsuario),
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+CREATE TABLE proyecto
+(
+  codproyecto character varying(10) NOT NULL,
+  consultor_idconsultor integer NOT NULL,
+  nombreproyecto character varying(45),
+  fechafinproyecto date,
+  vigente boolean,
+  CONSTRAINT proyecto_pkey PRIMARY KEY (codproyecto, consultor_idconsultor),
+  CONSTRAINT proyecto_consultor_idconsultor_fkey FOREIGN KEY (consultor_idconsultor)
+      REFERENCES consultor (idconsultor) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE detalle_ge
