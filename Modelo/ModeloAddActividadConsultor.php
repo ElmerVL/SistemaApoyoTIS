@@ -64,7 +64,7 @@ function insertarActividad($titulo1, $fecha_ini1, $fecha_fin1, $descripcion1) {
 
 
     $escribir = fopen("../Vista/Otros/actividades.data", "a");
-    fwrite($escribir, "<b></b>$titulo1<br><b>Fecha de inicio:</b>$fecha_ini1<br><b>Fecha Conclusion:</b>$fecha_fin1<br><b></b>$descripcion1<br></p><hr><br>");
+    fwrite($escribir, "<b></b>$titulo1<br><b>Fecha de inicio:</b>$fecha_ini1<br><b>Fecha Conclusion:</b>$fecha_fin1<br><b>Descripción:</b>$descripcion1<br></p><hr><br>");
     fclose($escribir);
     header("Location: ../Vista/iu.consultor.php");
 }

@@ -88,7 +88,7 @@
 
                                 <tr>
                                     <td></td>    
-                                    <td><input name ="nombre_archivo_subir" type="file"   /></td>  
+                                   <!--<td><input name ="nombre_archivo_subir" type="file"   /></td>-->  
                                     <td ><label><input  type="submit" name="btn_addActividad" id="btn_addActividad" value="Añadir" /></label></td>
                                 </tr>            
                             </table>
