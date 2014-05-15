@@ -1,30 +1,24 @@
-<?php   
+<?php     
 
-
-$gestion="3-2014";
-$proyecto="juesVirtual";
-$consultor="Acero";
-$nombreGrupoempresa="Cabritos";
-$visible_para="grupo_empresa";
-
-  
-subirArchivo($visible_para,$gestion, $proyecto, $consultor,$nombreGrupoempresa);
-
-
-function subirArchivo($visiblePara,$nombre_gestion,$nombre_proyecto,$nombre_consultor,$nombre_Grupoempresa)
-{    
-    if($_FILES['nombre_archivo_subir']['type']=='application/pdf'){
+function subirArchivo($visible_para,$nombre_gestion,$nombre_proyecto,$nombre_consultor,$nombre_Archivo,$nombre_Temporal_Archivo,$tipo_Archivo)
+{    echo 'entro al modelo'."<br>";
+     echo $tipo_Archivo."<br>";
+     echo $nombre_Archivo."<br>";
+     echo $nombre_Temporal_Archivo."<br>";
+     echo $visible_para."<br>";
+    if($tipo_Archivo=='application/pdf'){
     $carpetaRaiz="../Archivos/";
-        if($visiblePara=="publico"){
+        if($visible_para=="publico"){
             $carpetaDestino=$carpetaRaiz."Documentos publicos/".$nombre_gestion."/";
+            echo 'entro al if publico'."<br>";
         }
-        elseif ($visiblePara=="yo_consultor") {
+        elseif ($visible_para=="yo_consultor") {
                 $carpetaDestino=$carpetaRaiz.$nombre_consultor."/Privado/";
                 }
-            elseif ($visiblePara=="todas_grupo_empresas") {
+            elseif ($visible_para=="todas_grupo_empresas") {
                     $carpetaDestino=$carpetaRaiz.$nombre_consultor."/".$nombre_gestion."/Documentos publicos grupo empresas/";
                     }
-                elseif($visiblePara=="grupo_empresa"){
+                elseif($visible_para=="grupo_empresa"){
                        $carpetaDestino=$carpetaRaiz.$nombre_consultor."/".$nombre_gestion."/".$nombre_proyecto."/".$nombre_Grupoempresa."/";
                         }
         
@@ -32,8 +26,8 @@ function subirArchivo($visiblePara,$nombre_gestion,$nombre_proyecto,$nombre_cons
        
         
         if(file_exists($carpetaDestino)){
-              $nombreArchivo=$_FILES['nombre_archivo_subir']['name'];
-              guardarArchivo($carpetaDestino,$nombreArchivo);
+              //$nombreArchivo=$_FILES['nombre_archivo_subir']['name'];
+              guardarArchivo($carpetaDestino,$nombre_Archivo,$nombre_Temporal_Archivo);
               
         }
         else{
@@ -41,8 +35,8 @@ function subirArchivo($visiblePara,$nombre_gestion,$nombre_proyecto,$nombre_cons
                  die('Fallo al crear las carpetas...');
                }
             else{
-              $nombreArchivo=$_FILES['nombre_archivo_subir']['name'];  
-              guardarArchivo($carpetaDestino,$nombreArchivo);
+             // $nombreArchivo=$_FILES['nombre_archivo_subir']['name'];  
+              guardarArchivo($carpetaDestino,$nombre_Archivo,$nombre_Temporal_Archivo);
             }
 
         }
@@ -50,19 +44,19 @@ function subirArchivo($visiblePara,$nombre_gestion,$nombre_proyecto,$nombre_cons
     }
 }
 
-function guardarArchivo($ruta,$nombre){
+function guardarArchivo($ruta,$nombre,$nombreTemporalArchivo){
     $destino=$ruta.$nombre;
     
     if(file_exists($destino)){
         renombrar($ruta,$nombre);
     }
     else{
-        copy($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
-        move_uploaded_file($_FILES['nombre_archivo_subir']['tmp_name'],$destino);
+        copy($nombreTemporalArchivo,$destino);
+        move_uploaded_file($nombreTemporalArchivo,$destino);
     }
                 
 }
-function renombrar($rutaArchivo,$nom){
+function renombrar($rutaArchivo,$nom,$nombreTemporalArchivo){
     $desfragmentado=explode(".",$nom);
     $extension=".".$desfragmentado[1];
     
@@ -74,7 +68,7 @@ function renombrar($rutaArchivo,$nom){
         $n++;
     
     }
-    guardarArchivo($rutaArchivo,$nombreParcial);
+    guardarArchivo($rutaArchivo,$nombreParcial,$nombreTemporalArchivo);
 }
 
 

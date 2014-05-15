@@ -364,5 +364,5 @@ CREATE TABLE consultor_proyecto_grupo_empresa
   CONSTRAINT consultorproyectogrupoempresa_proyecto_codproyecto_fkey FOREIGN KEY (proyecto_codproyecto, proyecto_consultor_idconsultor)
       REFERENCES proyecto (codproyecto, consultor_idconsultor) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
+);
 
