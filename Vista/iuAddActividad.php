@@ -100,4 +100,3 @@
         </div>
     </body>
 </html>
-<!-->pattern="\S{5,10}"  pattern para maximo y minimo de caracteres<-->
