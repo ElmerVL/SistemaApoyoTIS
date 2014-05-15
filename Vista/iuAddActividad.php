@@ -68,17 +68,17 @@
 
                                 <tr>
                                     <td align="right">Fecha inicio:</td>
-                                    <td ><input title="Requiere fecha AA/MM/DD " type="text" name="fecha_inicio" id="fecha_inicio"  rmaxlength="8" equired /> Hra.<input title="Se necesita una hora de inicio para la actividad" name="hora_ini" type="time" id="hora_inicio" data-format="hh:mm A" class="input-small" required/></td>
+                                    <td ><input title="Requiere fecha AA/MM/DD " type="text" name="fecha_inicio" id="fecha_inicio" placeholder="Seleccione una fecha" required /> Hra.<input title="formato correcto hh:mm 24HRS." name="hora_ini" type="text" id="hora_inicio" data-format="hh:mm" class="input-small" placeholder="HH:MM " pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" id="24h" required/></td>
                                 </tr>
 
                                 <tr>
                                     <td align="right">Fecha conclusion:</td>
-                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" required/>Hra.<input title="Se necesita una hora de coclusión para la actividad" name="hora_fin" type="time" id="hora_fin" data-format="hh:mm A" class="input-small" required/></td>
+                                    <td ><input title="Se necesita una fecha de conclusión para la actividad" type="text" name="fecha_fin" id="fecha_fin" placeholder="Seleccione una fecha" required/>Hra.<input title="formato correcto hh:mm 24HRS." name="hora_fin" type="text" id="hora_fin" data-format="hh:mm " class="input-small" placeholder="HH:MM " pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" id="24h" required/></td>
                                 </tr>
 
                                 <tr>
                                     <td align="right">Título:</td>
-                                    <td ><input title="Se necesita un título para la actividad" type="text" name="txt_titulo" id="titulo" placeholder="Actividad descriptiva" required /></td>
+                                    <td ><input title="Se necesita un título para la actividad" type="text" name="txt_titulo" id="titulo" placeholder="Actividad descriptiva" pattern="[a-zA-Z]+" required /></td>
                                 </tr>
 
                                 <tr>
@@ -100,3 +100,4 @@
         </div>
     </body>
 </html>
+<!-->pattern="\S{5,10}"  pattern para maximo y minimo de caracteres<-->

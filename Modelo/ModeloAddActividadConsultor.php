@@ -23,6 +23,7 @@ function AddActividad($visible_para,$req_repuesta,$fecha_ini,$fecha_fin,$hora_in
         $sql = "INSERT INTO cons_actividad (consultor_usuario_idusuario,consultor_idconsultor,visiblepara,requiererespuesta,fechainicio,fechafin,horainicio,horafin,titulo,descripcion,activo,contestada)";
         $sql.= "VALUES (1,1,'$actividad_visible_para','$actividad_requiere_respuesta','$fecha_inicio_actividad','$fecha_fin_actividad','$hora_inicio_actividad','$hora_fin_actividad','$titulo','$descripcion','$actividad_activa','$actividad_contestada')";
         pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
+        header("Location: ../Vista/iu.consultor.php");
 //        echo insertarActividad($titulo_actividad, $fecha_inicio_actividad, $fecha_fin_actividad, $descripcion_actividad);
     } elseif ($fecha_fin == $fecha_ini && $hora_ini < $hora_fin) {
         echo "visible para:" . $actividad_visible_para . "requiere respuesta:" . $actividad_requiere_respuesta . "fecha inicio:" . $fecha_inicio_actividad . "fecha fin:" . $fecha_fin_actividad . "hora inicio:" . $hora_inicio_actividad . "hora fin:" . $hora_fin_actividad . "titulo Actividad" . $titulo_actividad . "Descripcion Actividad:" . $descripcion_actividad;
