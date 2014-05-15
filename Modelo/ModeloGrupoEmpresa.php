@@ -40,8 +40,7 @@ function mostrarEmpresas() {
         $a = $f->codgrupo_empresa;
         $nge = $f->nombrelargoge;
         echo "<tr>"
-        . "<td><a href = '../Vista/iuGrupoEmpresa.php?a=$a'>$a</a></td>"
-                . "<td>$nge</td>"
+        . "<td><a href = '../Vista/iuGrupoEmpresa.php?a=$a'>$nge</a></td>"
                 . "</tr>";
     }
     exit();

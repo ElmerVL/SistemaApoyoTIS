@@ -24,7 +24,7 @@
                        
                         <?php 
                         include '../Controlador/ControladorGrupoEmpresa.php'; 
-                        $fila= mostrarListaEmp();
+                        $fila= mostrarEmpresa();
                         foreach ($fila as $elemento){ ?>
                         <tr>
                             <td><?php echo $elemento['grupoempresa'] ?></td>
