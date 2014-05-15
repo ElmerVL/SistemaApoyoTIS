@@ -12,20 +12,21 @@
       <div id="menu_consultor" ></div>
     <div id="noticias_consultor">
         <h2> Lista de Grupo Empresas </h2>
+        <br />
+        <lbl2>Esta es una lista provisional de las grupo empresas.</lbl2>
         <form name="f" action="../Controlador/ControladorGrupoEmpresa.php" method="post">
             <table align=center frame="void" border="0" class="encabezado" width="500" bgcolor=#C6E1E1>
                 <br>
                     <caption> GRUPO - EMPRESAS </caption>
                    <thead>
                        <tbody align="center" style="font:  1.1em/1.1em 'FB Armada' arial">
-                       <tr><th>Codigo</th><th>Nombre Empresa</th></tr>
+                       <tr><th>Nombre de la Grupo Empresa</th></tr>
                        
                         <?php 
                         include '../Controlador/ControladorGrupoEmpresa.php'; 
-                        $fila= mostrarEmpresa();
+                        $fila= mostrarListaEmp();
                         foreach ($fila as $elemento){ ?>
                         <tr>
-                            <td><?php echo $elemento['cod'] ?></td>
                             <td><?php echo $elemento['grupoempresa'] ?></td>
                             </tr>
                         <?php } ?>
