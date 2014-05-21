@@ -23,12 +23,12 @@
                 ?>
     <div id="noticias_grupoEmpresa">
         <fieldset> 
-        <legend>PROPUESTA DE PAGO</legend>
+        <legend>Formulario Propuesta De Pago</legend>
         <?php 
         echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&1' method='post'>"; 
         ?>
         
-            <h2>Registro de Plan de Pagos</h2>
+            <h2>Propuesta de Pago</h2>
             <table width="687" border="0">
                 <tr>
                     <td align="right">Monto Total:</td>

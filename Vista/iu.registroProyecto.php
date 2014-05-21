@@ -37,7 +37,11 @@ $(document).ready(function(){
         <legend>Formulario Del Proyecto</legend>
         <?php
         if($_GET){
-        $mensaje=$_GET['mensaje']; echo "<br>El proyecto <strong>".$mensaje."</strong> ha sido creado con éxito<br>";
+        $mensaje=$_GET['mensaje']; 
+        echo "<fieldset id='fieldsetForo'> 
+              <legend>Mensaje</legend>
+                    <br>El proyecto <strong>".$mensaje."</strong> ha sido registrado con éxito<br>
+              </fieldset>";
         }
         ?>
         <form action="../Controlador/ControladorResgistroProyecto.php" method="post">

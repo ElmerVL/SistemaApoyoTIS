@@ -33,11 +33,11 @@
                 ?>
     <div id="noticias_grupoEmpresa">
         <fieldset id="fieldsetForo" > 
-        <legend>Formulario De Plan De Pagos</legend>
+        <legend>Formulario Plan De Pagos</legend>
             <?php 
             echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&2' method='post'>"; 
             ?>
-            <h2>Registro de Plan de Pagos</h2>
+            <h2>Registro Plan de Pagos</h2>
             <table width="80%" border="0">
                 <tr>
                     <td>
@@ -55,7 +55,7 @@
                                 <td width="130"><input type="text" name="fecha_pago" id="fecha_pago" placeholder="Seleccione una fecha" required/></td>
                             </tr>
                             <tr>
-                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['cod'];?>" type="hidden"></td>
+                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['codP'];?>" type="hidden"></td>
                             </tr>   
                         </table>
                     </td>
@@ -77,24 +77,96 @@
                     </td> 
                 </tr>
                 <tr>
-                    <table width="340" border="0">   
-                        <tr>
-                            <td width="30%" align="right">Entregables:</td>
-                            <td><textarea name="entregables" cols="85%" rows="5%"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td align="right">&nbsp;</td>
-                            <td width="491">
-                                <label>
-                                    <input  type="submit" name="btn_registroPago" id="btn_registroProyecto" value="Añadir" />
-                                </label>
-                            </td>
-                        </tr>
-                    </table>
+                   
+                    <td width="20">
+                    <label>
+                       <input  type="submit" name="btn_registroPago" id="btn_registroHitoEvento" value="Añadir Hito Evento" />
+                    </label>
+                 
+                    <?php
+                        if($_GET['m_t']==0){
+                        //if (isset($_REQUEST['linkMPP'])) {
+                            $c_ge=$_GET['a'];
+                            $c_p=$_GET['codP'];
+                            echo "<td width='60' >"
+                                    ."<a href='iu.mostrarPlanDePago.php?a=$c_ge&codP=$c_p'>Mostra plan de Pagos</a>"
+                                ."</td>";
+                        //}
+                        }
+                    ?>
+                    </td>    
                 </tr>     
             </table>
         </form>
         </fieldset>
+        
+       
+            <?php
+            //if($_GET){
+            if(isset($_REQUEST['codHito'])){    
+                $c_h = $_GET['codHito'];
+                        echo "codigoHito: ".$c_h;
+                $c_p =$_GET['codP'];
+                        echo "codigoPago: ".$c_p;
+                $m_t=$_GET['m_t'];
+                $p_s=$_GET['p_s'];
+            ?>
+         
+            <?php
+            echo "<fieldset id='fieldsetForo' >" 
+                ."<legend>El Hito Asido Agregado Correctamente Registre los Entregables</legend>";
+            echo "<form action='../Controlador/ControladorRegistroEntregables.php?a=$a&2&codHito=$c_h&codP=$c_p&m_t=$m_t&p_s=$p_s' method='post'>"; 
+            
+            echo "<table width='340' border='0'>"   
+                        ."<tr>"
+                            ."<td width='30%' align='right'>Entregable:</td>"
+                            ."<td><textarea name='entregable' cols='75%' rows='5%'></textarea></td>"
+                        ."</tr>"
+                        ."<tr>"
+                            ."<td width='20'>"
+                                ."<label>"
+                                    ."<input  type='submit' name='btn_registroEntregable' id='btn_registroEntregable' value='Añadir Entregable' />"
+                                ."</label>"
+                            ."</td>"
+                            ."<td width='20'>"
+                                ." <a href='iu.registroDePlanDePagos.php?a=$a&m_t=$m_t&p_s=$p_s&codP=$c_p'>Terminar Registro</a>"
+                            ."</td>"
+                        ."</tr>"                   
+                ."</table>"
+                ."</form>"
+                ."</fieldset>";
+        }?>    
+        
+            <?php
+                if(isset($_REQUEST['tabla'])){
+                    $codplan_papo=$_GET['codP'];
+                    $cod_hito = $_GET['codHito'];
+                    $cod_ge=$_GET['a'];
+                    echo"<fieldset id='fieldsetForo' >" 
+                       ."<legend>Registro de los Entregables</legend>";
+                    echo"<form name'f' action='../Controlador/ContriladorMostrarPlanDePago.php' method='post'>"
+                            ."<table align='center' frame='void' border='0' class='encabezado' width='500' bgcolor=#C6E1E1>"
+                                ."<thead>"
+                                    ."<tbody align='center' style='font:  1.1em/1.1em 'FB Armada' arial'>"
+                                    ."<tr><td>Entregables</td></tr>";
+                                        require '../Controlador/ControladorMostrarEntregables.php';
+                                        $lista = mostrarE($codplan_papo,$cod_hito,$cod_ge);
+                                        foreach($lista as $post):?>
+                                            <tr>
+                                                <td><?php echo $post['entergable']?></td>
+                                            </tr>
+                                            <?php endforeach;
+                    echo            "</tbody>"
+                                ."</thead>"
+                            ."</table>"
+                       ."</form>"
+                       ."</fieldset>";
+                    
+                }?>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
     </article>
     <footer id="pie_grupoEmpresa"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>

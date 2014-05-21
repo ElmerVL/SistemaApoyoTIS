@@ -16,7 +16,7 @@
   <nav id="menu_formulario_foro"><a href="iu.ingresar.html"><img src="imagenes/btn_ingresar.jpg" width="24%" height="46" alt="btn_ingresar" /></a><a href="iu.noticias.php"><img src="imagenes/btn_noticias.jpg" width="25%" height="46" alt="btn_noticias" /></a><a href="iu.foro.php"><img src="imagenes/btn_foro.jpg" width="25%" height="46" alt="btn_foro" /></a><a href="iu.nosotros.html"><img src="imagenes/btn_nosotros.jpg" width="25%" height="46" alt="btn_nosotros" /></a></nav>
   <article id="contenido_formulario_foro">
       
-       <?php echo "$ax<br>";?>
+
         <fieldset id="fieldsetForo"> 
         <legend>RESPONDER FORO</legend>
             <form id="valorNombre" action="../Controlador/ControladorComentario.php" method="get">
@@ -24,6 +24,7 @@
                     <tr>
                         <td width="1%"><b>Nombre:</b></td><td><input name="nombre"></td>  
                         <input name="codigo" value="<?=$_GET['codforo'];?>" type="hidden">
+                        <input name="cantidad" value="<?=$_GET['candC'];?>" type="hidden">
                     </tr>
                     <tr>
                         <td width="1%"><b>Comentario:</b></td> <td><textarea name="comentario" cols="100%" rows="5%" required></textarea></td>
@@ -54,8 +55,9 @@
             <table  align="left" border="0" class="encabezado" width="100%">   
                 <td> 
                     <?php
-                    $archivo = $_GET['codforo'];
-                    include ("Otros/".$archivo.".data");
+                    $codArchivo = $_GET['codforo'];
+                    $nombreArchivo = $_GET['nomArchivo'];
+                    include ("Otros/".$codArchivo."_".$nombreArchivo.".data");
                     ?> 
                 </td> 
             </table>

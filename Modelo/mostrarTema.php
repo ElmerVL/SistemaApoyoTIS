@@ -22,7 +22,7 @@ while  ($row = pg_fetch_object($result)){
   pg_close($con);
   return $retornar;
 }
-
+//tengo aque aser la incercion ala columna de cantidad_comentarios en esta funcion 
 function insertaRespuesta($a,$b,$nombreArchivo){
  $nombre = $a;
 $comentario = $b;

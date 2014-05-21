@@ -20,11 +20,24 @@ require('../Controlador/Conexion.php');
         $sql="SELECT codplan_pago FROM plan_pago p WHERE p.montototal='$mt' and p.porcentajesatisfaccion='$pt'";
         $consulta=pg_query($con,$sql);
         $row = pg_fetch_object($consulta);
-        $AUX = $row->codplan_pago;
-        echo $AUX;
-        return $AUX;
+        $cod = $row->codplan_pago;
+        echo $cod;
+        return $cod;
     }
-    function insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $entregables, $codigoPlan, $cod_grupoE){
+    function retornarCodHitoEvento($hito_evento,$porcentaje_pago,$fecha_pago){
+        $conec=new Conexion();
+        $con=$conec->getConection();
+        $h_e = $hito_evento;
+        $p_p = $porcentaje_pago;
+        $f_p = $fecha_pago;
+        
+        $sql="SELECT codhito_pagable FROM hito_pagable h WHERE h.hitoevento='$h_e' and h.porcentajepago='$p_p' and h.fechapago='$f_p'";
+        $consulta = pg_query($con,$sql);
+        $row = pg_fetch_object($consulta);
+        $cod = $row->codhito_pagable;
+        return $cod;
+    }
+    function insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $codigoPlan, $cod_grupoE){
         $conec=new Conexion(); 
         $con=$conec->getConection();
         //$monT = $monto_total;
@@ -33,8 +46,8 @@ require('../Controlador/Conexion.php');
         $monto=establecerMonto($monto_total,$porcentaje_satisfaccion,$porcentaje_pago);
         if($monto!=0){
         echo"el monto es---> :$monto";
-        $sql = "INSERT INTO hito_pagable (plan_pago_calendario_grupo_empresa_usuario_idusuario, plan_pago_calendario_grupo_empresa_codgrupo_empresa, plan_pago_calendario_codcalendario, plan_pago_codplan_pago, hitoevento, porcentajepago, monto, fechapago, entregables)";
-        $sql.= "VALUES ('1','1','$cod_grupoE','$codigoPlan','$hito_evento','$porcentaje_pago','$monto','$fecha_pago','$entregables')";
+        $sql = "INSERT INTO hito_pagable (plan_pago_calendario_grupo_empresa_usuario_idusuario, plan_pago_calendario_grupo_empresa_codgrupo_empresa, plan_pago_calendario_codcalendario, plan_pago_codplan_pago, hitoevento, porcentajepago, monto, fechapago)";
+        $sql.= "VALUES ('1','1','$cod_grupoE','$codigoPlan','$hito_evento','$porcentaje_pago','$monto','$fecha_pago')";
         pg_query($con,$sql) or die ("ERROR ====> en registro del proyecto :( " .pg_last_error());
         }
     }
@@ -54,7 +67,7 @@ require('../Controlador/Conexion.php');
         $con=$conec->getConection();  
         $cod=$codplan_papo;
             // Ejecutar la consulta SQL
-        $sql = "SELECT hitoevento,porcentajepago,monto,fechapago,entregables FROM plan_pago p,hito_pagable h WHERE p.codplan_pago= h.plan_pago_codplan_pago and p.codplan_pago='$cod'";
+        $sql = "SELECT hitoevento,porcentajepago,monto,fechapago FROM plan_pago p,hito_pagable h WHERE p.codplan_pago= h.plan_pago_codplan_pago and p.codplan_pago='$cod'";
         $result = pg_query($con,$sql);
   
         while ($row = pg_fetch_object($result)){
@@ -62,13 +75,11 @@ require('../Controlador/Conexion.php');
             $p = $row->porcentajepago;
             $m = $row->monto;
             $f = $row->fechapago;
-            $e = $row->entregables;
             echo "<tr>"
                     . "<td>$h</td>" 
                     . "<td>$p</td>" 
                     . "<td>$m</td>" 
                     . "<td>$f</td>" 
-                    . "<td>$e</td>"
                . "</tr>";
             }
         exit();
