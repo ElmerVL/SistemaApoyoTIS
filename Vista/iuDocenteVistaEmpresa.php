@@ -14,13 +14,9 @@
   <?php  
         $a;
         $a=$_GET['cge'];
-        echo "<div id='menu_consultor' ><a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='225' height='46' alt='btn_1' /></a></div>";
+        echo "<div id='menu_consultor' ><a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='225' height='46' alt='btn_1' /></a>"
+                . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='225' height='46' alt='btn_1' /></a></div>";
  
-        //$a=$_GET['cge'];
-        require '../Controlador/ControladorGrupoEmpresa.php';
-        $campo = "Aqui se mostraran las noticias importantes de la grupo-empresa.";
-        echo "<div id='noticias_consultor'>$campo</div>";
-        
     ?>  
       <div id="construccion"><img src="imagenes/sitio-en-construccion.jpg" width="100%" height="100%" alt="sitio_en_construcción"/></div>
   </div>
