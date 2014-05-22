@@ -39,7 +39,7 @@
                     <br />
                     <lbl>Qué se hara?</lbl>
                     <br />
-                    <textarea id="txtEsperado" name="avance" required="" pattern="[a-zA-Z0-9.,+_-]+" onclick="clearContents(this);">¿Qué espera la grupo-empresa de la reunión?</textarea>
+                    <textarea id="txtSeguimiento" name="avance" required="" pattern="[a-zA-Z0-9.,+_-]+" onclick="clearContents(this);">¿Qué espera la grupo-empresa de la reunión?</textarea>
                     <br />
                     <input type="submit" name="btn_regAvance" id="btn_regAvance" value="Registrar">
 
