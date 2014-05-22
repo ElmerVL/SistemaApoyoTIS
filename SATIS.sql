@@ -8,7 +8,7 @@ CREATE TABLE foro (
 
 CREATE TABLE Usuario (
   idUsuario SERIAL NOT NULL,
-  login VARCHAR(45) NULL,
+  login VARCHAR(45) UNIQUE,
   passwd VARCHAR(45) NULL,
   PRIMARY KEY(idUsuario)
 );
@@ -40,11 +40,11 @@ CREATE TABLE App (
 CREATE TABLE Grupo_Empresa (
   CodGrupo_Empresa SERIAL NOT NULL,
   Usuario_idUsuario INTEGER NOT NULL,
-  nombrelargoGE VARCHAR(45) NULL,
-  nombreCortoGE VARCHAR(45) NULL,
-  tothlogoGE VARCHAR(120) NULL,
-  correoGE VARCHAR(45) NULL,
-  direccionGE VARCHAR(45) NULL,
+  nombrelargoGE VARCHAR(45) UNIQUE,
+  nombreCortoGE VARCHAR(45) NOT NULL,
+  correoGE VARCHAR(45) NOT NULL,
+  direccionGE VARCHAR(45) NOT NULL,
+  telefonoGE INTEGER NOT NULL,
   PRIMARY KEY(CodGrupo_Empresa, Usuario_idUsuario),
   FOREIGN KEY(Usuario_idUsuario)
     REFERENCES Usuario(idUsuario)
@@ -53,25 +53,13 @@ CREATE TABLE Grupo_Empresa (
 );
 
 
-
-CREATE TABLE Telf_GE (
-  idTelf_GE INTEGER NOT NULL,
-  Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
-  Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  numeroTelf INTEGER NULL,
-  PRIMARY KEY(idTelf_GE, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario),
-  FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
-    REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION
-);
-
 CREATE TABLE consultor
 (
-  idconsultor integer NOT NULL,
+  idconsultor SERIAL NOT NULL,
   usuario_idusuario integer NOT NULL,
   nombreconsultor character varying(45),
   correoconsultor character varying(45),
+  telefonoconsultor INTEGER NOT NULL,
   CONSTRAINT consultor_pkey PRIMARY KEY (idconsultor, usuario_idusuario),
   CONSTRAINT consultor_usuario_idusuario_fkey FOREIGN KEY (usuario_idusuario)
       REFERENCES usuario (idusuario) MATCH SIMPLE
