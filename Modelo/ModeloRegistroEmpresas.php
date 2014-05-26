@@ -9,8 +9,6 @@ function RegistrarUsuario($usuario, $contrasena1) {
     $nombre_usuario_ge = $usuario;
     $contrasena_usuario_ge = $contrasena1;
 
-    //Registrando datos de cuenta Grupo-Empresa
-
     $sql = "INSERT INTO Usuario (login,passwd)";
     $sql.= "VALUES ('$nombre_usuario_ge','$contrasena_usuario_ge')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
@@ -33,6 +31,9 @@ function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_co
     $filas = pg_query($con, $sql_id);
     $idusr = pg_fetch_object($filas);
     $idusuario = $idusr->idusuario;
+    $sql_rol = "INSERT INTO user_rol(usuario_idusuario,rol_codrol)";
+    $sql_rol.="VALUES($idusuario,3)";
+    pg_query($con,$sql_rol) or die("ERROR :(".pg_last_error());
     $sql = "INSERT INTO Grupo_Empresa (usuario_idusuario,nombrelargoge,nombrecortoge,correoge,direccionge,telefonoge)";
     $sql.= "VALUES ($idusuario,'$nombre_largo_ge','$nombre_corto_ge','$corrreo_ge','$direccion_ge','$telefono_ge')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
