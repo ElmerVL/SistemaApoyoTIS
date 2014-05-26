@@ -8,31 +8,31 @@ CREATE TABLE foro (
 
 CREATE TABLE Usuario (
   idUsuario SERIAL NOT NULL,
-  login VARCHAR(45) NULL,
+  login VARCHAR(45) UNIQUE,
   passwd VARCHAR(45) NULL,
   PRIMARY KEY(idUsuario)
 );
 
 CREATE TABLE Funcion (
-  codFuncion INTEGER NOT NULL,
+  codFuncion SERIAL NOT NULL,
   tipoFuncion VARCHAR(45) NULL,
   PRIMARY KEY(codFuncion)
 );
 
 CREATE TABLE Rol (
-  codRol INTEGER NOT NULL,
+  codRol SERIAL NOT NULL,
   tipoRol VARCHAR(45) NULL,
   PRIMARY KEY(codRol)
 );
 
 CREATE TABLE Tipo_Socio (
-  codTipo_Socio INTEGER NOT NULL,
+  codTipo_Socio SERIAL NOT NULL,
   nombreTipo VARCHAR(45) NULL,
   PRIMARY KEY(codTipo_Socio)
 );
 
 CREATE TABLE App (
-  codApp INTEGER NOT NULL,
+  codApp SERIAL NOT NULL,
   nombreApp VARCHAR(45) NULL,
   PRIMARY KEY(codApp)
 );
@@ -40,11 +40,11 @@ CREATE TABLE App (
 CREATE TABLE Grupo_Empresa (
   CodGrupo_Empresa SERIAL NOT NULL,
   Usuario_idUsuario INTEGER NOT NULL,
-  nombrelargoGE VARCHAR(45) NULL,
-  nombreCortoGE VARCHAR(45) NULL,
-  tothlogoGE VARCHAR(120) NULL,
-  correoGE VARCHAR(45) NULL,
-  direccionGE VARCHAR(45) NULL,
+  nombrelargoGE VARCHAR(45) UNIQUE,
+  nombreCortoGE VARCHAR(45) NOT NULL,
+  correoGE VARCHAR(45) NOT NULL,
+  direccionGE VARCHAR(45) NOT NULL,
+  telefonoGE INTEGER NOT NULL,
   PRIMARY KEY(CodGrupo_Empresa, Usuario_idUsuario),
   FOREIGN KEY(Usuario_idUsuario)
     REFERENCES Usuario(idUsuario)
@@ -53,9 +53,11 @@ CREATE TABLE Grupo_Empresa (
 );
 
 
+<<<<<<< HEAD
+=======
 
 CREATE TABLE Telf_GE (
-  idTelf_GE INTEGER NOT NULL,
+  idTelf_GE SERIAL NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
   numeroTelf INTEGER NULL,
@@ -66,12 +68,14 @@ CREATE TABLE Telf_GE (
       ON UPDATE NO ACTION
 );
 
+>>>>>>> origin/master
 CREATE TABLE consultor
 (
-  idconsultor integer NOT NULL,
+  idconsultor SERIAL NOT NULL,
   usuario_idusuario integer NOT NULL,
   nombreconsultor character varying(45),
   correoconsultor character varying(45),
+  telefonoconsultor INTEGER NOT NULL,
   CONSTRAINT consultor_pkey PRIMARY KEY (idconsultor, usuario_idusuario),
   CONSTRAINT consultor_usuario_idusuario_fkey FOREIGN KEY (usuario_idusuario)
       REFERENCES usuario (idusuario) MATCH SIMPLE
@@ -81,7 +85,7 @@ CREATE TABLE consultor
 
 CREATE TABLE calendario
 (
-  codcalendario integer NOT NULL,
+  codcalendario SERIAL NOT NULL,
   grupo_empresa_codgrupo_empresa integer NOT NULL,
   grupo_empresa_usuario_idusuario integer NOT NULL,
   dia_reunion_fijado boolean DEFAULT false,
@@ -93,7 +97,7 @@ CREATE TABLE calendario
 
 CREATE TABLE plan_pago
 (
-  codplan_pago integer NOT NULL,
+  codplan_pago SERIAL NOT NULL,
   calendario_codcalendario integer NOT NULL,
   calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
   calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
@@ -106,7 +110,7 @@ CREATE TABLE plan_pago
 );
 
 CREATE TABLE Socio (
-  idSocio INTEGER NOT NULL,
+  idSocio SERIAL NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Tipo_Socio_codTipo_Socio INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
@@ -128,7 +132,7 @@ CREATE TABLE Socio (
 );
 
 CREATE TABLE User_Rol (
-  codUser_Rol INTEGER NOT NULL,
+  codUser_Rol SERIAL NOT NULL,
   Usuario_idUsuario INTEGER NOT NULL,
   Rol_codRol INTEGER NOT NULL,
   PRIMARY KEY(codUser_Rol, Usuario_idUsuario, Rol_codRol),
@@ -178,7 +182,7 @@ CREATE TABLE Evaluacion_final (
 );
 
 CREATE TABLE Funcion_App (
-  codFuncion_App INTEGER NOT NULL,
+  codFuncion_App SERIAL NOT NULL,
   App_codApp INTEGER NOT NULL,
   Funcion_codFuncion INTEGER NOT NULL,
   PRIMARY KEY(codFuncion_App, App_codApp, Funcion_codFuncion),
@@ -193,7 +197,7 @@ CREATE TABLE Funcion_App (
 );
 
 CREATE TABLE Rol_Funcion (
-  codRol_Funcion INTEGER NOT NULL,
+  codRol_Funcion SERIAL NOT NULL,
   Rol_codRol INTEGER NOT NULL,
   Funcion_codFuncion INTEGER NOT NULL,
   PRIMARY KEY(codRol_Funcion, Rol_codRol, Funcion_codFuncion),
@@ -209,7 +213,7 @@ CREATE TABLE Rol_Funcion (
 
 CREATE TABLE hito_pagable
 (
-  codhito_pagable integer NOT NULL,
+  codhito_pagable SERIAL NOT NULL,
   plan_pago_calendario_grupo_empresa_usuario_idusuario integer NOT NULL,
   plan_pago_calendario_grupo_empresa_codgrupo_empresa integer NOT NULL,
   plan_pago_calendario_codcalendario integer NOT NULL,

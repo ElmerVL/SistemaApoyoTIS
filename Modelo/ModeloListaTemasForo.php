@@ -8,15 +8,15 @@
     $con=$conec->getConection();  
     
   // Ejecutar la consulta SQL
-  $result = pg_query($con,'SELECT codforo,titulo,autor FROM foro');
-  $AUX=0;
+  $result = pg_query($con,'SELECT codforo,titulo,autor,cantidad_comentarios  FROM foro');
   while ($row = pg_fetch_object($result)){
         $cod = $row->codforo;
         $t = $row->titulo;
         $a = $row->autor;
+        $cantidad = $row->cantidad_comentarios ;
         echo "<tr>"
-        . "<td><a href = '../Vista/ListaRespuestasForo.php?codforo=$cod'>$t</a></td>"
-                . "<td>$AUX</td>"
+        . "<td><a href = '../Vista/ListaRespuestasForo.php?codforo=$cod&candC=$cantidad&nomArchivo=$t'>$t</a></td>"
+                . "<td>$cantidad</td>"
                 . "<td>$a</td>"
                 . "</tr>";
     }

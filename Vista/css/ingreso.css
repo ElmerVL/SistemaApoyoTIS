@@ -38,8 +38,20 @@
     text-align: center;
     color: #FFF;
 }
-#contenido #construccion{
-    width: 45%;
-    margin-left: 25%;
-    margin-top: 0.5%;
+#validacion   {
+	width: 30%;
+	float: left;
+        margin-left: 15%;
+	margin-top: 8%;
 }
+#imagen_validacion {
+        float: left;
+        margin-left: 10%;
+        margin-bottom: 3%;
+        margin-top: 3%;
+}  
+
+#imagen_validacion img{
+    border: 5px solid #692B36;
+}
+	

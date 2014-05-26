@@ -3,30 +3,31 @@
 require('../Controlador/Conexion.php');
     //put your code here
     
-function insertarForo($a,$b,$c)
+function insertarForo($a,$b,$c,$d)
 {
     $conec=new Conexion(); 
     $con=$conec->getConection();
 
     $autor=$a;
-    $titulo=$b;
+    $tema=$b;
     $mensaje=$c;
+    $cantidadC = $d;
     
 //Hacemos algunas validaciones
     if(empty($autor)) $autor = "Anónimo";
-    if(empty($titulo)) $titulo = "Sin título";
+    if(empty($tema)) $tema = "Sin título";
 //Evitamos que el usuario ingrese HTML
     $mensaje = htmlentities($mensaje);
 
     
-    echo $autor."titulo:".$titulo."mensaje:".$mensaje;
-    $sql = "INSERT INTO foro (autor, titulo, mensaje)";
-    $sql.= "VALUES ('$autor','$titulo','$mensaje')";
+    echo $autor."titulo:".$tema."mensaje:".$mensaje;
+    $sql = "INSERT INTO foro (autor, titulo, mensaje, cantidad_comentarios )";
+    $sql.= "VALUES ('$autor','$tema','$mensaje','$cantidadC')";
      pg_query($con,$sql) or die ("ERROR ====> al grabar el sms :( " .pg_last_error());
      
  //crear su archivo.data
     $codForo = retornarCodForo($autor);
-    $miarchivo=fopen('../Vista/Otros/'.$codForo.'.data','w');
+    $miarchivo=fopen('../Vista/Otros/'.$codForo.'_'.$tema.'.data','w');
     fclose($miarchivo);
 }
   function retornarCodForo($autor){
@@ -39,5 +40,5 @@ function insertarForo($a,$b,$c)
   echo $AUX;
   return $AUX;
 }  
-header("Location: ../Vista/iu.Foro.php");
+
 ?>

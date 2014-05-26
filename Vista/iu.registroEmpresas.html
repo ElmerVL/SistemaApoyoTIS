@@ -1,0 +1,83 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>REGISTRAR</title>
+        <link href="css/registros.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="imagenes/favicon.ico">
+        <link href="css/administrador.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body id="body">
+        <div id="principal">
+
+            <header id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="encabezado2" /></header>
+            <article id="contenido">
+                <h2>Registro Grupo - Empresas</h2>
+                <form action="../Controlador/ControladorRegistroEmpresas.php" method="post" enctype="multipart/form-data" name="registro_ge" id="form1">
+                    <br>
+                    <fieldset>
+                        <legend>Datos de Cuenta</legend>
+                        <table width="383" border="0">
+                            <tr>
+                                <td width="127" align="right">Usuario:</td>
+                                <td width="168"><input type="text" name="nombre_usuario" id="nombre_usuario" required placeholder="nombre de usuario" autofocus /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Contraseña:</td>
+                                <td><input type="password" name="contraseña_usuario1" id="contraseña_usuario1" required  /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Repita la Contraseña:</td>
+                                <td><input type="password" name="contraseña_usuario2" id="contraseña_usuario2" required /></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>Datos de Perfil</legend>
+                        <table width="460" border="0">
+                            <tr>
+                                <td width="183" align="right">Nombre Largo:</td>
+                                <td width="190"><input type="text" name="nombre_largo_ge" id="nombre_largo_ge" required /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Nombre Corto:</td>
+                                <td><input type="text" name="nombre_corto_ge" id="nombre_corto_ge" required /></td>
+                            </tr>
+                            <tr>
+                                <!--                                <td align="right">Logo:</td>
+                                                                <td><input type="file" name="logo_ge" id="logo_ge" /></td>-->
+                            </tr>
+                            <tr>
+                                <td align="right">Correo electrónico:</td>
+                                <td><input type="email" name="correo_ge" id="correo_ge" required/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">direccion:</td>
+                                <td><input type="text" name="direccion_ge" id="direccion_ge" required/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Telefono:</td>
+                                <td><input type="tel" name="telefono_ge" id="telefono_ge" required/></td>
+                            </tr> 
+                        </table>
+                    </fieldset>
+                    <input type="submit" name="btn_registrar" id="btn_registrar" value="Registrar" /><a href="iu.ingresar.html"><input type="button" name="btn_cancelar" id="btn_cancelar" value="Cancelar" /></a> 
+
+                </form>
+            </article>
+            <footer id="pie">
+                <p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleón Software </p>
+
+            </footer>
+
+
+        </div>
+
+    </body>
+</html>

@@ -1,32 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-<link href="css/estilos_basicos.css" rel="stylesheet" type="text/css" />
+<title>CONSULTOR</title>
+<link href="css/consultor.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="imagenes/favicon.ico"/>
 </head>
 
-<body>
-    
-<div id="principal">
-  <div id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
-  <div id="contenido_usuarios">
-  <?php  
-        $a;
-        $a=$_GET['cge'];
-        echo "<div id='menu_consultor' ><a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='225' height='46' alt='btn_1' /></a></div>";
- 
-        //$a=$_GET['cge'];
-        require '../Controlador/ControladorGrupoEmpresa.php';
-        $campo = "Aqui se mostraran las noticias importantes de la grupo-empresa.";
-        echo "<div id='noticias_consultor'>$campo</div>";
-        
-    ?>  
-      <div id="construccion"><img src="imagenes/sitio-en-construccion.jpg" width="100%" height="100%" alt="sitio_en_construcción"/></div>
-  </div>
-  <div id="pie">
-    <p>Sistema Apoyo T.I.S.  </p>
-  </div>
+<body id="body">
+<div id="principal_consultor">
+    <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
+    <article id="contenido_consultor">
+       <?php
+       $codGE=$_GET['cge'];
+       $a=1;
+            echo "<nav id='menu_consultor'>"
+                    ."<a href='../Controlador/ControladorContrato.php?codC=$a&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?codC=$a&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php?codC=$a'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"         
+                ."</nav>";
+        ?>  
+    </article>
+    <footer id="pie_consultor"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
 </div>
 </body>
 </html>

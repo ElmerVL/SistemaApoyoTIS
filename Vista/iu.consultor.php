@@ -12,6 +12,7 @@
     <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_consultor">
     <nav id="menu_consultor" >
+        
         <a href="iu.registroProyecto.php"><img width="100%" height="48" src="imagenes/btn_registrarProyecto.jpg"/></a>    
             <a href="iuListaEmpresas.php"><img width="100%" height="48" src="imagenes/btn_listaEmpresas.jpg"/></a>
             <a href="iuAddActividad.php"><img width="100%" height="48" src="imagenes/btn_añadirActividad.jpg"/></a>
@@ -22,7 +23,7 @@
     <div id="noticias_consultor">
         <?php 
         include 'Otros/actividades.data'; 
-        include 'Otros/datosNoticias.data';
+        include 'Otros/datosNoticias.data'; 
           ?>
     </div>
     </article>
