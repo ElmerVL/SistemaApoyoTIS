@@ -33,21 +33,32 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
         $rol_usuario = $fila['rol_codrol'];
         $_SESSION['rol'] = $fila['rol_codrol'];
         
+        $consulta_id_grupoEmpresa = "SELECT codgrupo_empresa FROM grupo_empresa WHERE usuario_idusuario='$idusuario'";
+        $cod_grupoEmpresa= pg_query($con,$consulta_id_grupoEmpresa);
+        $fila_cod_grupo = pg_fetch_array($cod_grupoEmpresa);
+        $codigo_grupoEmpresa = $fila_cod_grupo['codgrupo_empresa'];
+        
+        $consulta_id_consultor = "SELECT idconsultor FROM consultor WHERE usuario_idusuario='$idusuario'";
+        $cod_consultor= pg_query($con,$consulta_id_consultor);
+        $fila_cod_consultor = pg_fetch_array($cod_consultor);
+        echo $codigo_consultor = $fila_cod_consultor ['idconsultor'];
+        
         switch ($rol_usuario){
             case 1: //administrador 
                 header("Location: ../Vista/iuAdminCuentas.php");
                 break;
             case 2: // consultor
-                header("Location: ../Vista/iu.consultor.php");
+                header("Location: ../Vista/iu.consultor.php?a=$codigo_consultor");
                 break;
             case 3://grupo empresa
-                header("Location: ../Vista/iuGrupoEmpresa.php");
+                header("Location: ../Vista/iuGrupoEmpresa.php?a=$codigo_grupoEmpresa");
                 break;
             case 4 ://socio 
                 header("Location: ../Vista/iuGrupoEmpresa.php");
                 break;
             
         }
+        
     }
 }
 
