@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!$_SESSION['id_usuario']) {
+    //MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
+    header("Location: ../Vista/iu.ingresar.html");
+} else {
+    if ($_SESSION['rol'] != 1) {
+        //MOSTRAR MENSAJE ("NO TIENE AUTORIZACION PARA ACCEDER A ESTE AREA ")
+        session_destroy();
+        header("Location: ../Vista/iu.ingresar.html");
+    }
+}
+?>
 <!DOCTYPE html >
 <html>
     <head>
@@ -13,8 +26,8 @@
             <article id="contenido"> 
                 <nav id="menu_administrador" >
                     <a href="iuAdminCuentas.php"><img width="100%" height="48" src="imagenes/btn_adminCuentas.png"/></a>
-                    <a href="iu.registroConsultor.html"><img width="100%" height="48" src="imagenes/btn_crearCuenta.png"/></a>
-                    <a href="iu.ingresar.html"><img width="100%" height="48" src="imagenes/btn_salir.png"/></a>
+                    <a href="iuRegistroConsultor.php"><img width="100%" height="48" src="imagenes/btn_crearCuenta.png"/></a>
+                    <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <section id="contenido_administrador">
                     acá va la tabla de administracion de cuentas

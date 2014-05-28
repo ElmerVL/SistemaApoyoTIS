@@ -52,10 +52,6 @@ CREATE TABLE Grupo_Empresa (
       ON UPDATE NO ACTION
 );
 
-
-<<<<<<< HEAD
-=======
-
 CREATE TABLE Telf_GE (
   idTelf_GE SERIAL NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
@@ -68,7 +64,6 @@ CREATE TABLE Telf_GE (
       ON UPDATE NO ACTION
 );
 
->>>>>>> origin/master
 CREATE TABLE consultor
 (
   idconsultor SERIAL NOT NULL,

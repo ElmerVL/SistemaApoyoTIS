@@ -1,5 +1,4 @@
 <?php
-
 require('../Modelo/ModeloRegistroEmpresas.php');
 
 $usuario = $_POST['nombre_usuario'];

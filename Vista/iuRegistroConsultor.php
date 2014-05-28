@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!$_SESSION['id_usuario']){
+//MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
+header("Location: ../Vista/iu.ingresar.html");
+}else {
+    if ($_SESSION['rol'] != 1) {
+        //MOSTRAR MENSAJE ("NO TIENE AUTORIZACION PARA ACCEDER A ESTE AREA ")
+        session_destroy();
+        header("Location: ../Vista/iu.ingresar.html");
+    }
+}
+?>
 <!DOCTYPE html >
 <html>
     <head>
@@ -15,9 +28,10 @@
                 <nav id="menu_administrador" >
                     <a href="iuAdminCuentas.php"><img width="100%" height="48" src="imagenes/btn_adminCuentas.png"/></a>
                     <a href="iu.registroConsultor.html"><img width="100%" height="48" src="imagenes/btn_crearCuenta.png"/></a>
-                    <a href="iu.ingresar.html"><img width="100%" height="48" src="imagenes/btn_salir.png"/></a>
+                    <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <section id="contenido_administrador">
+                    <form action="../Controlador/ControladorRegistroConsultor.php" method="post" enctype="multipart/form-data" name="registro_consultor" id="form2">
                     <h2>Registro Consultor</h2>
                     <fieldset>
                         <legend>Datos de Cuenta</legend>
@@ -41,7 +55,7 @@
                         <table width="383" border="0">
                             <tr>
                                 <td width="127" align="right">Nombre Completo:</td>
-                                <td width="168"><input type="text" name="usuario_consultor" id="usuario_consultor" required placeholder="nombre de usuario" autofocus /></td>
+                                <td width="168"><input type="text" name="nombreCompleto_consultor" id="nombreCompleto_consultor" required placeholder="nombre de usuario" autofocus /></td>
                             </tr>
                             <tr>
                                 <td align="right">Correo electrónico:</td>
@@ -49,6 +63,8 @@
                             </tr>
                         </table>
                     </fieldset>
+                    <input type="submit" name="btn_registrar" id="btn_registrar" value="Registrar" /><a href="iuAdminCuentas.php"><input type="button" name="btn_cancelar" id="btn_cancelar" value="Cancelar" /></a>
+                    </form>
                 </section>
             </article>
             <footer id="pie">

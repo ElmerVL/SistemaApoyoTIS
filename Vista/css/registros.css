@@ -13,12 +13,9 @@
     margin-left: auto;
 }
 #principal #contenido {
-    width: 60%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-left: 15%;
-    background-color: #FFF;
-    float: left;
+ width: 60%;
+ 
+ 
 }
 #btn_registrar{
     margin-top: 3%;
