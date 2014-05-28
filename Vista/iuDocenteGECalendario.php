@@ -22,7 +22,7 @@
         . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a></div>";
       ?>
         <div id="noticias_grupoEmpresa"><h2>GRUPO EMPRESA X</h2></div>
-      <div id="calendario_grupoEmpresa" class="calendar" data-color="normal">Calendario de la grupo empresa
+      <div id="calendario_seguimientoGE" class="calendar" data-color="normal">Calendario de la grupo empresa
        <?php
                 include '../Controlador/ControladorCalendarioGrupoEmpresa.php';
                 mostrar_reuniones();

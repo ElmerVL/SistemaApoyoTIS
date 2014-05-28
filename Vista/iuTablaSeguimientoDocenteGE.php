@@ -4,14 +4,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Consultor</title>
-        <link href="css/consultor.css" rel="stylesheet" type="text/css" />
+        <link href="css/seguimiento.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="imagenes/favicon.ico" />
     </head>
 
     <body id="body">
-        <div id="principal_consultor">
-            <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
-            <article id="contenido_consultor">
+        <div id="principal_seguimiento">
+            <header id="cabecera_seguimiento"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
+            <article id="contenido_seguimiento">
                 <?php
                 $a;
                 $a = $_GET['a'];
@@ -22,10 +22,11 @@
                 . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a>"
                 . " </nav>";
                 ?>
-                <div id="noticias_consultor">
+                <div id="noticias_seguimiento">
                     <h2> Avance Semanal </h2>
         <lbl2>Pulse sobre uno de los codigos para acceder al registro.</lbl2>
-                    <form name="f" action="../Controlador/ControladorSeguimientoGE.php.php" method="post">
+        
+                    <form name="f" action="../Controlador/ControladorSeguimientoGE.php" method="post">
             <table align=center frame="void" border="0" class="encabezado" width="500" bgcolor=#C6E1E1>
                 <br>
                    <thead>
@@ -47,7 +48,7 @@
           </form>  
                 </div>   
             </article>
-            <footer id="pie_consultor"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
+            <footer id="pie_seguimiento"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
         </div>
     </body>
 </html>
