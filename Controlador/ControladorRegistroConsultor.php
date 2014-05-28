@@ -2,15 +2,16 @@
 
 require ('../Modelo/ModeloRegistroConsultores.php');
 
-echo $usuario = $_POST['usuario_consultor'];
-echo $contrasena1_consultor = $_POST['contraseña_consultor1'];
-echo $contrasena2_consultor = $_POST['contraseña_consultor2'];
-echo $nombre_consultor = $_POST['nombreCompleto_consultor'];
-echo $correo_consultor = $_POST['correo_consultor'];
+ $usuario = $_POST['usuario_consultor'];
+ $contrasena1_consul = $_POST['contraseña_consultor1'];
+ $contrasena2_consul = $_POST['contraseña_consultor2'];
+ $nombre_consul = $_POST['nombreCompleto_consultor'];
+ $correo_consul = $_POST['correo_consultor'];
+ $telefono_consul = $_POST['telefono_consultor'];
 
-if ($contrasena1 == $contrasena2) {
-    RegistrarUsuario($usuario, $contrasena1);
-    RegistrarConsultor($usuario, $contrasena1, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono);
+if ($contrasena1_consul == $contrasena2_consul) {
+    RegistrarUsuario($usuario, $contrasena1_consul);
+    RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$correo_consul,$telefono_consul);
 } else {
     echo "LAS CONTRASEÑAS NO COINCIDEN";
 }

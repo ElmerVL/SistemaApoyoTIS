@@ -9,8 +9,8 @@
   <div id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="550" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="350" height="200" alt="cabecera2" /></div>
   <div id="contenido_usuarios">
       
-      <div id="menu_consultor" ></div>
-    <div id="noticias_consultor">
+      <div id="menu_seguimiento" ></div>
+    <div id="noticias_seguimiento">
         <h2> Lista de Grupo Empresas </h2>
         <br />
         <lbl2>Esta es una lista provisional de las grupo empresas.</lbl2>

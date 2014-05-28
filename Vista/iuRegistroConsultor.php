@@ -61,6 +61,10 @@ header("Location: ../Vista/iu.ingresar.html");
                                 <td align="right">Correo electrónico:</td>
                                 <td><input type="email" name="correo_consultor" id="correo_consultor" required  /></td>
                             </tr>
+                            <tr>
+                                <td align="right">Teléfono:</td>
+                                <td><input type="tel" name="telefono_consultor" id="telefono_consultor" required/></td>
+                            </tr>
                         </table>
                     </fieldset>
                     <input type="submit" name="btn_registrar" id="btn_registrar" value="Registrar" /><a href="iuAdminCuentas.php"><input type="button" name="btn_cancelar" id="btn_cancelar" value="Cancelar" /></a>

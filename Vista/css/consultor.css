@@ -2,35 +2,35 @@
 #body{
     background-image: url(../imagenes/fondo.jpg);
 }
-#principal_consultor {
+#principal_seguimiento {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
-#cabecera_consultor{
+#cabecera_seguimiento{
     width:70%;
     margin-right: auto;
     margin-left: auto;
 }
-#contenido_consultor {
+#contenido_seguimiento {
     background-color: #FFF;
     margin-left: 15%;
     float: left;
     width: 70%;
 }
-#menu_consultor {
+#menu_seguimiento {
     width:21.5%;
     background-color: #000;
     float: left;
 }
-#menu_consultor img:hover{
+#menu_seguimiento img:hover{
     border: solid 2px #6B2C37;
 }
-#noticias_consultor {
+#noticias_seguimiento {
     width: 75%;
     float: left;
 }
-#pie_consultor{
+#pie_seguimiento{
     width: 70%;
     height: 80px;
     background-image: url(../imagenes/pie_fondo.jpg);
@@ -46,7 +46,7 @@ h2 {
     text-align: left;
     text-decoration: underline;
 }
-#calendario_grupoEmpresa{
+#calendario_seguimientoGE{
     font-family: Corbel;
     padding-top: 10px;
     padding-left: 30px;
@@ -68,7 +68,7 @@ h2 {
     width: 340px;
     height: 50px;
 }
-#txtRol{
+#txtCodigo{
     font-family: Corbel;
     font-size: 16;
     padding-top: 3px;

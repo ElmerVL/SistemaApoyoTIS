@@ -40,7 +40,7 @@ body {
 	float: left;
 	border: 3px solid #692B36;
 }
-#menu_consultor {
+#menu_seguimiento {
 	width: 225px;
 	float: left;
 }
@@ -49,7 +49,7 @@ body {
 	float: left;
 }
 
-#noticias_consultor {
+#noticias_seguimiento {
 	float: left;
 	width: 675px;
 }
@@ -72,7 +72,7 @@ h2 {
 	text-align: left;
 	text-decoration: underline;
 }
-#calendario_grupoEmpresa{
+#calendario_seguimientoGE{
         font-family: Corbel;
         padding-top: 10px;
         padding-left: 30px;

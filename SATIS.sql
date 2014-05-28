@@ -365,3 +365,27 @@ CREATE TABLE consultor_proyecto_grupo_empresa
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
+INSERT INTO rol(
+            codrol, tiporol)
+    VALUES (1, 'administrador');
+    
+INSERT INTO rol(
+            codrol, tiporol)
+    VALUES (2, 'consultor');
+
+INSERT INTO rol(
+            codrol, tiporol)
+    VALUES (3, 'empresa');
+
+    INSERT INTO rol(
+            codrol, tiporol)
+    VALUES (4, 'socio');
+
+INSERT INTO usuario(
+            idusuario, login, passwd)
+    VALUES ('1000', 'admin', 'admin');
+
+INSERT INTO user_rol(
+            coduser_rol, usuario_idusuario, rol_codrol)
+    VALUES ('1000',' 1000', '1');
+
