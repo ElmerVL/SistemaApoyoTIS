@@ -382,10 +382,10 @@ INSERT INTO rol(
     VALUES (4, 'socio');
 
 INSERT INTO usuario(
-            idusuario, login, passwd)
-    VALUES ('1000', 'admin', 'admin');
+             login, passwd)
+    VALUES ( 'admin', 'admin');
 
 INSERT INTO user_rol(
-            coduser_rol, usuario_idusuario, rol_codrol)
-    VALUES ('1000',' 1000', '1');
+            usuario_idusuario, rol_codrol)
+    VALUES ('1', '1');
 
