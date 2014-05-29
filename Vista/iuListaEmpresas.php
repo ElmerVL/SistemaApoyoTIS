@@ -8,10 +8,10 @@
 </head>
 
 <body id="body">
-<div id="principal_seguimiento">
-    <header id="cabecera_seguimiento"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
-    <article id="contenido_seguimiento">
-    <nav id="menu_seguimiento" >
+<div id="principal_consultor">
+    <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
+    <article id="contenido_consultor">
+    <nav id="menu_consultor" >
         <a href="iu.registroProyecto.php"><img width="100%" height="48" src="imagenes/btn_registrarProyecto.jpg"/></a>    
             <a href="iuListaEmpresas.php"><img width="100%" height="48" src="imagenes/btn_listaEmpresas.jpg"/></a>
             <a href="iuAddActividad.php"><img width="100%" height="48" src="imagenes/btn_añadirActividad.jpg"/></a>
@@ -19,7 +19,7 @@
             <a href="iu.subidaArchivo.html"><img width="100%" height="48" src="imagenes/btn_subirArchivo.jpg"/></a>
             <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
     </nav>
-    <div id="noticias_seguimiento">
+    <div id="noticias_consultor">
         <h2> Lista de Grupo Empresas </h2>
         <form name="f" action="../Controlador/ControladorGrupoEmpresa.php" method="post">
             <table align=center frame="void" border="0" class="encabezado" width="500" bgcolor=#C6E1E1>
@@ -44,7 +44,7 @@
           </form>  
     </div>
     </article>
-    <footer id="pie_seguimiento"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
+    <footer id="pie_consultor"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
 </div>
 </body>
 </html>

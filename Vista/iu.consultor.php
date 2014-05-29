@@ -31,13 +31,14 @@ if (!$_SESSION['id_usuario']) {
                     <a href="iuAddActividad.php"><img width="100%" height="48" src="imagenes/btn_añadirActividad.jpg"/></a>
                     <a href="iu.foro.php"><img width="100%" height="48" src="imagenes/btn_foro.jpg"/></a>
                     <a href="iu.subidaArchivo.html"><img width="100%" height="48" src="imagenes/btn_subirArchivo.jpg"/></a>
+                    <a href="iuSeleccionProyectoEvaluacion.php"><img width="100%" height="48" src="imagenes/btn_registroEvaluacion.jpg"/></a>
                     <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <div id="noticias_consultor">
                     <?php
-                    include 'Otros/actividades.data';
-                    include 'Otros/datosNoticias.data';
+                    //include 'Otros/actividades.data';
+                    //include 'Otros/datosNoticias.data';
                     ?>
                 </div>
             </article>

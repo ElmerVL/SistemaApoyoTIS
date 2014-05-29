@@ -42,15 +42,19 @@
                         
                         <lbl>Tipo de Evaluacion:</lbl>
                         <br />
-                        <form name='formulario' method='POST' action='../Vista/iuRegistroEvaluacion.php'>
+                        <form name='formulario' method='POST'>
                             <select  id ='cbox_evaluaciones' name='cbox_proyectos' size=1> 
-                                <option value='1'>Opcion 1</option>
-                                <option value='2'>Opcion 2</option>
-                                <option value='3'>Opcion 3</option>
-                                <option value='4'>Opcion 4</option>
+                                <option value='0'>--Seleccione--</option>
+                                <option value='1'>Numerica</option>
+                                <option value='2'>Falso/Verdadero</option>
+                                <option value='3'>Escala conceptual</option>
+                                <option value='4'>Escala numeral</option>
                             </select>
-                            <input type='submit' value='Registrar'> 
+                            <input type='submit' value='OK'> 
+                            
+                            
                         </form>
+                        
                         <br />
                         
                         <input type="submit" name="btn_regAvance" id="btn_regAvance" value="Registrar">

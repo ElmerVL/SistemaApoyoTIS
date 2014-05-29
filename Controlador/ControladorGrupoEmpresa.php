@@ -3,7 +3,7 @@
     
     function mostrarListaEmp(){
         $listaEmpresas = mostrarListaEmpresas();
-        require_once '../Vista/iu.listaEmpresas.html';
+        //require_once '../Vista/iu.listaEmpresas.html';
     }
     function mostrarDatosEmp($codGE){
         $nombreRepLegal = mostrarDatosEmpresa($codGE);

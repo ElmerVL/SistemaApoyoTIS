@@ -18,9 +18,11 @@
                 $b = $_GET['b'];
                 $c = $_GET['c'];
               
-                echo "<nav id='menu_consultor'>"
-                . "<a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='100%' height='48'/></a>"
-                . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a>"
+                echo "<nav id='menu_seguimiento'>"
+                ."<a href='../Controlador/ControladorContrato.php?a=$a'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"
+                    . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48' alt='btn_1' /></a>"         
                 . " </nav>";
                 ?>
                 <div id="noticias_seguimiento">

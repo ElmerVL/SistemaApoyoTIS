@@ -11,12 +11,13 @@
     <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_consultor">
        <?php
-       $codGE=$_GET['cge'];
+       $a=$_GET['a'];
        $a=1;
             echo "<nav id='menu_consultor'>"
-                    ."<a href='../Controlador/ControladorContrato.php?codC=$a&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
-                    ."<a href='iu.mostrarPlanDePagosGE.php?codC=$a&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
-                    ."<a href='iuListaEmpresas.php?codC=$a'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"         
+                    ."<a href='../Controlador/ControladorContrato.php?a=$a'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"
+                    . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48' alt='btn_1' /></a>"         
                 ."</nav>";
         ?>  
     </article>

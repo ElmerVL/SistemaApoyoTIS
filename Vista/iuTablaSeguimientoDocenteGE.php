@@ -13,13 +13,15 @@
             <header id="cabecera_seguimiento"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
             <article id="contenido_seguimiento">
                 <?php
-                $a;
+                
+                //$a es el codigo de la grupo-empresa
                 $a = $_GET['a'];
-                $b;
                 $b = $_GET['b'];                  
-                echo "<nav id='menu_consultor'>"
-                . "<a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='100%' height='48'/></a>"
-                . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a>"
+                echo "<nav id='menu_seguimiento'>"
+                ."<a href='../Controlador/ControladorContrato.php?a=$a'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"
+                    . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a>"         
                 . " </nav>";
                 ?>
                 <div id="noticias_seguimiento">
@@ -45,7 +47,7 @@
                        <tbody>
                         </thead>
                 </table> 
-          </form>  
+          </form> 
                 </div>   
             </article>
             <footer id="pie_seguimiento"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>

@@ -18,10 +18,14 @@
         $a;
         $a=$_GET['a'];
       echo "<div id='menu_grupoEmpresa'>"
-        ."<a href='../Controlador/ControladorContrato.php?a=$a'><img src='imagenes/btn_generarContrato.jpg' width='100%' height='48'/></a>"
-        . "<a href='../Vista/iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48'/></a></div>";
+        ."<a href='../Controlador/ControladorContrato.php?a=$a'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?a=$a'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"
+                    . "<a href='iuDocenteGECalendario.php?a=$a'><img src='imagenes/btn_calendario_docenteGE.jpg' img width='100%' height='48'/></a>";
       ?>
-        <div id="noticias_grupoEmpresa"><h2>GRUPO EMPRESA X</h2></div>
+        </div>
+        <div id="noticias_grupoEmpresa">
+        
       <div id="calendario_seguimientoGE" class="calendar" data-color="normal">Calendario de la grupo empresa
        <?php
                 include '../Controlador/ControladorCalendarioGrupoEmpresa.php';
@@ -29,7 +33,7 @@
                 mostrar_hitos();
                 ?>
       </div>
-      
+      </div>
     <script>
 	var yy;
 	var calendarArray =[];
