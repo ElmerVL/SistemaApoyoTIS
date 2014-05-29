@@ -334,7 +334,7 @@ CREATE TABLE consultor_proyecto_grupo_empresa
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 CREATE TABLE Hito_Pagable (
-  codHito_Pagable INTEGER NOT NULL,
+  codHito_Pagable SERIAL NOT NULL,
   Plan_Pago_codPlan_Pago INTEGER NOT NULL,
   Plan_Pago_Calendario_codCalendario INTEGER NOT NULL,
   Plan_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
@@ -365,8 +365,9 @@ CREATE TABLE entregables (
 );
 
 CREATE TABLE Pago_Consultor (
-  codPago_Consultor SERIAL NOT NULL,
+  codPago_Consultor INTEGER NOT NULL,
   Consultor_idConsultor INTEGER NOT NULL,
+  Consultor_Usuario_idUsuario INTEGER NOT NULL,
   Hito_Pagable_Plan_Pago_codPlan_Pago INTEGER NOT NULL,
   Hito_Pagable_codHito_Pagable INTEGER NOT NULL,
   Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
@@ -376,16 +377,17 @@ CREATE TABLE Pago_Consultor (
   porcentajesatisfaccion INTEGER NULL,
   porcentajeAlcazado INTEGER NULL,
   estadoPago VARCHAR(45) NULL,
-  PRIMARY KEY(codPago_Consultor, Consultor_idConsultor, Hito_Pagable_Plan_Pago_codPlan_Pago, Hito_Pagable_codHito_Pagable, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Hito_Pagable_Plan_Pago_Calendario_codCalendario),
-  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
-    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
+  PRIMARY KEY(codPago_Consultor, Consultor_idConsultor, Consultor_Usuario_idUsuario, Hito_Pagable_Plan_Pago_codPlan_Pago, Hito_Pagable_codHito_Pagable, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Hito_Pagable_Plan_Pago_Calendario_codCalendario),
   FOREIGN KEY(Hito_Pagable_codHito_Pagable, Hito_Pagable_Plan_Pago_codPlan_Pago, Hito_Pagable_Plan_Pago_Calendario_codCalendario, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Hito_Pagable_Plan_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario)
     REFERENCES Hito_Pagable(codHito_Pagable, Plan_Pago_codPlan_Pago, Plan_Pago_Calendario_codCalendario, Plan_Pago_Calendario_Grupo_Empresa_CodGrupo_Empresa, Plan_Pago_Calendario_Grupo_Empresa_Usuario_idUsuario)
       ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(Consultor_idConsultor, Consultor_Usuario_idUsuario)
+    REFERENCES Consultor(idConsultor, Usuario_idUsuario)
+      ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
+
 
 INSERT INTO rol(tiporol)
     VALUES ('administrador');
