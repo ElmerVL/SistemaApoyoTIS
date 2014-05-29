@@ -6,30 +6,71 @@
 #tabla_formulario_registro{
     font-family: Corbel;
 }
+#nombre_usuario{
+    font-family: Corbel;
+}
+#nombre_usuario_registro{
+    font-family: Corbel;
+    width: 156px;
+}
 #nombre{
-    
-}
-#tabla_formulario_registro #apellido{
     font-family: Corbel;
 }
-#tabla_formulario_registro #correo{
+#nombre_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+#apellidoapellido{
     font-family: Corbel;
 }
-#tabla_formulario_registro #letra_campo{
+#apellido_registro{
     font-family: Corbel;
-    width: 136px;
+    width: 156px;
+}
+#direccion{
+    font-family: Corbel;
+}
+#direccion_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+#profesion{
+    font-family: Corbel;
+}
+#profesion_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+#correo{
+    font-family: Corbel;
+}
+#correo_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+
+#estado_civil{
+    font-family: Corbel;
 }
 #combo_estado_civil{
     font-family: Corbel;
-    width: 142px;
+    width: 162px;
 }
-#tabla_formulario_registro #combo_cargo{
-    font-family: Corbel;
-    width: 142px;
-}
-#tabla_formulario_registro profesion{
+#clave{
     font-family: Corbel;
 }
+#clave_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+#clave_repetida{
+    font-family: Corbel;
+}
+#clave_repetida_registro{
+    font-family: Corbel;
+    width: 156px;
+}
+
 #principal_grupo_empresa {
     width: 100%;
     margin-right: auto;
@@ -130,15 +171,24 @@ h2 {
     font-size: 15;
 }
 #registrar{
-    font-family: Corbel;
-    width: 90%;
-    margin-left: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top:  2%;
-    
-    
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    width: 60%;
 }
+#btn_registrar{
+    margin-top: 0.5%;
+    margin-bottom:0.5%;
+    float:left;
+}
+#btn_cancelar{
+    margin-top: 0.5%;
+    margin-left: 20%;
+    margin-bottom: 0.5%;
+    float:right;
+}
+
+
 lbl{
     font-weight: bold;
     font-family: Corbel;
