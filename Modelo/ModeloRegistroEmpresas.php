@@ -37,12 +37,28 @@ function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_co
     $sql = "INSERT INTO Grupo_Empresa (usuario_idusuario,nombrelargoge,nombrecortoge,correoge,direccionge,telefonoge)";
     $sql.= "VALUES ($idusuario,'$nombre_largo_ge','$nombre_corto_ge','$corrreo_ge','$direccion_ge','$telefono_ge')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
-    //mensaje de registro exitoso
+
+    crear_calendario($idusuario);
+//mensaje de registro exitoso
     // mensaje de error en caso de usuario duplicado o en caso de nombre de grupo empresa duplicado
      header("Location: ../Vista/iu.ingresar.html");
      
 }
-
+function crear_calendario($idusuario) {
+    //creacion del calendario respectivo de la grupoempresa
+    
+    $conec = new Conexion();
+    $con = $conec->getConection();
+    
+    $sql_cod = "select codgrupo_empresa from grupo_empresa where usuario_idusuario = $idusuario;";
+    $filas = pg_query($con, $sql_cod);
+    $cod_ge = pg_fetch_object($filas);
+    $cod_grupoempresa = $cod_ge->codgrupo_empresa;
+    
+    $sql = "INSERT INTO calendario(grupo_empresa_codgrupo_empresa, grupo_empresa_usuario_idusuario, dia_reunion_fijado)";
+    $sql.= "VALUES ($cod_grupoempresa,$idusuario,FALSE)";
+    pg_query($con,$sql) or die("ERROR :(".pg_last_error());
+}
 
 ?>
 

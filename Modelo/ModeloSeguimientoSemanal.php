@@ -54,7 +54,6 @@ function ingresarDetalleConsultor($cod_grupo_empresa, $cod_evaluacion, $cod_regi
     $consulta = pg_query($c, "INSERT INTO detalle_cons(consultor_idconsultor, detalle_ge_evaluacion_semanal_codevaluacion_semanal, detalle_ge_evaluacion_semanal_calendario_codcalendario, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_, detalle_ge_iddetalle_ge, realizado, observaciones, detalle_esperado) VALUES (1, ".$cod_evaluacion.", ".$cod_calendario.", ".$cod_grupo_empresa.", ".$id_usuario_ge.", ".$cod_registro.", '".$realizado."', '".$observaciones."', '".$detalle."')");
     
         }
-    
 }
 
 function conseguir_rol($id_detalle_avance) {

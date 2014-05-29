@@ -13,9 +13,11 @@
             <article id="contenido_seguimiento">
                 <?php
                 include '../Controlador/ControladorSeguimientoGE.php'; 
-                
+                //a = codigo de la grupoempresa
                 $a = $_GET['a'];
+                //b = codigo del calendario de la grupoempresa
                 $b = $_GET['b'];
+                //c = codigo del registro de un detalle
                 $c = $_GET['c'];
               
                 echo "<nav id='menu_seguimiento'>"
