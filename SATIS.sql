@@ -304,8 +304,9 @@ CREATE TABLE detalle_cons
   detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo integer NOT NULL,
   detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_ integer NOT NULL,
   detalle_ge_iddetalle_ge integer NOT NULL,
-  realizado character varying(120),
-  observaciones character varying(120),
+  realizado text,
+  observaciones text,
+  detalle_esperado text,
   CONSTRAINT detalle_cons_pkey PRIMARY KEY (iddetalle_cons, consultor_idconsultor, detalle_ge_evaluacion_semanal_codevaluacion_semanal, detalle_ge_evaluacion_semanal_calendario_codcalendario, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo, detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_, detalle_ge_iddetalle_ge),
   CONSTRAINT detalle_cons_consultor_idconsultor_fkey FOREIGN KEY (consultor_idconsultor)
       REFERENCES consultor (idconsultor) MATCH SIMPLE
