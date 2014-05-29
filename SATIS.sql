@@ -52,6 +52,10 @@ CREATE TABLE Grupo_Empresa (
       ON UPDATE NO ACTION
 );
 
+
+<<<<<<< HEAD
+=======
+
 CREATE TABLE Telf_GE (
   idTelf_GE SERIAL NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
@@ -64,6 +68,7 @@ CREATE TABLE Telf_GE (
       ON UPDATE NO ACTION
 );
 
+>>>>>>> origin/master
 CREATE TABLE consultor
 (
   idconsultor SERIAL NOT NULL,
@@ -113,7 +118,6 @@ CREATE TABLE Socio (
   apellidosSocio VARCHAR(25) NULL,
   estadoCivil VARCHAR(15) NULL,
   direccion VARCHAR(45) NULL,
-  edad INTEGER NULL,
   profecion VARCHAR(45) NULL,
   PRIMARY KEY(idSocio, Grupo_Empresa_CodGrupo_Empresa, Tipo_Socio_codTipo_Socio, Grupo_Empresa_Usuario_idUsuario),
   FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
@@ -364,28 +368,4 @@ CREATE TABLE consultor_proyecto_grupo_empresa
       REFERENCES proyecto (codproyecto, consultor_idconsultor) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
-
-INSERT INTO rol(
-            codrol, tiporol)
-    VALUES (1, 'administrador');
-    
-INSERT INTO rol(
-            codrol, tiporol)
-    VALUES (2, 'consultor');
-
-INSERT INTO rol(
-            codrol, tiporol)
-    VALUES (3, 'empresa');
-
-    INSERT INTO rol(
-            codrol, tiporol)
-    VALUES (4, 'socio');
-
-INSERT INTO usuario(
-            idusuario, login, passwd)
-    VALUES ('1000', 'admin', 'admin');
-
-INSERT INTO user_rol(
-            coduser_rol, usuario_idusuario, rol_codrol)
-    VALUES ('1000',' 1000', '1');
 
