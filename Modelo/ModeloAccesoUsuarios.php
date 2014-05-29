@@ -51,8 +51,7 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
                 header("Location: ../Vista/iu.consultor.php?a=$codigo_consultor");
                 break;
             case 3://grupo empresa
-                $codigo_grupo_empresa = conseguir_codigo_ge();
-                header("Location: ../Vista/iuGrupoEmpresa.php?$a=$codigo_grupo_empresa");
+                header("Location: ../Vista/iuGrupoEmpresa.php?a=$codigo_grupoEmpresa");
                 break;
             case 4 ://socio 
                 header("Location: ../Vista/iuGrupoEmpresa.php");
