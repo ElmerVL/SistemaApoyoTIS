@@ -15,7 +15,6 @@ function insertarForo($a,$b,$c,$d)
     
 //Hacemos algunas validaciones
     if(empty($autor)) $autor = "Anónimo";
-    if(empty($tema)) $tema = "Sin título";
 //Evitamos que el usuario ingrese HTML
     $mensaje = htmlentities($mensaje);
 
@@ -27,7 +26,7 @@ function insertarForo($a,$b,$c,$d)
      
  //crear su archivo.data
     $codForo = retornarCodForo($autor);
-    $miarchivo=fopen('../Vista/Otros/'.$codForo.'_'.$tema.'.data','w');
+    $miarchivo=fopen('../Vista/Otros/Comentarios'.$codForo.'_'.$tema.'.data','w');
     fclose($miarchivo);
 }
   function retornarCodForo($autor){

@@ -1,9 +1,11 @@
 <?php
-require('../Modelo/ModeloPropuestaPlanDePago.php');
-    
-    function mostrarPlan($cod){
-        $codplan_pago =$cod;
-        $listaPlanDePago = mostrarPlanDePago($codplan_pago);
+require('../Modelo/ModeloMostrarPlanDePagos.php');
+    function retornarEstadoTablaPlanDePagos(){
+        $estadoTabla = retornarEstadoDeTablaPlan();
+        return $estadoTabla;
+    }
+    function mostrarPlan($codGE,$codUsuarioGE){
+        $listaPlanDePago = mostrarPlanDePago($codGE,$codUsuarioGE);
     return $listaPlanDePago;    
     }
 ?>

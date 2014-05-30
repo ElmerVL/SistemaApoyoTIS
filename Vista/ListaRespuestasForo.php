@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="imagenes/favicon.ico">
 </head>
         <?php
-            $ax=$_GET['codforo'];
+            $codF=$_GET['codforo'];
             //echo "este es el cod :$ax<br>";
         ?>
 <body id="body">
@@ -43,7 +43,7 @@
                 <td> 
                     <?php
                     require '../Controlador/ControladorMostrarTema.php';
-                    echo a($ax);
+                    echo mostrarTemaAComentar($codF);
                     ?> 
                 </td> 
             </table>
@@ -57,7 +57,7 @@
                     <?php
                     $codArchivo = $_GET['codforo'];
                     $nombreArchivo = $_GET['nomArchivo'];
-                    include ("Otros/".$codArchivo."_".$nombreArchivo.".data");
+                    include ("Otros/Comentarios".$codArchivo."_".$nombreArchivo.".data");
                     ?> 
                 </td> 
             </table>

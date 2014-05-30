@@ -1,5 +1,3 @@
-
-
 <?php
  require ('../Controlador/Conexion.php');
      function retornarEstadoDeTablaForo(){
@@ -14,7 +12,7 @@
             return "basio";
         }
     }
-    function mostrarListaForo(){
+    function retornarListaForoConsultor($a,$u){
         // Conectar con la base de datos y seleccionarla
             $conec=new Conexion(); 
             $con=$conec->getConection();  
@@ -26,7 +24,7 @@
                 $a = $row->autor;
                 $cantidad = $row->cantidad_comentarios ;
                 echo "<tr>"
-                . "<td><a href = '../Vista/ListaRespuestasForo.php?codforo=$cod&candC=$cantidad&nomArchivo=$t'>$t</a></td>"
+                . "<td><a href = '../Vista/iu.ListaRespuestasForoConsultor.php?a=$a&u$u&c_f=$cod&candC=$cantidad&nomArchivo=$t'>$t</a></td>"
                         . "<td>$cantidad</td>"
                         . "<td>$a</td>"
                         . "</tr>";
@@ -35,3 +33,4 @@
             pg_close($con);
     }
 ?>
+

@@ -48,10 +48,10 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
                 header("Location: ../Vista/iuAdminCuentas.php");
                 break;
             case 2: // consultor
-                header("Location: ../Vista/iu.consultor.php?a=$codigo_consultor");
+                header("Location: ../Vista/iu.consultor.php?a=$codigo_consultor&u=$idusuario");
                 break;
             case 3://grupo empresa
-                header("Location: ../Vista/iuGrupoEmpresa.php?a=$codigo_grupoEmpresa");
+                header("Location: ../Vista/iuGrupoEmpresa.php?a=$codigo_grupoEmpresa&u=$idusuario");
                 break;
             case 4 ://socio 
                 header("Location: ../Vista/iuGrupoEmpresa.php");

@@ -24,36 +24,33 @@
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>";
             ?>
-                <div id="noticias_consultor" class="CSSTableGenerator">
-
+                <div id="noticias_consultor">
                     <fieldset id="fieldsetForo"> 
-                    <legend>Foro Consultor</legend>
-                    <?php echo"<a href='iu.FormularioForoConsultor.php?a=$a&u=$u'>Registrar Tema</a>"?>
-                    <form name="f" action="../Controlador/ControladorListaTemasForo.php" method="post">
-                        <table align="center" border="2" class="encabezado" width="850">
-                            <thead>
-                                <tr>
-                                    <td width="60%">Temas</td>
-                                    <td width="10%">Comentarios</td>
-                                    <td width="30%">Creado Por</td>
-                                </tr>
-                                <?php
-                                require '../Controlador/ControladorListaTemasForoConsultor.php';
-                                $estado= retornarEstadoTablaForo();
-                                if($estado=="basio"){
-                                    echo '"NO EXIXTE TEMAS REGISTRADOS POR AHORA"';
-                                }else if($estado=="lleno"){
-                                    $lista = mostrarListaForoConsultor($a, $u);
-                                    foreach($lista as $post):?>
-                                <tr>
-                                    <td><?php echo $post['titulo'];?></td>
-                                    <td><?php echo $post['cantidad'];?></td>
-                                    <td><?php echo $post['autor'];?></td>
-                                </tr><?php endforeach;
-                                }?>
-                            </thead>
-                        </table> 
-                    </form>
+                    <legend>Formulario Foro</legend> 
+            <?php  echo"<form action='../Controlador/ControladorFormularioForoConsultor.php?1&a=$a&u=$u' method='post'>"?>
+                            <table width="100%" border="2" cellspacing="2" cellpadding="2">
+                                <input type="hidden" name="identificador" value="<?=$id?>">
+                                    <tr>
+                                        <?php
+                                        require '../Controlador/ControladorFormularioForoConsultor.php';
+                                        $nombreConsultor =  mostrarNombreDelConsultor($a,$u);
+                                        echo"<td width='30%' align='right'><strong>Consultor(ra) :</strong></td>
+                                             <td><strong>$nombreConsultor</strong></td>";
+                                        ?>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" align="right"><strong>Tema a Conversar :</strong></td>
+                                        <td><input type="text" name="temaC" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" align="right"><strong>Comentario :</strong></td>
+                                        <td><textarea name="comentarioC" cols="70%" rows="6%" required></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center" ><input  type="submit" name="Submit" value="Registrar"></td>
+                                    </tr>
+                                </table>
+                        </form>
                     </fieldset>
                 </div>
             </article>

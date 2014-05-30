@@ -24,17 +24,25 @@
     <form name="f" action="../Controlador/ControladorListaTemasForo.php" method="post">
         <table align="left" border="2" class="encabezado" width="850">
                 <thead>
-                    <tr><td width="60%">Temas</td><td width="10%">Comentarios</td><td width="30%">Autor</td></tr>
-                    <?php 
+                    <tr>
+                        <td width="60%">Temas</td>
+                        <td width="10%">Comentarios</td>
+                        <td width="30%">Creado Por</td>
+                    </tr>
+                    <?php
                     require '../Controlador/ControladorListaTemasForo.php';
-                    $lista = mostrarListaF();
-                    foreach($lista as $post):?>
+                    $estado= retornarEstadoTablaForo();
+                    if($estado=="basio"){
+                        echo '"NO EXIXTE TEMAS PARA COMENTAR EN LA TABLA "';
+                    }else if($estado=="lleno"){
+                        $lista = mostrarListaF();
+                        foreach($lista as $post):?>
                     <tr>
                         <td><?php echo $post['titulo'];?></td>
                         <td><?php echo $post['cantidad'];?></td>
                         <td><?php echo $post['autor'];?></td>
-                    </tr><?php endforeach;?>
-                    
+                    </tr><?php endforeach;
+                    }?>
                 </thead>
           </table> 
      </form>

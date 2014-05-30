@@ -24,18 +24,22 @@
     <article id="contenido_grupoEmpresa">
                 <?php
                 $a = $_GET['a'];
+                $u = $_GET['u'];
                 echo "<nav id='menu_grupoEmpresa'>
-                            <a href='iu.propuestaDePago.php?a=$a'><img width='100%' height='48' src='imagenes/btn_planDePagos.jpg'/></a>
-                            <a href='../Vista/iuDiaReunionGE.php?a=$a'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
-                            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
-                            <a href='../Vista/iuGrupoEmpresa.php?a=$a'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>  
+                            <a href='iu.propuestaDePago.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_planDePagos.jpg'/></a>
+                            <a href='iu.mostrarPlanDePago.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>    
+                            <a href='iu.foroGrupoEmpresa.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_foro.jpg'/></a>
+                            <a href='../Vista/iuDiaReunionGE.php?a=$a&u=$u'><img src='imagenes/btn_diaDeReunion.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuCalendarioGrupoEmpresa.php?a=$a&u=$u'><img src='imagenes/btn_calendario.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Vista/iuGrupoEmpresa.php?a=$a&u=$u'><img src='imagenes/btn_volverMiPagina.jpg' width='100%' height='46' alt='btn_1' /></a>
+                            <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' alt='btn_1' /></a>
                       </nav>"
                 ?>
     <div id="noticias_grupoEmpresa">
         <fieldset id="fieldsetForo" > 
         <legend>Formulario Plan De Pagos</legend>
             <?php 
-            echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&2' method='post'>"; 
+            echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&u=$u&2' method='post'>"; 
             ?>
             <h2>Registro Plan de Pagos</h2>
             <table width="80%" border="0">
@@ -87,7 +91,7 @@
                         if($_GET['m_t']==0){
                         //if (isset($_REQUEST['linkMPP'])) {
                             $c_ge=$_GET['a'];
-                            $c_p=$_GET['codP'];
+                            $c_p=$_GET['c_p'];
                             echo "<td width='60' >"
                                     ."<a href='iu.mostrarPlanDePago.php?a=$c_ge&codP=$c_p'>Mostra plan de Pagos</a>"
                                 ."</td>";
@@ -103,11 +107,9 @@
        
             <?php
             //if($_GET){
-            if(isset($_REQUEST['codHito'])){    
-                $c_h = $_GET['codHito'];
-                        echo "codigoHito: ".$c_h;
-                $c_p =$_GET['codP'];
-                        echo "codigoPago: ".$c_p;
+            if(isset($_REQUEST['c_h'])){    
+                $c_h = $_GET['c_h'];
+                $c_p =$_GET['c_p'];
                 $m_t=$_GET['m_t'];
                 $p_s=$_GET['p_s'];
             ?>
@@ -129,7 +131,7 @@
                                 ."</label>"
                             ."</td>"
                             ."<td width='20'>"
-                                ." <a href='iu.registroDePlanDePagos.php?a=$a&m_t=$m_t&p_s=$p_s&codP=$c_p'>Terminar Registro</a>"
+                                ." <a href='iu.registroDePlanDePagos.php?a=$a&u$u&m_t=$m_t&p_s=$p_s&c_p=$c_p'>Terminar Registro</a>"
                             ."</td>"
                         ."</tr>"                   
                 ."</table>"
@@ -139,9 +141,10 @@
         
             <?php
                 if(isset($_REQUEST['tabla'])){
-                    $codplan_papo=$_GET['codP'];
-                    $cod_hito = $_GET['codHito'];
+                    $codplan_papo=$_GET['c_p'];
+                    $cod_hito = $_GET['c_h'];
                     $cod_ge=$_GET['a'];
+                    $cod_usuarioGE=$_GET['u'];
                     echo"<fieldset id='fieldsetForo' >" 
                        ."<legend>Registro de los Entregables</legend>";
                     echo"<form name'f' action='../Controlador/ContriladorMostrarPlanDePago.php' method='post'>"
@@ -150,7 +153,7 @@
                                     ."<tbody align='center' style='font:  1.1em/1.1em 'FB Armada' arial'>"
                                     ."<tr><td>Entregables</td></tr>";
                                         require '../Controlador/ControladorMostrarEntregables.php';
-                                        $lista = mostrarE($codplan_papo,$cod_hito,$cod_ge);
+                                        $lista = mostrarE($codplan_papo,$cod_hito,$cod_ge,$cod_usuarioGE);
                                         foreach($lista as $post):?>
                                             <tr>
                                                 <td><?php echo $post['entergable']?></td>

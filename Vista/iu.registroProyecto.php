@@ -25,35 +25,66 @@ $(document).ready(function(){
     <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_consultor">
     <nav id="menu_consultor" >
-        <a href="iu.registroProyecto.php"><img width="100%" height="48" src="imagenes/btn_registrarProyecto.jpg"/></a>    
-            <a href="iuListaEmpresas.php"><img width="100%" height="48" src="imagenes/btn_listaEmpresas.jpg"/></a>
-            <a href="iu.addActividad.html"><img width="100%" height="48" src="imagenes/btn_añadirActividad.jpg"/></a>
-            <a href="iu.foro.php"><img width="100%" height="48" src="imagenes/btn_foro.jpg"/></a>
-            <a href="iu.subidaArchivo.html"><img width="100%" height="48" src="imagenes/btn_subirArchivo.jpg"/></a>
-            <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
+    <?php
+    $a=$_GET['a'];// $a -> codigo del consultor
+    $u=$_GET['u'];// $u -> codigo de usuario del consultor
+   echo"<a href='iu.registroProyecto.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_registrarProyecto.jpg'/></a>    
+        <a href='iuListaEmpresas.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>
+        <a href='iuAddActividad.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_añadirActividad.jpg'/></a>
+        <a href='iu.foroConsultor.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_foro.jpg'/></a>
+        <a href='iu.subidaArchivo.html?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_subirArchivo.jpg'/></a>
+        <a href='iuSeleccionProyectoEvaluacion.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_registroEvaluacion.jpg'/></a>
+        <a href='../Controlador/ControladorBackup.php'><img width='100%' height='48' src='imagenes/btn_backup.jpg'/></a>
+        <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>";
+    ?>
     </nav>
     <div id="noticias_consultor">
         <fieldset id="fieldsetForo"> 
         <legend>Formulario Del Proyecto</legend>
         <?php
-        if($_GET){
-        $mensaje=$_GET['mensaje']; 
-        echo "<fieldset id='fieldsetForo'> 
-              <legend>Mensaje</legend>
-                    <br>El proyecto <strong>".$mensaje."</strong> ha sido registrado con éxito<br>
-              </fieldset>";
+        if(isset($_REQUEST['mensaje1'])){
+            $mensaje=$_GET['mensaje1']; 
+            echo "<fieldset id='fieldsetForo'> 
+                    <legend>Mensaje</legend>
+                    <br>EL PROYECTO <strong>".$mensaje."</strong> YA EXIXTE<br>
+                  </fieldset>";
+        }else if(isset($_REQUEST['mensaje3'])){
+                $cp=$_GET['cp'];
+                $np=$_GET['np'];
+                $fp=$_GET['fp'];
+                 echo "<fieldset > 
+                        <legend>Mensaje</legend>
+                        <table bgcolor=#C6E1E1 border='0'>
+                            <tr>
+                                <td><strong>El Proyecto:</strong> $np</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Codigo:</strong> $cp<td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fecha De Conclucion:</strong> $fp</td>
+                            </tr>
+                        </table>
+                        <strong>Ha sido registrado con exito</strong>   
+                       </fieldset>";
         }
         ?>
-        <form action="../Controlador/ControladorResgistroProyecto.php" method="post">
+        <?php
+        echo"<form action='../Controlador/ControladorResgistroProyecto.php?a=$a&u=$u' method='post'>";
+        ?>
             <h2>Registro de Proyecto</h2>
-                <table width="687" border="0">
+                <table width="100%" border="0">
                     <tr>
                         <td align="right">Nombre del Proyecto:</td>
-                        <td width="491"><input type="text" name="nombre_proyecto" id="nombre_proyecto" required/></td>
+                        <td width="10%"><input type="text" name="nombre_proyecto" id="nombre_proyecto" required <?php if(isset($_REQUEST['mensaje2'])){$np=$_GET['np']; echo"value='$np'"; }?> /></td>
                     </tr>
                     <tr>
                         <td align="right">Codigo del Proyecto:</td>
-                        <td width="491"><input type="text" name="codigo_proyecto" id="codigo_proyecto" required/></td>
+                        <td width="10$"><input type="text" name="codigo_proyecto" id="codigo_proyecto" required <?php if(isset($_REQUEST['mensaje2'])){$cp=$_GET['cp']; echo"value='$cp'"; }?> /></td>
+                        <td align="rigth" width="50%"><?php if(isset($_REQUEST['mensaje2'])){
+                            $mensaje=$_GET['mensaje2']; 
+                            echo" EL CODIGO <strong>".$mensaje."</strong> YA EXISTE";}?>
+                        </td>
                     </tr>
 <!--                    <tr>
                         <td width="186" align="right">Gestion del Proyecto:</td>
@@ -64,11 +95,11 @@ $(document).ready(function(){
                    </tr>-->
                     <tr>
                         <td align="right">Fecha Fin del Proyecto:</td>
-                        <td width="491"><input type="text" name="fecha_fin_proyecto" id="fecha_fin_proyecto" required/></td>
+                        <td width="10%"><input type="text" name="fecha_fin_proyecto" id="fecha_fin_proyecto" required <?php if(isset($_REQUEST['mensaje2'])){$fp=$_GET['fp']; echo"value='$fp'"; }?> /></td>
                     </tr>
                     <tr>
-                        <td align="right">&nbsp;</td>
-                        <td width="491">
+                        <td align="center">&nbsp;</td>
+                        <td width="10%">
                             <label>
                                 <input  type="submit" name="btn_registroProyecto" id="btn_registroProyecto" value="Añadir" />
                             </label>

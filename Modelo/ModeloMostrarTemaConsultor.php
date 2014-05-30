@@ -1,5 +1,7 @@
+
+
 <?php
-require ('../Controlador/Conexion.php');
+require ('../Controlador/Conexion.php');    
     function mostrarTema($codForo){
         // Conectar con la base de datos y seleccionarla
         $conec=new Conexion(); 
@@ -16,5 +18,5 @@ require ('../Controlador/Conexion.php');
         // Closing connection
         pg_close($con);
         return $retornar;
-}
+        }
 ?>

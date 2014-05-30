@@ -1,5 +1,5 @@
 <?php
-require '../Modelo/mostrarTema.php';
+require '../Modelo/ModeloMostrarTemaConsultor.php';
 
 function mostrarTemaAComentar($codF){
     $listaTemas = mostrarTema($codF);
