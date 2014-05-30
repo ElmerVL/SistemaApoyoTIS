@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>CONSULTOR</title>
-        <link href="css/registro_evaluacion.css" rel="stylesheet" type="text/css" />
+        <link href="css/evaluacion.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="imagenes/favicon.ico"/>
     </head>
 
