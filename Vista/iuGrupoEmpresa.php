@@ -4,7 +4,7 @@ if (!$_SESSION['id_usuario']) {
     //MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
     header("Location: ../Vista/iu.ingresar.html");
 } else {
-    if ($_SESSION['rol'] != 3) {
+    if ($_SESSION['rol'] != 3 ) {
         //MOSTRAR MENSAJE ("NO TIENE AUTORIZACION PARA ACCEDER A ESTE AREA ")
         session_destroy();
         header("Location: ../Vista/iu.ingresar.html");

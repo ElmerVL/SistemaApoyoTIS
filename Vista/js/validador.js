@@ -1,7 +1,7 @@
 $("form").validate({
     rules: {
         nombre_usuario: {
-            required: true, minlength: 5, maxlength: 20,remote:"../Controlador/prueba11.php?x=1",
+            required: true, minlength: 5, maxlength: 20,remote:"../Controlador/ControladorVerificador.php?x=1",
         },
         contraseña_usuario1: {
             required: true, minlength: 5, maxlength: 20

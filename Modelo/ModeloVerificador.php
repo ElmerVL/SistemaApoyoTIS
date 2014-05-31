@@ -11,9 +11,9 @@ function verificarLogin($login) {
     $rows = pg_num_rows($result);
     if($rows==0)
     {
-        return FALSE;
+        echo "true";
     }
  else {
-        return TRUE;    
+        echo "false";    
     }
 }

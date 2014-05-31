@@ -1,17 +1,17 @@
 <?php
 require '../Modelo/ModeloVerificador.php';
-function vLogin($login) {
-    return verificarLogin($login);
+
+switch ($_GET['x']){
+   case 1: //verifica que los nombres de usuario esten disponibles
+       $aux=$_GET['nombre_usuario'];
+        echo verificarLogin($aux);
+       break;
+    
+    
 }
+        
 
 
-////estas lineas son para las pruebas
-$log='camaleon';
-if(vLogin($log))
-  {
-    echo 'verdadero';
-  }
-  else{
-      echo 'falso';
-  }
-///////////////////////////////////////////
+        
+
+?>
