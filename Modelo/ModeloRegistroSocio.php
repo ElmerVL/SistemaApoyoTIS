@@ -1,47 +1,51 @@
 <?php
 
 require('../Controlador/Conexion.php');
-
-function RegistrarUsuario($usuario, $contrasena1) {
+function cantidadDeSocios($codGrupoempresa) {
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $nombre_usuario_ge = $usuario;
-    $contrasena_usuario_ge = $contrasena1;
 
-    $sql = "INSERT INTO Usuario (login,passwd)";
-    $sql.= "VALUES ('$nombre_usuario_ge','$contrasena_usuario_ge')";
+    $sql = "SELECT nombresocio, apellidossocio, estadocivil, direccion, profesion
+            FROM socio
+            where grupo_empresa_codgrupo_empresa='$codGrupoempresa';";
+    $result=pg_query($con, $sql);
+   
+    return pg_num_rows($result);
+}
+
+function RegistrarUsuario($usuario, $contrasena) {
+    $conec = new Conexion();
+    $con = $conec->getConection();
+
+    $nombre_usuario = $usuario;
+    $contrasena_usuario = $contrasena;
+
+    $sql = "INSERT INTO Usuario (login,passwd)
+                        VALUES ('$nombre_usuario','$contrasena_usuario')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 }
 
-function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono) {
+function RegistrarSocio($login,$codGrupoempresa,$tipoSocio,$usuario_grupoEmpresa,$nombre,$apellidos,$estado_civil,$direccion,$profesion) {
 
     $conec = new Conexion();
     $con = $conec->getConection();
-
-    $nom_usuario = $usuario;
-    $contrasena_usr = $contrasena1;
-    $nombre_largo_ge = $nombre_largo;
-    $nombre_corto_ge = $nombre_corto;
-    $corrreo_ge = $correo;
-    $direccion_ge = $direccion;
-    $telefono_ge = $telefono;
-
-    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$usuario'";
+    
+    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$login'";
     $filas = pg_query($con, $sql_id);
     $idusr = pg_fetch_object($filas);
     $idusuario = $idusr->idusuario;
+    
     $sql_rol = "INSERT INTO user_rol(usuario_idusuario,rol_codrol)";
-    $sql_rol.="VALUES($idusuario,3)";
+    $sql_rol.="VALUES($idusuario,4)";
     pg_query($con,$sql_rol) or die("ERROR :(".pg_last_error());
-    $sql = "INSERT INTO Grupo_Empresa (usuario_idusuario,nombrelargoge,nombrecortoge,correoge,direccionge,telefonoge)";
-    $sql.= "VALUES ($idusuario,'$nombre_largo_ge','$nombre_corto_ge','$corrreo_ge','$direccion_ge','$telefono_ge')";
+    
+    $sql="INSERT INTO socio(grupo_empresa_codgrupo_empresa, tipo_socio_codtipo_socio, grupo_empresa_usuario_idusuario,usuario_idusuario, nombresocio, apellidossocio, estadocivil, direccion, profesion)
+          VALUES ( '$codGrupoempresa','$tipoSocio','$usuario_grupoEmpresa','$idusuario', '$nombre','$apellidos','$estado_civil','$direccion','$profesion')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
     //mensaje de registro exitoso
     // mensaje de error en caso de usuario duplicado o en caso de nombre de grupo empresa duplicado
      header("Location: ../Vista/iu.ingresar.html");     
 }
-
-
 ?>
 
