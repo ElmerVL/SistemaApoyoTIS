@@ -14,7 +14,7 @@ $tipo_socio=$_POST['combo_cargo'];;
 $a = $_GET['a'];// $a -> codigo grupo empresa
 $u =$_GET['u'];//$u -> codigo usuario grupo empresa
 
-if(cantidadDeSocios($a)<5&&isset($_POST['registrar'])){
+if(cantidadDeSocios($a)<5&&isset($_POST['nombre_usuario'])){
     echo 'es posible';
 RegistrarUsuario($usuario, $contrasena);
 RegistrarSocio($usuario,$a,$tipo_socio,$u,$nombre,$apellidos,$estado_civil,$direccion,$profesion);
