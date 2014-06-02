@@ -12,6 +12,6 @@ require ('../Modelo/ModeloRegistroConsultores.php');
 
 
     RegistrarUsuario($usuario, $contrasena1_consul,$habilitada);
-    RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$correo_consul,$telefono_consul);
+    RegistrarConsultor($usuario, $nombre_consul,$correo_consul,$telefono_consul);
 
 ?>

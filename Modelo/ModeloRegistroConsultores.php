@@ -15,18 +15,17 @@ function RegistrarUsuario($usuario, $contrasena1_consul,$habilitada) {
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 }
 
-function RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$correo_consul,$telefono_consul ) {
+function RegistrarConsultor($usuario, $nombre_consul,$correo_consul,$telefono_consul ) {
 
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $nom_usuario = $usuario;
-    $contrasena_consultor = $contrasena1_consul;
+    $nom_usuario = strtolower($usuario);
     $nombre_consultor = strtolower($nombre_consul);
     $correo_consultor = strtolower($correo_consul);
     $telefono_consultor = $telefono_consul;
 
-    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$usuario'";
+    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$nom_usuario'";
     $filas = pg_query($con, $sql_id);
     $idusr = pg_fetch_object($filas);
     $idusuario = $idusr->idusuario;
@@ -37,8 +36,6 @@ function RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$corre
     $sql = "INSERT INTO consultor (usuario_idusuario,nombreconsultor,correoconsultor,telefonoconsultor)";
     $sql.= "VALUES ($idusuario,'$nombre_consultor','$correo_consultor','$telefono_consultor')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
-    //mensaje de registro exitoso
-    // mensaje de error en caso de usuario duplicado o en caso de nombre de grupo empresa duplicado
     header("Location: ../Vista/iuRegistroConsultor.php");
 }
 

@@ -13,5 +13,5 @@ $telefono = $_POST['telefono_ge'];
 $habilitada = TRUE;
 
 RegistrarUsuario($usuario, $contrasena1,$habilitada);
-RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono);
+RegistrarGrupoEmpresa($usuario, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono);
 ?>

@@ -20,7 +20,7 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
         echo '<script language = javascript>
 	alert("Usuario o Password errados, por favor verifique."
 	</script>';
-        header("Location: ../Vista/iu.ingresar.html");
+        header("Location: ../Vista/iuIngresar.php");
     } else { //opcion2: Usuario logueado correctamente
         //Definimos las variables de sesión y redirigimos a la página de usuario
         $idusuario = $filas['idusuario'];

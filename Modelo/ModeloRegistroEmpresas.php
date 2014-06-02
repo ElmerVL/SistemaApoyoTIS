@@ -7,7 +7,7 @@ function RegistrarUsuario($usuario, $contrasena1,$habilitada) {
     $con = $conec->getConection();
 
     $nombre_usuario_ge = strtolower($usuario);
-    $contrasena_usuario_ge = strtolower($contrasena1);
+    $contrasena_usuario_ge = $contrasena1;
     $estado_cuenta = strtolower($habilitada);
 
     $sql = "INSERT INTO Usuario (login,passwd,habilitada)";
@@ -15,20 +15,19 @@ function RegistrarUsuario($usuario, $contrasena1,$habilitada) {
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 }
 
-function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono) {
+function RegistrarGrupoEmpresa($usuario, $nombre_largo, $nombre_corto, $correo, $direccion, $telefono) {
 
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $nom_usuario = $usuario;
-    $contrasena_usr = $contrasena1;
-    $nombre_largo_ge = $nombre_largo;
-    $nombre_corto_ge = $nombre_corto;
-    $corrreo_ge = $correo;
-    $direccion_ge = $direccion;
+    $nom_usuario = strtolower($usuario);
+    $nombre_largo_ge = strtolower($nombre_largo);
+    $nombre_corto_ge = strtolower($nombre_corto);
+    $corrreo_ge = strtolower($correo);
+    $direccion_ge = strtolower($direccion);
     $telefono_ge = $telefono;
 
-    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$usuario'";
+    $sql_id = "SELECT idusuario FROM Usuario WHERE login='$nom_usuario'";
     $filas = pg_query($con, $sql_id);
     $idusr = pg_fetch_object($filas);
     $idusuario = $idusr->idusuario;
@@ -40,12 +39,10 @@ function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_co
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 
     crear_calendario($idusuario);
-     header("Location: ../Vista/iu.ingresar.html");
+     header("Location: ../Vista/iuIngresar.php");
      
 }
 function crear_calendario($idusuario) {
-    //creacion del calendario respectivo de la grupoempresa
-    
     $conec = new Conexion();
     $con = $conec->getConection();
     
