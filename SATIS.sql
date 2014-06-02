@@ -116,18 +116,23 @@ CREATE TABLE Socio (
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Tipo_Socio_codTipo_Socio INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  nombreSocio VARCHAR(15) NULL,
+  Usuario_idUsuario INTEGER NOT NULL,
+  nombreSocio VARCHAR(25) NULL,
   apellidosSocio VARCHAR(25) NULL,
   estadoCivil VARCHAR(15) NULL,
   direccion VARCHAR(45) NULL,
-  profecion VARCHAR(45) NULL,
-  PRIMARY KEY(idSocio, Grupo_Empresa_CodGrupo_Empresa, Tipo_Socio_codTipo_Socio, Grupo_Empresa_Usuario_idUsuario),
+  profesion VARCHAR(45) NULL,
+  PRIMARY KEY(idSocio,Usuario_idUsuario, Grupo_Empresa_CodGrupo_Empresa, Tipo_Socio_codTipo_Socio, Grupo_Empresa_Usuario_idUsuario),
   FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
     REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION,
   FOREIGN KEY(Tipo_Socio_codTipo_Socio)
     REFERENCES Tipo_Socio(codTipo_Socio)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+  FOREIGN KEY(Usuario_idUsuario)
+    REFERENCES Usuario(idUsuario)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
@@ -274,35 +279,27 @@ CREATE TABLE Cons_Actividad (
       ON UPDATE NO ACTION
 );
 CREATE TABLE GE_Documento (
-  idGE_Documento INTEGER NOT NULL,
+  idGE_Documento SERIAL NOT NULL,
   Grupo_Empresa_CodGrupo_Empresa INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
-  Cons_Actividad_Consultor_idConsultor INTEGER NOT NULL,
-  Cons_Actividad_Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  Cons_Actividad_codCons_Actividad INTEGER NOT NULL,
   nombreDocumento VARCHAR(45) NULL,
   pathDocumentoGE VARCHAR(120) NULL,
-  PRIMARY KEY(idGE_Documento, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_codCons_Actividad),
+  PRIMARY KEY(idGE_Documento, Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario),
   FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
     REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-  FOREIGN KEY(Cons_Actividad_codCons_Actividad, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor)
-    REFERENCES Cons_Actividad(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
 
 CREATE TABLE Cons_Documento (
   idCons_Documento SERIAL NOT NULL,
-  Cons_Actividad_Consultor_idConsultor INTEGER NOT NULL,
-  Cons_Actividad_Consultor_Usuario_idUsuario INTEGER NOT NULL,
-  Cons_Actividad_codCons_Actividad INTEGER NOT NULL,
+  Consultor_idConsultor INTEGER NOT NULL,
   nombreDocumento VARCHAR(45) NULL,
+  descripcionConsultorDocumento TEXT NULL,
   pathDocumentoConsultor VARCHAR(120) NULL,
-  PRIMARY KEY(idCons_Documento, Cons_Actividad_Consultor_idConsultor, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_codCons_Actividad),
-  FOREIGN KEY(Cons_Actividad_codCons_Actividad, Cons_Actividad_Consultor_Usuario_idUsuario, Cons_Actividad_Consultor_idConsultor)
-    REFERENCES Cons_Actividad(codCons_Actividad, Consultor_Usuario_idUsuario, Consultor_idConsultor)
+  PRIMARY KEY(idCons_Documento),
+  FOREIGN KEY(Consultor_idConsultor)
+    REFERENCES Consultor(idConsultor)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 );
@@ -443,3 +440,8 @@ INSERT INTO usuario(
 INSERT INTO user_rol(
             usuario_idusuario, rol_codrol)
     VALUES ('1', '1');
+INSERT INTO tipo_socio(nombretipo)
+               VALUES ('representante legal');
+INSERT INTO tipo_socio(codtipo_socio, nombretipo)
+               VALUES ('socio regular');
+
