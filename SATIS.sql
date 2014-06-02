@@ -117,12 +117,13 @@ CREATE TABLE Socio (
   Tipo_Socio_codTipo_Socio INTEGER NOT NULL,
   Grupo_Empresa_Usuario_idUsuario INTEGER NOT NULL,
   Usuario_idUsuario INTEGER NOT NULL,
-  nombreSocio VARCHAR(25) NULL,
+  nombreSocio VARCHAR(15) NULL,
   apellidosSocio VARCHAR(25) NULL,
   estadoCivil VARCHAR(15) NULL,
   direccion VARCHAR(45) NULL,
-  profesion VARCHAR(45) NULL,
-  PRIMARY KEY(idSocio,Usuario_idUsuario, Grupo_Empresa_CodGrupo_Empresa, Tipo_Socio_codTipo_Socio, Grupo_Empresa_Usuario_idUsuario),
+  edad INTEGER NULL,
+  profecion VARCHAR(45) NULL,
+  PRIMARY KEY(idSocio, Grupo_Empresa_CodGrupo_Empresa, Tipo_Socio_codTipo_Socio, Grupo_Empresa_Usuario_idUsuario),
   FOREIGN KEY(Grupo_Empresa_CodGrupo_Empresa, Grupo_Empresa_Usuario_idUsuario)
     REFERENCES Grupo_Empresa(CodGrupo_Empresa, Usuario_idUsuario)
       ON DELETE NO ACTION
@@ -130,7 +131,7 @@ CREATE TABLE Socio (
   FOREIGN KEY(Tipo_Socio_codTipo_Socio)
     REFERENCES Tipo_Socio(codTipo_Socio)
       ON DELETE NO ACTION
-      ON UPDATE NO ACTION
+      ON UPDATE NO ACTION,
   FOREIGN KEY(Usuario_idUsuario)
     REFERENCES Usuario(idUsuario)
       ON DELETE NO ACTION
