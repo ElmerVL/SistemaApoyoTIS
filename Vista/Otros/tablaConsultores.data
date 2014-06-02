@@ -1,1 +1,1 @@
-<table border=1><tr> <td>CONSULTOR</td> <td>ESTADO</td> <td> </td> <td> </td></tr> </table>
+<table border=1><tr> <td>CONSULTOR</td> <td>ESTADO</td> <td> </td> <td> </td></tr> <tr><td>hfsudhfuisdhfiuds</td><td>Activa</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentasConsultores.php?cons=2>Deshabilitar</a></td> </tr></table>
