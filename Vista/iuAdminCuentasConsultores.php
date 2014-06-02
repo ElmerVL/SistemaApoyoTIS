@@ -32,7 +32,7 @@ if (!$_SESSION['id_usuario']) {
                 </nav>
                 <section id="contenido_administrador">
                    <?php
-                    require '../Controlador/ControladorTablasConsultores.php';
+                    require ('../Controlador/ControladorTablasConsultores.php');
                     require ('../Vista/Otros/tablaConsultores.data');
                     ?>    
                 </section>

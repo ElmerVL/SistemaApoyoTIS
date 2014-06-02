@@ -13,12 +13,13 @@ function crear_tabla_admin_consultores() {
         $row = $rows[$i];
         $nombre_consultor = $row['nombreconsultor'];
         $estado_cuenta = $row['habilitada'];
+        $id_consultor = $row['usuario_idusuario'];
         if ($estado_cuenta == 't') {
            $estado_true="Activa"; 
-           $cadena .= "<tr><td>$nombre_consultor</td><td>$estado_true</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentas.php?cons=$nombre_consultor>deshabilitar</a></td> </tr>"; 
+           $cadena .= "<tr><td>$nombre_consultor</td><td>$estado_true</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentasConsultores.php?cons=$id_consultor>Deshabilitar</a></td> </tr>"; 
         }else{
-            $estado_false="Inactiva";
-           $cadena .= "<tr><td>$nombre_consultor</td><td>$estado_false</td><td><a href= ../Controlador/ControladorHabilitarCuentas.php?cons=$nombre_consultor>habilitar</a></td><td></td></tr>";
+           $estado_false="Inactiva";
+           $cadena .= "<tr><td>$nombre_consultor</td><td>$estado_false</td><td><a href= ../Controlador/ControladorHabilitarCuentasConsultores.php?cons=$id_consultor>Habilitar</a></td><td></td></tr>";
         }
         
     }

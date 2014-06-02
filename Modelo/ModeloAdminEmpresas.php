@@ -14,12 +14,13 @@ function crear_tabla_admin_empresas() {
         $row = $rows[$i];
         $nombreEmpresa = $row['nombrelargoge'];
         $estado_cuenta = $row['habilitada'];
+        $id_empresa=$row['usuario_idusuario'];
         if ($estado_cuenta == "t") {
             $estado_true = "Activa";
-            $cadena .= "<tr><td>$nombreEmpresa</td><td>$estado_true</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentasEmpresas.php?ge=$nombreEmpresa>deshabilitar</a></td> </tr>";
+            $cadena .= "<tr><td>$nombreEmpresa</td><td>$estado_true</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentasEmpresas.php?ge=$id_empresa>deshabilitar</a></td> </tr>";
         } else {
             $estado_false="Inactiva";
-            $cadena .= "<tr><td>$nombreEmpresa</td><td>$estado_false</td><td><a href= ../Controlador/ControladorHabilitarCuentasEmpresas.php?ge=$nombreEmpresa>habilitar</a></td><td></td></tr>";
+            $cadena .= "<tr><td>$nombreEmpresa</td><td>$estado_false</td><td><a href= ../Controlador/ControladorHabilitarCuentasEmpresas.php?ge=$id_empresa>habilitar</a></td><td></td></tr>";
         }
     }
     $cadena .= "</table>";
