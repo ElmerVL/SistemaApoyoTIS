@@ -5,7 +5,6 @@ if (!$_SESSION['id_usuario']) {
     header("Location: ../Vista/iu.ingresar.html");
 } else {
     if ($_SESSION['rol'] != 1) {
-        //MOSTRAR MENSAJE ("NO TIENE AUTORIZACION PARA ACCEDER A ESTE AREA ")
         session_destroy();
         header("Location: ../Vista/iu.ingresar.html");
     }

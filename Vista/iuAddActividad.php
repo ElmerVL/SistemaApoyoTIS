@@ -3,12 +3,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>ACTIVIDAD</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="imagenes/favicon.ico"/>
         <link href="css/add_actividad.css" rel="stylesheet" type="text/css" />
         <link href="js/custom-theme/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" />
         <link href="js/custom-theme/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css" />
         <script src="js/jquery-1.7.2.min.js"></script>
         <script src="js/jquery-ui-1.8.20.js"></script>
+        <link rel="stylesheet" href="css/foundation.css" />
+        <link rel="stylesheet" href="css/campos_correctos.css"/>
+        <script src="js/modernizr.js"></script>
         <script>
             $(document).ready(function() {
                 $("#fecha_inicio").datepicker({dateFormat: "yy/mm/dd", minDate: '0'});
@@ -98,5 +102,10 @@
             </article>
             <footer id="pie_actividad"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>
         </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src='js/validar.js'></script>
+        <script> $(document).foundation();</script>
     </body>
 </html>
