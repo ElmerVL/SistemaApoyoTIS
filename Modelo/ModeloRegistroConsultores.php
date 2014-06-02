@@ -39,7 +39,7 @@ function RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$corre
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
     //mensaje de registro exitoso
     // mensaje de error en caso de usuario duplicado o en caso de nombre de grupo empresa duplicado
-    header("Location: ../Vista/iu.ingresar.html");
+    header("Location: ../Vista/iuRegistroConsultor.php");
 }
 
 ?>
