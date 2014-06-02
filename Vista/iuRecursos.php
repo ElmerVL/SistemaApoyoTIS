@@ -39,10 +39,9 @@ if (!$_SESSION['id_usuario']) {
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>";
                 ?>
                 </nav>
-                <div id="noticias_consultor">
+                <div id="recusos_consultor">
                     <?php
-                    //include 'Otros/actividades.data';
-                    //include 'Otros/datosNoticias.data';
+                    
                     ?>
                 </div>
             </article>
@@ -50,4 +49,3 @@ if (!$_SESSION['id_usuario']) {
         </div>
     </body>
 </html>
-
