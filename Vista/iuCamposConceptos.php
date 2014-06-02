@@ -22,34 +22,27 @@
                 </nav>
                 <div id="noticias_seguimiento">
                     <h2> REGISTRO DE EVALUACION </h2>
-                    <?php $proy = $_GET['proyecto']; ?>
-                    <form name='formulario' method='POST' action="../Controlador/ControladorEvaluacionFinal.php">
-                        <lbl>Codigo del Proyecto:</lbl>
-                        <br />
-                        <textarea id="txtCodigo" name="cod_proyecto" readonly="readonly"><?php echo $proy ?></textarea>
-                        <br />
-                        <lbl>Criterio:</lbl>
-                        <br />
-                        <textarea id="txtSeguimiento" name="criterio" required="" pattern="[a-zA-Z0-9.,+_-]+"></textarea>
-                        <br />
-                        <lbl>Porcentaje de calificación: </lbl>
-                        <lbl>Porcentaje restante: </lbl>
-                        <br />
-                        <textarea id="txtPorcentaje" name="porcentaje_calif" required=""></textarea>
-                        <textarea id="txtPorcentaje" name="porcentaje_restante" required="" readonly="readonly"><?php echo $_GET['p'];?></textarea>
-                        <br />
-                        <lbl>Tipo de Evaluacion:</lbl>
-                        <br />
-                        <select  id ='cbox_evaluaciones' name='cbox_evaluaciones' size=1>
-                            <option value='1'>Falso Verdadero</option>
-                            <option value='2'>Numerico</option>
-                            <option value='3'>Escala conceptual</option>
-                            <option value='4'>Escala numeral</option>
-                        </select>
+                    <?php
+                    $tipo_evaluacion = $_GET['te'];
+                    $num_campos = $_POST['cant_conceptos'];
+                            $nombre_criterio = $_GET['ncr'];
+                            $proyecto = $_GET['cp'];
+                            $porcen_calif = $_GET['pcent'];
+                            $id_consultor = $_GET['ic'];
+                            $usr_consultor = $_GET['uc'];
+                            $porcen_rest = $_GET['pcr'];
+                    echo "<form name='formulario' method='POST' action='../Controlador/ControladorCamposConceptos.php?te=$tipo_evaluacion&nc=$num_campos&ncr=$nombre_criterio&cp=$proyecto&pcent=$porcen_calif&ic=$id_consultor&uc=$usr_consultor&pcr=$porcen_rest'>";
 
-                        <br />
-                        <input type="submit" name="btn_regAvance" id="btn_regAvance" value="Registrar">
+                    for ($i = 1; $i <= $num_campos; $i++) {
+                        echo 'Concepto:          ';
+                        echo 'Puntaje del concepto:<br />';
+                        echo '<input type=text name=concepto'.$i.'>';
+                        echo '<input type=text name=puntaje'.$i.'><br>';
+                    }
 
+                    echo '<input type="submit" name="btn_regAvance" value="Registrar"> </form>';
+                    ?>
+                    <br />
                     </form>
                 </div>
             </article>

@@ -27,7 +27,7 @@
                     <br />
                     <lbl>Proyecto:</lbl>
                     <br />
-                    <form name='formulario' method='POST' action='../Vista/iuRegistroEvaluacion.php'>
+                    <form name='formulario' method='POST' action='../Controlador/ControladorSeleccionProyecto.php'>
                         <select  id ='cbox_proyectos' name='cbox_proyectos' size=1> 
                             <?php
                             include '../Controlador/ControladorEvaluacion.php';

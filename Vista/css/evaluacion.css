@@ -58,7 +58,7 @@ h2 {
 }
 #txtSeguimiento{
     font-family: Corbel;
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 3px;
     padding-left: 3px;
     padding-right: 3px;
@@ -67,11 +67,12 @@ h2 {
     margin-left: 70px;
     margin-top: 7px;
     width: 300px;
-    height: 20px;
+    height: 25px;
+    resize: none;
 }
 #txtCodigo{
     font-family: Corbel;
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 3px;
     padding-left: 3px;
     padding-right: 3px;
@@ -80,11 +81,12 @@ h2 {
     margin-left: 70px;
     margin-top: 7px;
     width: 200px;
-    height: 20px;
+    height: 25px;
+    resize: none;
 }
 #txtPorcentaje{
     font-family: Corbel;
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 3px;
     padding-left: 3px;
     padding-right: 3px;
@@ -94,7 +96,8 @@ h2 {
     margin-top: 7px;
     margin-right: 170px;
     width: 100px;
-    height: 20px;
+    height: 25px;
+    resize: none;
 }
 #btn_regAvance {
     float: left;

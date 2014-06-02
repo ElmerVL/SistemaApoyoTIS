@@ -21,34 +21,22 @@
                     <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
                 </nav>
                 <div id="noticias_seguimiento">
+                    <?php
+                            $tipo_evaluacion = $_GET['te'];
+                            $nombre_criterio = $_GET['ncr'];
+                            $proyecto = $_GET['cp'];
+                            $porcen_calif = $_GET['pcent'];
+                            $id_consultor = $_GET['ic'];
+                            $usr_consultor = $_GET['uc'];
+                            $porcen_rest = $_GET['pcr'];
+                        ?>
                     <h2> REGISTRO DE EVALUACION </h2>
-                    <?php $proy = $_GET['proyecto']; ?>
-                    <form name='formulario' method='POST' action="../Controlador/ControladorEvaluacionFinal.php">
-                        <lbl>Codigo del Proyecto:</lbl>
+                   <?php echo "<form name='formulario' method='POST' action='../Vista/iuCamposConceptos.php?te=$tipo_evaluacion&ncr=$nombre_criterio&cp=$proyecto&pcent=$porcen_calif&ic=$id_consultor&uc=$usr_consultor&pcr=$porcen_rest'>" ?>
+                        <lbl>Cantidad de conceptos:</lbl>
                         <br />
-                        <textarea id="txtCodigo" name="cod_proyecto" readonly="readonly"><?php echo $proy ?></textarea>
+                        <textarea id="txtCodigo" name="cant_conceptos"></textarea>
                         <br />
-                        <lbl>Criterio:</lbl>
-                        <br />
-                        <textarea id="txtSeguimiento" name="criterio" required="" pattern="[a-zA-Z0-9.,+_-]+"></textarea>
-                        <br />
-                        <lbl>Porcentaje de calificación: </lbl>
-                        <lbl>Porcentaje restante: </lbl>
-                        <br />
-                        <textarea id="txtPorcentaje" name="porcentaje_calif" required=""></textarea>
-                        <textarea id="txtPorcentaje" name="porcentaje_restante" required="" readonly="readonly"><?php echo $_GET['p'];?></textarea>
-                        <br />
-                        <lbl>Tipo de Evaluacion:</lbl>
-                        <br />
-                        <select  id ='cbox_evaluaciones' name='cbox_evaluaciones' size=1>
-                            <option value='1'>Falso Verdadero</option>
-                            <option value='2'>Numerico</option>
-                            <option value='3'>Escala conceptual</option>
-                            <option value='4'>Escala numeral</option>
-                        </select>
-
-                        <br />
-                        <input type="submit" name="btn_regAvance" id="btn_regAvance" value="Registrar">
+                        <input type="submit" name="btn_regAvance" id="btn_regAvance" value="OK">
 
                     </form>
                 </div>
@@ -58,3 +46,7 @@
     </body>
 </html>
 
+
+
+<?php
+echo $_GET['te'];
