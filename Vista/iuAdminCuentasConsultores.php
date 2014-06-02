@@ -2,11 +2,11 @@
 session_start();
 if (!$_SESSION['id_usuario']) {
     //MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
-    header("Location: ../Vista/iu.ingresar.html");
+    header("Location: ../Vista/iuIngresar.php");
 } else {
     if ($_SESSION['rol'] != 1) {
         session_destroy();
-        header("Location: ../Vista/iu.ingresar.html");
+        header("Location: ../Vista/iuIngresar.php");
     }
 }
 ?>
