@@ -12,14 +12,12 @@ function mostrarEntregables($codplan_papo,$cod_hito,$cod_ge,$cod_usuarioGE){
         $sql.="FROM entregables e ";
         $sql.="WHERE e.hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar='$c_uge' AND e.hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres='$c_ge' AND e.hito_pagable_plan_pago_codplan_pago='$c_p' AND e.hito_pagable_codhito_pagable='$c_h'";
         $result = pg_query($con,$sql);
-  
+        $array_entregables = array();
         while ($row = pg_fetch_object($result)){
             $e = $row->entregable;
-            echo "<tr>"
-                    . "<td>$e</td>" 
-               . "</tr>";
-            }
-        exit();
+            $array_entregables[] = "- ".$e; 
+        }
+        return $array_entregables;
         pg_close($con);
 }
 ?>

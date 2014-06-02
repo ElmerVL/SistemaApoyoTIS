@@ -7,9 +7,9 @@ require ('../Modelo/ModeloFormularioForoConsultor.php');
     if (isset($_REQUEST['1'])){
         $codC = $_GET['a'];
         $codUsuarioC = $_GET['u'];
+        $nombreConsultor = retornarNombreDelConsultor($codC,$codUsuarioC);
         $temaC = $_POST['temaC'];
         $comentarioC = $_POST['comentarioC'];
-        $nombreConsultor = retornarNombreDelConsultor($codC,$codUsuarioC);
         $candComentarios=0;
         insertarTemaConversacionForo($nombreConsultor,$temaC,$comentarioC,$candComentarios);
         header("Location: ../Vista/iu.foroConsultor.php?candtidad=$candComentarios&a=$codC&u=$codUsuarioC");

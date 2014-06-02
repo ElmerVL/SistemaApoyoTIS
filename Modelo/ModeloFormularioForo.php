@@ -26,7 +26,7 @@ function insertarForo($a,$b,$c,$d)
      
  //crear su archivo.data
     $codForo = retornarCodForo($autor);
-    $miarchivo=fopen('../Vista/Otros/Comentarios'.$codForo.'_'.$tema.'.data','w');
+    $miarchivo=fopen('../Vista/Otros/Comentarios/'.$codForo.'_'.$tema.'.data','w');
     fclose($miarchivo);
 }
   function retornarCodForo($autor){

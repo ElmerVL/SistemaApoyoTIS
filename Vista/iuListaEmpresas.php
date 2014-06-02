@@ -12,36 +12,42 @@
     <header id="cabecera_consultor"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_consultor">
     <nav id="menu_consultor" >
-        <a href="iu.registroProyecto.php"><img width="100%" height="48" src="imagenes/btn_registrarProyecto.jpg"/></a>    
-            <a href="iuListaEmpresas.php"><img width="100%" height="48" src="imagenes/btn_listaEmpresas.jpg"/></a>
-            <a href="iuAddActividad.php"><img width="100%" height="48" src="imagenes/btn_añadirActividad.jpg"/></a>
-            <a href="iu.foro.php"><img width="100%" height="48" src="imagenes/btn_foro.jpg"/></a>
-            <a href="iu.subidaArchivo.html"><img width="100%" height="48" src="imagenes/btn_subirArchivo.jpg"/></a>
-            <a href="../Controlador/ControladorBackup.php"><img width="100%" height="48" src="imagenes/btn_backup.jpg"/></a>
+        <?php
+                $a=$_GET['a'];// $a -> codigo del consultor
+                $u=$_GET['u'];// $u -> codigo de usuario del consultor
+               echo"<a href='iu.registroProyecto.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_registrarProyecto.jpg'/></a>    
+                    <a href='iuListaEmpresas.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>
+                    <a href='iuAddActividad.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_añadirActividad.jpg'/></a>
+                    <a href='iu.foroConsultor.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_foro.jpg'/></a>
+                    <a href='iu.subidaArchivo.html?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_subirArchivo.jpg'/></a>
+                    <a href='iuSeleccionProyectoEvaluacion.php?a=$a&u=$u'><img width='100%' height='48' src='imagenes/btn_registroEvaluacion.jpg'/></a>
+                    <a href='../Controlador/ControladorBackup.php'><img width='100%' height='48' src='imagenes/btn_backup.jpg'/></a>
+                    <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>";
+                ?>
     </nav>
     <div id="noticias_consultor">
         <h2> Lista de Grupo Empresas </h2>
-        <form name="f" action="../Controlador/ControladorGrupoEmpresa.php" method="post">
-            <table align=center frame="void" border="0" class="encabezado" width="500" bgcolor=#C6E1E1>
-                <br>
-                    <caption> GRUPO - EMPRESAS </caption>
-                   <thead>
-                       <tbody align="center" style="font:  1.1em/1.1em 'FB Armada' arial">
-                       <tr><th>Nombre de la Grupo Empresa</th></tr>
-                       
-                        <?php 
-                        include '../Controlador/ControladorGrupoEmpresa.php'; 
-                        $fila= mostrarListaEmp();
-                        foreach ($fila as $elemento){ ?>
-                        <tr>
-                            <td><?php echo $elemento['grupoempresa'] ?></td>
+        <?php
+        echo"<form name='f' action='../Controlador/ControladorGrupoEmpresa.php?a=$a&u=$u' method='post'>"
+        ?>
+                <table align=center frame="void" border="0" class="encabezado" width="500" bgcolor=#C6E1E1>
+                    <br>
+                        <caption> GRUPO - EMPRESAS </caption>
+                        <thead>
+                            <tbody align="center" style="font:  1.1em/1.1em 'FB Armada' arial">
+                            <tr><th>Nombre de la Grupo Empresa</th></tr>
+                                <?php 
+                                include '../Controlador/ControladorGrupoEmpresa.php'; 
+                                $fila= mostrarListaEmp($a,$u);
+                                foreach ($fila as $elemento){ ?>
+                            <tr>
+                                <td><?php echo $elemento ?></td>
                             </tr>
-                        <?php } ?>
-                        
-                       <tbody>
+                        <?php }?>
+                            </tbody>
                         </thead>
                 </table> 
-          </form>  
+             </form>  
     </div>
     </article>
     <footer id="pie_consultor"><p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleon Software </p></footer>

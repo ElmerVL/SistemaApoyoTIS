@@ -12,7 +12,7 @@
 
 <script>
     $(document).ready(function(){
-        $( "#fecha_pago" ).datepicker({ dateFormat: "yy/mm/dd" });
+        $( "#fecha_pago" ).datepicker({ dateFormat: "yy/mm/dd", minDate: '0' });
         var endingDate = $(this).attr('endingDate');
     });
 </script>
@@ -39,43 +39,43 @@
         <fieldset id="fieldsetForo" > 
         <legend>Formulario Plan De Pagos</legend>
             <?php 
-            echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&u=$u&2' method='post'>"; 
+            echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?2&a=$a&u=$u' method='post'>"; 
             ?>
             <h2>Registro Plan de Pagos</h2>
-            <table width="80%" border="0">
+            <table width="100%" border="2" cellspacing="2" cellpadding="2">
                 <tr>
                     <td>
-                        <table width="300" border="0">
+                        <table width="400" border="2">
                             <tr>
-                                <td align="right">Hito o Evento:</td>
+                                <td align="right"><Strong>Hito o Evento :</strong></td>
                                 <td width="130"><input type="text" name="hito_evento" id="hito_evento" required/></td>
                             </tr>
                             <tr>
-                                <td align="right">Porcentaje de Pago:</td>
-                                <td width="130"><input type="text" name="porcentaje_pago" id="porcentaje_pago" required pattern="[0-9.]+"/></td>
+                                <td align="right"><Strong>Porcentaje de Pago :</strong></td>
+                                <td width="130"><input type="text" name="porcentaje_pago" id="porcentaje_pago" required pattern="[0-9.]+"/><strong> (%)</strong></td>
                             </tr>
                             <tr>
-                                <td align="right">Fecha de Pago:</td>
+                                <td align="right"><strong>Fecha de Pago :</strong></td>
                                 <td width="130"><input type="text" name="fecha_pago" id="fecha_pago" placeholder="Seleccione una fecha" required/></td>
                             </tr>
                             <tr>
-                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['codP'];?>" type="hidden"></td>
+                                <td width="130"><input name="codPlan_pago" value="<?=$_GET['c_p'];?>" type="hidden"></td>
                             </tr>   
                         </table>
                     </td>
                     <td>    
-                        <table width="300" border="0">
+                        <table width="300" border="2">
                             <tr>
-                                <td align="center">Monto Restante:</td>         
+                                <td align="center"><strong>Monto Restante :</strong></td>         
                             </tr>
                             <tr>
-                                <td width="100" align="center"><input value="<?=$_GET['m_t'];?>" type="text" name="monto_total" id="monto_total" readonly="readonly"/></td>  
+                                <td width="100" align="center"><input value="<?=$_GET['m_t'];?>" type="text" name="monto_total" id="monto_total" readonly="readonly"/><strong> (Bolivianos)</strong></td>  
                             </tr>
                             <tr>
-                                <td align="center">Porcentaje Restante:</td>         
+                                <td align="center"><strong>Porcentaje Restante :</strong></td>         
                             </tr>
                             <tr>
-                                <td width="100" align="center"><strong><input size="3" value="<?=$_GET['p_s'];?>" type="text" name="porcentaje_satisfaccion" id="porcentaje_satisfaccion" readonly="readonly"/> %</strong></td>  
+                                <td width="100" align="center"><input size="3" value="<?=$_GET['p_s'];?>" type="text" name="porcentaje_satisfaccion" id="porcentaje_satisfaccion" readonly="readonly"/><strong> (%)</strong></td>  
                             </tr>
                         </table>
                     </td> 
@@ -84,16 +84,17 @@
                    
                     <td width="20">
                     <label>
-                       <input  type="submit" name="btn_registroPago" id="btn_registroHitoEvento" value="Añadir Hito Evento" />
+                        <input  type="submit" name="btn_registroPago" id="btn_registroHitoEvento" value="Añadir Hito Evento" />
                     </label>
                  
                     <?php
                         if($_GET['m_t']==0){
                         //if (isset($_REQUEST['linkMPP'])) {
                             $c_ge=$_GET['a'];
+                            $c_uge=$_GET['u'];
                             $c_p=$_GET['c_p'];
                             echo "<td width='60' >"
-                                    ."<a href='iu.mostrarPlanDePago.php?a=$c_ge&codP=$c_p'>Mostra plan de Pagos</a>"
+                                    ."<a href='iu.mostrarPlanDePago.php?a=$c_ge&u=$c_uge&c_p=$c_p'><strong>Mostra plan de Pagos</strong></a>"
                                 ."</td>";
                         //}
                         }
@@ -104,42 +105,7 @@
         </form>
         </fieldset>
         
-       
-            <?php
-            //if($_GET){
-            if(isset($_REQUEST['c_h'])){    
-                $c_h = $_GET['c_h'];
-                $c_p =$_GET['c_p'];
-                $m_t=$_GET['m_t'];
-                $p_s=$_GET['p_s'];
-            ?>
-         
-            <?php
-            echo "<fieldset id='fieldsetForo' >" 
-                ."<legend>El Hito Asido Agregado Correctamente Registre los Entregables</legend>";
-            echo "<form action='../Controlador/ControladorRegistroEntregables.php?a=$a&2&codHito=$c_h&codP=$c_p&m_t=$m_t&p_s=$p_s' method='post'>"; 
-            
-            echo "<table width='340' border='0'>"   
-                        ."<tr>"
-                            ."<td width='30%' align='right'>Entregable:</td>"
-                            ."<td><textarea name='entregable' cols='75%' rows='5%'></textarea></td>"
-                        ."</tr>"
-                        ."<tr>"
-                            ."<td width='20'>"
-                                ."<label>"
-                                    ."<input  type='submit' name='btn_registroEntregable' id='btn_registroEntregable' value='Añadir Entregable' />"
-                                ."</label>"
-                            ."</td>"
-                            ."<td width='20'>"
-                                ." <a href='iu.registroDePlanDePagos.php?a=$a&u$u&m_t=$m_t&p_s=$p_s&c_p=$c_p'>Terminar Registro</a>"
-                            ."</td>"
-                        ."</tr>"                   
-                ."</table>"
-                ."</form>"
-                ."</fieldset>";
-        }?>    
-        
-            <?php
+        <?php
                 if(isset($_REQUEST['tabla'])){
                     $codplan_papo=$_GET['c_p'];
                     $cod_hito = $_GET['c_h'];
@@ -148,15 +114,15 @@
                     echo"<fieldset id='fieldsetForo' >" 
                        ."<legend>Registro de los Entregables</legend>";
                     echo"<form name'f' action='../Controlador/ContriladorMostrarPlanDePago.php' method='post'>"
-                            ."<table align='center' frame='void' border='0' class='encabezado' width='500' bgcolor=#C6E1E1>"
+                            ."<table align='center' width='50%' border='2' cellspacing='2' cellpadding='2' bgcolor=#C6E1E1>"
                                 ."<thead>"
-                                    ."<tbody align='center' style='font:  1.1em/1.1em 'FB Armada' arial'>"
-                                    ."<tr><td>Entregables</td></tr>";
+                                    ."<tbody  style='font:  1.1em/1.1em 'FB Armada' arial'>"
+                                    ."<tr><th>Entregables</th></tr>";
                                         require '../Controlador/ControladorMostrarEntregables.php';
                                         $lista = mostrarE($codplan_papo,$cod_hito,$cod_ge,$cod_usuarioGE);
                                         foreach($lista as $post):?>
                                             <tr>
-                                                <td><?php echo $post['entergable']?></td>
+                                                <td><?php echo $post?></td>
                                             </tr>
                                             <?php endforeach;
                     echo            "</tbody>"
@@ -166,6 +132,41 @@
                        ."</fieldset>";
                     
                 }?>
+        
+       
+            <?php
+            //if($_GET){
+            if(isset($_REQUEST['c_h'])){    
+                $c_h = $_GET['c_h'];
+                $c_p =$_GET['c_p'];
+                $m_t=$_GET['m_t'];
+                $p_s=$_GET['p_s'];
+           
+            echo "<fieldset id='fieldsetForo' >" 
+                ."<legend>El Hito Asido Agregado Correctamente Registre los Entregables</legend>";
+            echo "<form action='../Controlador/ControladorRegistroEntregables.php?2&a=$a&u=$u&c_h=$c_h&c_p=$c_p&m_t=$m_t&p_s=$p_s' method='post'>"; 
+            
+            echo "<table width='100%' border='2' cellspacing='2' cellpadding='2'>"   
+                        ."<tr>"
+                            ."<td width='30%' align='right'><strong>Entregable :</strong></td>"
+                            ."<td><textarea name='entregable' cols='70%' rows='1%' required></textarea></td>"
+                        ."</tr>"
+                        ."<tr>"
+                            ."<td width='20'>"
+                                ."<label>"
+                                    ."<input  type='submit' name='btn_registroEntregable' id='btn_registroEntregable' value='Añadir Entregable' />"
+                                ."</label>"
+                            ."</td>"
+                            ."<td width='20'>"
+                                ." <a href='iu.registroDePlanDePagos.php?a=$a&u=$u&m_t=$m_t&p_s=$p_s&c_p=$c_p'><strong>Terminar Registro</strong></a>"
+                            ."</td>"
+                        ."</tr>"                   
+                ."</table>"
+                ."</form>"
+                ."</fieldset>";
+        }?>    
+        
+            
         <br>
         <br>
         <br>

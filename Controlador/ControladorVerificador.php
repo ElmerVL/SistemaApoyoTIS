@@ -5,7 +5,7 @@ require '../Modelo/ModeloVerificador.php';
 switch ($_GET['x']) {
     case 1:
         $login = $_GET['nombre_usuario'];
-        $str = strtolower($login);
+        $str = strtolower($login);//TODO MINUSCULA
         echo verificarLogin($str);
         break;
 

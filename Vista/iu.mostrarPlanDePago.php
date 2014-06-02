@@ -27,7 +27,7 @@
     <div id="noticias_grupoEmpresa" >
         <fieldset id="fieldsetForo" width="670"> 
          <legend>Plan de Pagos</legend>
-         <form name="f" action="../Controlador/ContriladorMostrarPlanDePago.php" method="post">
+         <form name="f" action="../Controlador/ContriladorMostrarPlanDePagos.php" method="post">
             <div class="CSSTableGenerator">
                 <table align="center" border="2" class="encabezado" width="670" >
                     <thead>
@@ -41,7 +41,7 @@
                          require '../Controlador/ControladorMostrarPlanDePagos.php';
                          $estado = retornarEstadoTablaPlanDePagos();
                          if($estado=="basio"){
-                            echo " NO EXIXTE UNA REGISTRO RECIENTE";
+                            echo ' "NO EXISTE UN REGISTRO RECIENTE" ';
                          }else if($estado=="lleno"){
                             $lista = mostrarPlan($a,$u);
                             foreach($lista as $post):?>

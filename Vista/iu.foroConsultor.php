@@ -30,7 +30,7 @@
                     <legend>Foro Consultor</legend>
                     <?php echo"<a href='iu.FormularioForoConsultor.php?a=$a&u=$u'>Registrar Tema</a>"?>
                     <form name="f" action="../Controlador/ControladorListaTemasForo.php" method="post">
-                        <table align="center" border="2" class="encabezado" width="850">
+                        <table align="center" border="0" cellspacing="2" cellpadding="2" width="100%">
                             <thead>
                                 <tr>
                                     <td width="60%">Temas</td>
@@ -41,7 +41,7 @@
                                 require '../Controlador/ControladorListaTemasForoConsultor.php';
                                 $estado= retornarEstadoTablaForo();
                                 if($estado=="basio"){
-                                    echo '"NO EXIXTE TEMAS REGISTRADOS POR AHORA"';
+                                    echo '<strong>"NO EXISTE TEMAS REGISTRADOS POR AHORA"</strong>';
                                 }else if($estado=="lleno"){
                                     $lista = mostrarListaForoConsultor($a, $u);
                                     foreach($lista as $post):?>

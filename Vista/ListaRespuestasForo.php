@@ -57,7 +57,7 @@
                     <?php
                     $codArchivo = $_GET['codforo'];
                     $nombreArchivo = $_GET['nomArchivo'];
-                    include ("Otros/Comentarios".$codArchivo."_".$nombreArchivo.".data");
+                    include ("Otros/Comentarios/".$codArchivo."_".$nombreArchivo.".data");
                     ?> 
                 </td> 
             </table>

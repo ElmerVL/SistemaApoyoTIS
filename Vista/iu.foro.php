@@ -33,7 +33,7 @@
                     require '../Controlador/ControladorListaTemasForo.php';
                     $estado= retornarEstadoTablaForo();
                     if($estado=="basio"){
-                        echo '"NO EXIXTE TEMAS PARA COMENTAR EN LA TABLA "';
+                        echo '" NO EXISTE TEMAS REGISTRADOS POR AHORA "';
                     }else if($estado=="lleno"){
                         $lista = mostrarListaF();
                         foreach($lista as $post):?>

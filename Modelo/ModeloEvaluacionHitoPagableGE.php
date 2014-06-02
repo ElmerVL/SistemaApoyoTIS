@@ -17,6 +17,18 @@ function retornarEntregables($codHito){
 
      
 }
+function retornarEstadoTablaRegistros(){
+        $conec =  new Conexion();
+        $con = $conec->getConection();
+        $sql="SELECT * FROM registros";
+        $result = pg_query($con,$sql);
+        $estado = pg_num_rows($result);
+        if($estado!=0){
+            return "lleno";
+        }  else {
+            return "basio";
+        }
+    }
 function insertarTablaRegistros($codHito){
      $conec=new Conexion(); 
      $con=$conec->getConection();
@@ -54,6 +66,18 @@ function retornarRegistro($codHito){
 
      
 }
+function retornarCodEntregables($codH, $entregable){
+     $conec=new Conexion(); 
+     $con=$conec->getConection();  
+     $sql="SELECT codentregables ";
+     $sql.="FROM entregables e ";
+     $sql.="WHERE e.hito_pagable_codhito_pagable='$codH' AND e.entregable='$entregable'";
+     $result = pg_query($con,$sql);
+     $row = pg_fetch_object($result);
+        $codE = $row->codentregables;
+     pg_close($con);
+     return $codE;
+}
 function eliminarEntregableTablaRegistros($codH,$entregable,$codE){
      $conec=new Conexion(); 
      $con=$conec->getConection();
@@ -67,12 +91,11 @@ function eliminarEntregableTablaRegistros($codH,$entregable,$codE){
      pg_close($con);
      
 }
-function registrarEvaluacionPlanDePagosGE($porcentaje, $alcance, $codGE, $codH, $entregable, $nombreH, $sumaAlcance){
+function registrarEvaluacionPlanDePagosGE($porcentaje, $alcance, $codH, $entregable, $nombreH, $sumaAlcance){
  
     $e=$entregable;
     $p=$porcentaje;
     $a=$alcance;
-    $c_ge=$codGE;
     $c_h=$codH;
     $n_h=$nombreH;
     $leer = fopen("../Vista/Otros/Otros/EvaluacionHitosGE/".$c_h."_".$n_h.".data", "r"); 
@@ -88,16 +111,5 @@ function registrarEvaluacionPlanDePagosGE($porcentaje, $alcance, $codGE, $codH, 
     fclose($escribir);
 }
 
-function retornarCodEntregables($c_h,$e){
-     $conec=new Conexion(); 
-     $con=$conec->getConection();  
-     $sql="SELECT codentregables ";
-     $sql.="FROM entregables e ";
-     $sql.="WHERE e.hito_pagable_codhito_pagable='$c_h' AND e.entregable='$e'";
-     $result = pg_query($con,$sql);
-     $row = pg_fetch_object($result);
-        $codE = $row->codentregables;
-     pg_close($con);
-     return $codE;
-}
+
 ?>

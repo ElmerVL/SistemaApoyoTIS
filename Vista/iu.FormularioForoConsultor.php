@@ -40,7 +40,7 @@
                                     </tr>
                                     <tr>
                                         <td width="30%" align="right"><strong>Tema a Conversar :</strong></td>
-                                        <td><input type="text" name="temaC" required></td>
+                                        <td><input type="text" name="temaC" required ></td>
                                     </tr>
                                     <tr>
                                         <td width="30%" align="right"><strong>Comentario :</strong></td>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <td colspan="2" align="center" ><input  type="submit" name="Submit" value="Registrar"></td>
                                     </tr>
-                                </table>
+                            </table>
                         </form>
                     </fieldset>
                 </div>

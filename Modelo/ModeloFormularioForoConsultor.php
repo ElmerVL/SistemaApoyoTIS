@@ -18,7 +18,7 @@ require '../Controlador/Conexion.php';
 
     //crear su archivo.data
         $codForo = retornarCodForo($nombreConsultor,$temaC,$comentarioC,$candComentarios);
-        $miarchivo=fopen('../Vista/Otros/'.$codForo.'_'.$temaC.'.data','w');
+        $miarchivo=fopen('../Vista/Otros/Comentarios/'.$codForo.'_'.$temaC.'.data','w');
         fclose($miarchivo);
     }
     function retornarCodForo($nombreConsultor,$temaC,$comentarioC,$candComentarios){
