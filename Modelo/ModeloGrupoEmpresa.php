@@ -1,17 +1,23 @@
 <?php
 require '../Controlador/Conexion.php';
-function mostrarListaEmpresas() {
+function mostrarListaEmpresas($a,$u){
     $con = new Conexion();
     $c=$con->getConection();
-    $consulta = pg_query($c, 'select codgrupo_empresa, nombrelargoge from grupo_empresa');
+    $consulta = pg_query($c, 'select codgrupo_empresa,usuario_idusuario,nombrelargoge from grupo_empresa');
+    $array_GE = array();
     while ($f = pg_fetch_object($consulta)){
         $cge = $f->codgrupo_empresa;
+        $cuge = $f->usuario_idusuario;
         $nge = $f->nombrelargoge;
-        echo "<tr>"
-        . "<td><a href = '../Vista/iuDocenteVistaEmpresa.php?a=$cge'>$nge</a></td>"
+        
+        $array_GE[] = "<a href = '../Vista/iuDocenteVistaEmpresa.php?a=$a&u=$u&c_a=$cge&i_u=$cuge'>$nge</a>"; 
+        /*echo "<tr>"
+        . "<td><a href = '../Vista/iuDocenteVistaEmpresa.php?a=$a&u=$u&c_a=$cge&i_u=$cuge'>$nge</a></td>"
                 . "</tr>";
+         */
     }
-    exit();
+    return $array_GE;
+    //exit();
     pg_close($c);
 }
 

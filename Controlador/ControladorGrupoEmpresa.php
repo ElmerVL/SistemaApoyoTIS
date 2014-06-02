@@ -1,9 +1,9 @@
 <?php  
     require '../Modelo/ModeloGrupoEmpresa.php';
     
-    function mostrarListaEmp(){
-        $listaEmpresas = mostrarListaEmpresas();
-        //require_once '../Vista/iu.listaEmpresas.html';
+    function mostrarListaEmp($a,$u){
+        $listaEmpresas = mostrarListaEmpresas($a,$u);
+        return $listaEmpresas;
     }
     function mostrarDatosEmp($codGE){
         $nombreRepLegal = mostrarDatosEmpresa($codGE);

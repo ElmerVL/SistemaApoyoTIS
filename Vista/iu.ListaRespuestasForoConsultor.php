@@ -27,49 +27,50 @@
                <div id="noticias_consultor"> 
                    <fieldset id="fieldsetForo"> 
                    <legend>Formulario de respuestas</legend>
-             <?php echo"<form id='valorNombre' action='../Controlador/ControladorComentarioConsultor.php?a=$a&u=$u' method='get'";?>
-                            <table align="left" border="2" class="encabezado" width="100%">      
+             <?php echo"<form id='valorNombre' action='../Controlador/ControladorComentarioConsultor.php?1&a=$a&u=$u' method='post'>";?>
+                            <table width="100%" border="2" cellspacing="2" cellpadding="2">      
                                 <tr>
                                 <?php
-                                    require '../Controlador/ControladorFormularioForoConsultor.php';
+                                    require '../Controlador/ControladorComentarioConsultor.php';
                                     $nombreConsultor =  mostrarNombreDelConsultor($a,$u);
                                     echo"<td width='30%' align='right'><strong>Consultor(ra) :</strong></td>
                                          <td><strong>$nombreConsultor</strong></td>";
                                 ?>
-                                    <input name="codigo" value="<?=$_GET['c_f'];?>" type="hidden">
-                                    <input name="cantidad" value="<?=$_GET['candC'];?>" type="hidden">
+                                </tr>
+                                <tr>
+                                    <td><input name="codigo" value="<?=$_GET['c_f'];?>" type="hidden"></td>
+                                    <td><input name="cantidad" value="<?=$_GET['candC'];?>" type="hidden"></td>
                                 </tr>
                                 <tr>
                                     <td width="30%" align="right"><Strong>Comentario :</strong></td> 
-                                    <td><textarea name="comentario" cols="100%" rows="5%" required></textarea></td>
+                                    <td><textarea name="comentario" cols="70%" rows="5%" required></textarea></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="submit" name="Submit"  value="Registrar Comentario" /></td>  
+                                    <td></td>
+                                    <td ><input type="submit" name="Submit"  value="Registrar Comentario" /></td>  
                                 </tr>
                             </table>
                         </form>    
                     </fieldset>
-                    <br> 
+                    <br>
                     <fieldset id="fieldsetForo"> 
-                    <legend>TEMA DE CONVERSACION</legend>
-                        <table align="left" border="0" class="encabezado" width="100%"> 
+                    <legend>Tema A Conversar</legend>
+                    <form>
+                        <table width="100%" border="2" cellspacing="2" cellpadding="2"> 
                             <td> 
-                                <?php
-                                require '../Controlador/ControladorMostrarTemaControlador.php';
-                                $codF=$_GET['c_f'];
-                                echo mostrarTemaAComentar($codF);
-                                ?> 
-                            </td> 
+                             <?php //require '../Controlador/ControladorMostrarTemaControlador.php'; ?>    
+                            </td>
                         </table>
+                    </form>    
                     </fieldset>
                     <fieldset id="fieldsetForo"> 
                     <legend>Comentarios de los Visitantes</legend>
-                        <table  align="left" border="0" class="encabezado" width="100%">   
+                        <table  width="100%" border="2" cellspacing="2" cellpadding="2">   
                             <td> 
                                 <?php
                                 $codArchivo = $_GET['c_f'];
                                 $nombreArchivo = $_GET['nomArchivo'];
-                                include ("Otros/Comentarios".$codArchivo."_".$nombreArchivo.".data");
+                                include ("Otros/Comentarios/".$codArchivo."_".$nombreArchivo.".data");
                                 ?> 
                             </td> 
                         </table>

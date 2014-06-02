@@ -5,10 +5,10 @@ function insertarComentarioForo($nombre, $comentario, $codigoForo, $candComentar
 $cod =$codigoForo;
 $cand = $candComentarios;
 $tema = retornarNombreTemaForo($cod);
-$leer = fopen("../Vista/Otros/Comentarios".$cod."_".$tema.".data", "r"); 
-$aleer = fread($leer ,filesize("../Vista/Otros/Comentarios".$cod."_".$tema.".data")); 
+$leer = fopen("../Vista/Otros/Comentarios/".$cod."_".$tema.".data", "r"); 
+$aleer = fread($leer ,filesize("../Vista/Otros/Comentarios/".$cod."_".$tema.".data")); 
 
-$escribir =  fopen("../Vista/Otros/Comentarios".$cod."_".$tema.".data","w"); 
+$escribir =  fopen("../Vista/Otros/Comentarios/".$cod."_".$tema.".data","w"); 
 fwrite($escribir,"<strong>$nombre</strong><br><p>$comentario</p><hr>$aleer"); 
 fclose($escribir);
 

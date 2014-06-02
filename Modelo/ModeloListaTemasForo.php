@@ -5,7 +5,7 @@
      function retornarEstadoDeTablaForo(){
         $conec=new Conexion(); 
         $con=$conec->getConection();
-        $sql="SELECT * FROM pago_consultor";
+        $sql="SELECT * FROM foro";
         $result=  pg_query($con,$sql);
         $estado= pg_num_rows($result);
         if($estado!=0){

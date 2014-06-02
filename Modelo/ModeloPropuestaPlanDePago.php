@@ -6,17 +6,17 @@ require('../Controlador/Conexion.php');
         $cod_calendario=retornarCodCalendario($cod_grupoE,$cod_usuarioGE);
         $sql = "INSERT INTO plan_pago (calendario_codcalendario,calendario_grupo_empresa_codgrupo_empresa,calendario_grupo_empresa_usuario_idusuario,montototal,porcentajesatisfaccion)";
         $sql.= "VALUES ('$cod_calendario','$cod_grupoE','$cod_usuarioGE','$monto_total','$porcentaje_satisfaccion')";
-        pg_query($con,$sql) or die ("ERROR ====> en registro del pal de pago :( " .pg_last_error());
+        pg_query($con,$sql) or die ("ERROR :( " .pg_last_error());
     }
 
-    function insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $cod_plan, $cod_grupoE, $cod_usuarioGE){
+    function insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $codigoPlan, $cod_grupoE, $cod_usuarioGE){
         $conec=new Conexion(); 
         $con=$conec->getConection();
         $cod_calendario=  retornarCodCalendario($cod_grupoE, $cod_usuarioGE);
         $monto=establecerMonto($monto_total,$porcentaje_satisfaccion,$porcentaje_pago);
         if($monto!=0){
         $sql = "INSERT INTO hito_pagable (plan_pago_codplan_pago,plan_pago_calendario_codcalendario,plan_pago_calendario_grupo_empresa_codgrupo_empresa,plan_pago_calendario_grupo_empresa_usuario_idusuario,hitoevento,porcentajepago,monto,fechapago)";
-        $sql.= "VALUES ('$$cod_plan','$cod_calendario','$cod_grupoE','$cod_usuarioGE','$hito_evento','$porcentaje_pago','$monto','$fecha_pago')";
+        $sql.= "VALUES ('$codigoPlan','$cod_calendario','$cod_grupoE','$cod_usuarioGE','$hito_evento','$porcentaje_pago','$monto','$fecha_pago')";
         pg_query($con,$sql) or die ("ERROR :( " .pg_last_error());
         }
     }

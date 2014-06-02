@@ -29,24 +29,21 @@
         <fieldset> 
         <legend>Formulario Propuesta De Pago</legend>
         <?php 
-        echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?a=$a&u=$u&1' method='post'>"; 
-        ?>
-        
+  echo "<form action='../Controlador/ControladorPropuestaPlanDePago.php?1&a=$a&u=$u' method='post'>"; 
+        ?>  
             <h2>Propuesta de Pago</h2>
-            <table width="687" border="0">
+            <table width="100%" border="2" cellspacing="2" cellpadding="2">
                 <tr>
-                    <td align="right">Monto Total:</td>
-                    <td width="130"><input type="text" name="monto_total" id="monto_total" required pattern="[0-9.]+"/> (Bolivianos)</td>
+                    <td width="30%" align="right"><Strong>Monto Total :</strong></td>
+                    <td><input type="text" name="monto_total" id="monto_total" required pattern="[0-9.]+"/><strong> (Bolivianos)</strong></td>
                 </tr>
                 <tr>
-                    <td align="right">Porcentaje de Satisfaccion:</td>
-                    <td width="130"><input type="text" name="porcentaje_satisfaccion" id="porcentaje_satisfaccion" required pattern="[0-9.]+"/> (%)</td>
+                    <td width="30%" align="right"><strong>Porcentaje de Satisfaccion :</strong></td>
+                    <td><input type="text" name="porcentaje_satisfaccion" id="porcentaje_satisfaccion" required pattern="[0-9.]+"/><strong> (%)</strong></td>
                 </tr>
                 <tr>
-                    <td align="right">&nbsp;</td>
-                    <td width="491"><label>
-                    <input  type="submit" name="btn_registroPago" id="btn_registroProyecto" value="Añadir" />
-                    </label></td>
+                    <td width="30%" align="right">&nbsp;</td>
+                    <td><input  type="submit" name="btn_registroPago" id="btn_registroProyecto" value="Añadir" /></td>
                 </tr>    
             </table>
         </form>

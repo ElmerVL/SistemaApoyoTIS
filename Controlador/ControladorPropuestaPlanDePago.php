@@ -21,18 +21,18 @@ if(isset($_REQUEST['2'])){
     $fecha_pago = $_POST['fecha_pago'];
     $codigoPlan = $_POST['codPlan_pago'];
     $monto = (($monto_total * $porcentaje_pago) / $porcentaje_satisfaccion);
-    insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $codigoPlan, $cod_grupoE, $cod_usuarioGE);
+    
        
     if ($monto>0) {
         if($porcentaje_pago<=$porcentaje_satisfaccion){
         $M_T = $monto_total-$monto;
         $P_S = $porcentaje_satisfaccion-$porcentaje_pago;
+        insertarRegistroDePlanDePago($monto_total, $porcentaje_satisfaccion, $hito_evento, $porcentaje_pago, $fecha_pago, $codigoPlan, $cod_grupoE, $cod_usuarioGE);
         $c_h = retornarCodHitoEvento($hito_evento,$porcentaje_pago,$fecha_pago);
         header("Location: ../Vista/iu.registroDePlanDePagos.php?a=$cod_grupoE&u=$cod_usuarioGE&m_t=$M_T&p_s=$P_S&c_p=$codigoPlan&c_h=$c_h");
-        } else {
-            header("Location: ../Vista/iu.registroDePlanDePagos.php?a=$cod_grupoE&u=$cod_usuarioGE&m_t=$monto_total&p_s=$porcentaje_satisfaccion&&c_p=$codigoPlan&c_h=$c_h");
-        }
-        if ($M_T == 0){
+        } else if($porcentaje_pago>$porcentaje_satisfaccion){
+            header("Location: ../Vista/iu.registroDePlanDePagos.php?a=$cod_grupoE&u=$cod_usuarioGE&m_t=$monto_total&p_s=$porcentaje_satisfaccion&&c_p=$codigoPlan");
+        }else if ($M_T == 0){
             header("Location: ../Vista/iu.registroDePlanDePagos.php?a=$cod_grupoE&u=$cod_usuarioGE&m_t=$M_T&p_s=$P_S&c_p=$codigoPlan&c_h=$c_h");
             //header("Location: ../Vista/iu.mostrarPlandePago.php?a=$cod_grupoE&cod=$codigoPlan");
         }

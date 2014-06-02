@@ -11,31 +11,36 @@
     <header id="cabecera_consultor_vistaGE"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="cabecera2" /></header>
     <article id="contenido_consultor_vistaGE">
        <?php
-       $codGE=$_GET['codGE'];
-       //$id_c=$_GET['codC'];
-       $c_c=1;
+       $codGE=$_GET['c_a'];//codigo grupo empresa
+       $codUGE=$_GET['i_u'];//codigo usuario grupo empresa
+       $codC=$_GET['a'];//codigo consultor
+       $codUC=$_GET['u'];//codigo usuario consultor
             echo "<nav id='menu_consultor_vistaGE'>"
-                    ."<a href='../Controlador/ControladorContrato.php?codC=$c_c&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
-                    ."<a href='iu.mostrarPlanDePagosGE.php?codC=$c_c&codGE=$codGE'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
-                    ."<a href='iuListaEmpresas.php?codC=$c_c'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"         
+                    ."<a href='../Controlador/ControladorContrato.php?a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE'><img width='100%' height='48' src='imagenes/btn_generarContrato.jpg'/></a>"
+                    ."<a href='iu.mostrarPlanDePagosGE.php?a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE'><img width='100%' height='48' src='imagenes/btn_verPlanDePagos.jpg'/></a>"     
+                    ."<a href='iuListaEmpresas.php?a=$codC&u=$codUC'><img width='100%' height='48' src='imagenes/btn_listaEmpresas.jpg'/></a>"         
+                    ."<a href='../Vista/iuDocenteGECalendario.php?a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE'><img src='imagenes/btn_calendario_docenteGE.jpg' width='100%' height='48' alt='btn_1' /></a>"
+                    ."<a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>"
                 ."</nav>";
         ?>
         <div id="campoBlanco_consultor_vistaGE">
-            <fieldset id="fieldsetForo" width="100%"> 
+            <fieldset id="fieldsetForo"> 
             <legend>Evaluacion Plan de Pagos</legend>
             <?php
-      echo" <form name='formulario' action='../Controlador/ContoladorRegistroEvaluacionHitoPagable.php&codGE=$codGE' method='post'>"
+            $codHE=$_GET['c_h'];
+            $nombreHE=$_GET['n_h'];
+      echo" <form name='formulario' action='../Controlador/ContoladorRegistroEvaluacionHitoPagable.php?a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE&c_h=$codHE&n_h=$nombreHE' method='post'>"
             ?>
-                <table width="90%" border="2" cellspacing="2" cellpadding="2">
+                <table width="96%" border="2" cellspacing="2" cellpadding="2">
                     <tr>
-                        <td width="30%" align="right">Hito o Evento :</td>
-                        <td><input type="text" name="hitoEvento" value="<?=$_GET['nombreH'];?>" readonly="readonly"></td>
+                        <td width="30%" align="right"><strong>Hito o Evento :</strong></td>
+                        <td><input type="text" name="hitoEvento" value="<?=$_GET['n_h'];?>" readonly="readonly"></td>
                     </tr>
                     <tr>
-                        <td width="30%" align="right">Entregables :</td>
-                        <td><table border="0">
+                        <td width="30%" align="right"><strong>Entregables :</strong></td>
+                        <td><table border="2" cellspacing="2" cellpadding="2">
                             <?php
-                                $codHito=$_GET['codH'];
+                                $codHito=$_GET['c_h'];
                                require '../Controlador/ControladorEvaluacionHitoPagableGE.php';
                                         $lista = mostrarEntregables($codHito);
                                         foreach($lista as $post):?>
@@ -47,16 +52,16 @@
                             </table></td>
                     </tr>
                     <tr>
-                        <td width="30%" align="right">Monto De Pago :</td>
-                        <td><input type="text" name="monto" value="<?=$_GET['monto'];?>" readonly="readonly"> <strong>(Bolivianos)</strong></td>
+                        <td width="30%" align="right"><strong>Monto De Pago :</strong></td>
+                        <td><input type="text" name="monto_pago" value="<?=$_GET['monto'];?>" readonly="readonly"> <strong> (Bolivianos)</strong></td>
                     </tr>
                     <tr>
-                        <td width="30%" align="right">Porcentaje de Satisfaccion :</td>
-                        <td><input type="text" name="porcentajeSatisfaccion" value="<?=$_GET['p_s'];?>" readonly="readonly"> <strong>(%)</strong></td>
+                        <td width="30%" align="right"><strong>Porcentaje de Satisfaccion :</strong></td>
+                        <td><input type="text" name="porcentajeSatisfaccion" value="<?=$_GET['p_s'];?>" readonly="readonly"> <strong> (%)</strong></td>
                     </tr>
                     <tr>
-                        <td width="30%" align="right">Porcentaje Alcazado Total :</td>
-                        <td><input type="text" name="porcentajeAlcanzado"> <strong>(%)</strong></td>
+                        <td width="30%" align="right"><strong>Porcentaje Alcazado Total :</strong></td>
+                        <td><input type="text" name="porcentajeAlcanzado" required pattern='[0-9.]+'> <strong> (%)</strong></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center" ><input  type="submit" name="Submit" value="Terminar"></td>
@@ -65,18 +70,28 @@
            
            </form>
             <?php
-            $nombreH=$_GET['nombreH'];
+            $nombreH=$_GET['n_h'];
                 if(isset($_REQUEST['tabla'])){
                     //$codE = $_GET['codE'];
                     //$cod_ge=$_GET['a'];
                     echo"<fieldset id='fieldsetForo' width='90%'>" 
                        ."<legend>Registro de los Entregables</legend>";
                     echo"<form name'f' action='../Controlador/ContriladorMostrarPlanDePago.php' method='post'>"
-                            ."<table align='center' frame='void' border='2' class='encabezado' width='70%' bgcolor=#C6E1E1>"
+                            ."<table align='center' border='2' cellspacing='2' cellpadding='2' width='70%' bgcolor=#C6E1E1>"
                                 ."<thead>"
                                     ."<tbody align='center' style='font:  1.1em/1.1em 'FB Armada' arial'>"
-                                    ."<tr><th>Entregables</th><th>porcentaje</th><th>Alcance</th><th>Suma Del Alcance</th></tr>";
+                                    ."<tr>
+                                        <th>Entregables</th>
+                                        <th>porcentaje</th>
+                                        <th>Alcance</th>
+                                        <th>Suma Del Alcance</th>
+                                      </tr>";
                                         include ("Otros/EvaluacionHitosGE/".$codHito."_".$nombreH.".data");
+                    echo             "<tr>"
+                                        ."<th>Suma Total</th>"
+                                        ."<th>100</th>"
+                                        ."<th>100</th>"    
+                                    ."</tr>"   ;  
                     echo            "</tbody>"
                                 ."</thead>"
                             ."</table>"
@@ -90,6 +105,10 @@
             $p_s=$_GET['p_s'];
            // echo"
            // <form name='formulario' action='../Controlador/ControladorEvaluacionHitoPagableGE.php?registarEPPGE&codGE=$codGE&codH=$codHito&nombreH=$nombreH&monto=$monto&p_s=$p_s' method='post'>";
+            $estado = mostaraEstadoTablaRegistros();
+            if ($estado == "basio") {
+                echo ' <strong>"TERMINO LA EVALUACION"</strong> ';
+            }else if ($estado == "lleno") {
             ?>
                 <table  width="80%" border="2" cellspacing="2" cellpadding="2" >
                     <thead>
@@ -103,39 +122,44 @@
                     <tbody>
                     
                         <?php
+                        if (isset($_REQUEST['mensajeEVA'])) {
+                            echo '<strong>ERROR: "</strong>EL <strong>PORCENTAJE ALCAZDO</strong> TIENE QUE SER MENOR O IGUAL AL <strong>PORCENTAJE</strong> ESTABLESIDO POR LA GRUPO EMPRESA<strong>"</strong>';
+                        }
                         if(isset($_REQUEST['tablaEvaluacion'])){
                             require_once '../Controlador/ControladorEvaluacionHitoPagableGE.php';    
                         $nuevaLista= mostrarRegistrosEtregables($codHito);
                         $con=0;
                         foreach($nuevaLista as $post):
-                        echo"<form name='formulario' action='../Controlador/ControladorEvaluacionHitoPagableGE.php?registarEPPGE&true&codGE=$codGE&codH=$codHito&nombreH=$nombreH&monto=$monto&p_s=$p_s' method='post'>
+                        echo"<form name='formulario' action='../Controlador/ControladorEvaluacionHitoPagableGE.php?registarEPPGE&true&a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE&c_h=$codHito&n_h=$nombreH&monto=$monto&p_s=$p_s' method='post'>
                             <tr>"
                                 ."<td ><input size='70%' name='entregable' value='$post' readonly='readonly'></td>"
-                                ."<td ><input size='8%' name='porcentaje' ></td>"
-                                ."<td ><input size='8%' name='porcentajeAlcansado' ></td>"
+                                ."<td ><input size='8%' name='porcentaje' required pattern='[0-9.]+'></td>"
+                                ."<td ><input size='8%' name='porcentajeAlcansado' required pattern='[0-9.]+'></td>"
                                 ."<td width='5%'><input size='6%' type='submit' name='Submit' value='Guardar$con'></td>"
                             ."</tr>
                              </form>" ;
                         $con=$con+1;
                         endforeach;
                         }?>
+                        
                         <?php
-                       if(isset($_REQUEST['tablaEvaluacionNueva'])){
+                        
+                          if(isset($_REQUEST['tablaEvaluacionNueva'])){
                             $listaNueva= retornarRegistro($codHito);
                             $con=0;
                             foreach($listaNueva as $post):
-                            echo"<form name='formulario' action='../Controlador/ControladorEvaluacionHitoPagableGE.php?registarEPPGE&true&contador=$con&codGE=$codGE&codH=$codHito&nombreH=$nombreH&monto=$monto&p_s=$p_s' method='post'>
+                            echo"<form name='formulario' action='../Controlador/ControladorEvaluacionHitoPagableGE.php?registarEPPGE&true&contador=$con&a=$codC&u=$codUC&c_a=$codGE&i_u=$codUGE&c_h=$codHito&n_h=$nombreH&monto=$monto&p_s=$p_s' method='post'>
                                 <tr>"
                                     ."<td ><input size='70%' name='entregable' value='$post' readonly='readonly'></td>"
-                                    ."<td ><input size='8%' name='porcentaje' ></td>"
-                                    ."<td ><input size='8%' name='porcentajeAlcansado' ></td>"
+                                    ."<td ><input size='8%' name='porcentaje' required pattern='[0-9.]+'></td>"
+                                    ."<td ><input size='8%' name='porcentajeAlcansado' required pattern='[0-9.]+'></td>"
                                     ."<td width='5%'><input size='6%' type='submit' name='Submit' value='Guardar$con'></td>"
                                 ."</tr>
                                 </form>" ;
                             $con=$con+1;
                             endforeach;
+                         }
                         }?> 
-                        
                     </tbody>
                 </table>
             </fieldset>
