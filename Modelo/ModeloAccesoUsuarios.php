@@ -45,7 +45,7 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
         
         switch ($rol_usuario){
             case 1: //administrador 
-                header("Location: ../Vista/iuAdminCuentas.php");
+                header("Location: ../Vista/iuAdminCuentasConsultores.php");
                 break;
             case 2: // consultor
                 header("Location: ../Vista/iu.consultor.php?a=$codigo_consultor&u=$idusuario");

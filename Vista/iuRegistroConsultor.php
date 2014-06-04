@@ -1,11 +1,10 @@
 <?php
 session_start();
-if (!$_SESSION['id_usuario']){
-//MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
-header("Location: ../Vista/iu.ingresar.html");
-}else {
+if (!$_SESSION['id_usuario']) {
+    //MOSTRAR MENSAJE ("USUARIO NO AUTENTICADO")
+    header("Location: ../Vista/iu.ingresar.html");
+} else {
     if ($_SESSION['rol'] != 1) {
-        //MOSTRAR MENSAJE ("NO TIENE AUTORIZACION PARA ACCEDER A ESTE AREA ")
         session_destroy();
         header("Location: ../Vista/iu.ingresar.html");
     }
@@ -26,8 +25,9 @@ header("Location: ../Vista/iu.ingresar.html");
             <header id="cabecera"><img src="imagenes/encabezado_logo.jpg" width="50%" height="200" alt="cabecera1" /><img src="imagenes/encabezado2.jpg" width="50%" height="200" alt="encabezado2" /></header>
             <article id="contenido"> 
                 <nav id="menu_administrador" >
-                    <a href="iuAdminCuentas.php"><img width="100%" height="48" src="imagenes/btn_adminCuentas.png"/></a>
-                    <a href="iu.registroConsultor.html"><img width="100%" height="48" src="imagenes/btn_crearCuenta.png"/></a>
+                   <a href="iuAdminCuentasConsultores.php"><img width="100%" height="48" src="imagenes/btn_admin_consultores.png"/></a>
+                    <a href="iuAdminCuentasEmpresas.php"><img width="100%" height="48" src="imagenes/btn_admin_empresas.png"/></a>
+                    <a href="iuRegistroConsultor.php"><img width="100%" height="48" src="imagenes/btn_crearCuenta.png"/></a>
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <section id="contenido_administrador">
@@ -73,7 +73,6 @@ header("Location: ../Vista/iu.ingresar.html");
             </article>
             <footer id="pie">
                 <p>  Sistema Apoyo T.I.S. <br> Derechos Reservados Camaleón Software </p>
-
             </footer>
 
 

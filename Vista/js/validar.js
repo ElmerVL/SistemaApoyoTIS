@@ -1,7 +1,7 @@
 $("form").validate({
     rules: {
         nombre_usuario: {
-            required: true, minlength: 5, maxlength: 20,remote:"../Controlador/ControladorVerificador.php?x=1",
+            required: true, minlength: 5, maxlength: 20,remote:"../Controlador/ControladorVerificador.php?x=1"
         },
         contraseña_usuario1: {
             required: true, minlength: 5, maxlength: 20
@@ -10,19 +10,19 @@ $("form").validate({
             required: true, minlength: 5, maxlength: 20 , equalTo: "#contraseña_usuario1"
         },
         nombre_largo_ge: {
-            required: true, minlength: 5, maxlength: 45
+            required: true, minlength: 5, maxlength: 45 ,remote:"../Controlador/ControladorVerificador.php?x=2"
         },
         nombre_corto_ge: {
-            required: true, minlength: 5, maxlength: 15
+            required: true, minlength: 5, maxlength: 15 ,remote:"../Controlador/ControladorVerificador.php?x=3"
         },
         correo_ge: {
-            required: true, email: true, maxlength: 70
+            required: true, email: true, maxlength: 70 ,remote:"../Controlador/ControladorVerificador.php?x=4"
         },
         direccion_ge: {
             required: true, minlength: 5, maxlength: 50
         },
         telefono_ge: {
-            required: true, number: true
+            required: true, number: true ,remote:"../Controlador/ControladorVerificador.php?x=5"
         }
     },
     messages: {
@@ -46,18 +46,21 @@ $("form").validate({
         nombre_largo_ge: {
             required: "Introduzca el Nombre de su Empresa.",
             minlength: "Mínimo {0} Caracteres.",
-            maxlength: "Máximo {0} Caracteres."
+            maxlength: "Máximo {0} Caracteres.",
+            remote:"nombre no disponible, intente uno distinto."
         },
         nombre_corto_ge: {
             required: "Introduzca el Nombre Corto de su Empresa.",
             minlength: "Mínimo {0} Caracteres.",
-            maxlength: "Máximo {0} Caracteres."
+            maxlength: "Máximo {0} Caracteres.",
+            remote:"nombre no disponible, intente uno distinto."
         },
         correo_ge: {
             required: "Introduzca su correo electrónico.",
             email:"Introduzca un correo electrónico válido",
             minlength: "Mínimo {0} Caracteres.",
-            maxlength: "Máximo {0} Caracteres."
+            maxlength: "Máximo {0} Caracteres.",
+            remote:"correo electrónico yá registrado."
         },
         direccion_ge: {
             required: "Introduzca su dirección.",
@@ -67,6 +70,7 @@ $("form").validate({
         telefono_ge: {
             required: "Introduzca su teléfono.",
             number: "Introduzca un número válido.",
+            remote: "Teléfono ya registrado."
         }
     },
     
@@ -77,9 +81,4 @@ $("form").validate({
     submitHandler: function(form) {
         form.submit();
     }
-
-
-
 });
-
-

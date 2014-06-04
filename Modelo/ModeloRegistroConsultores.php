@@ -2,15 +2,16 @@
 
 require ('../Controlador/Conexion.php');
 
-function RegistrarUsuario($usuario, $contrasena1_consul) {
+function RegistrarUsuario($usuario, $contrasena1_consul,$habilitada) {
     $conec = new Conexion();
     $con = $conec->getConection();
 
     $nombre_usuario_consultor = $usuario;
     $contrasena_usuario_consultor = $contrasena1_consul;
+    $estado_cuenta = $habilitada;
 
-    $sql = "INSERT INTO Usuario (login,passwd)";
-    $sql.= "VALUES ('$nombre_usuario_consultor','$contrasena_usuario_consultor')";
+    $sql = "INSERT INTO Usuario (login,passwd,habilitada)";
+    $sql.= "VALUES ('$nombre_usuario_consultor','$contrasena_usuario_consultor','$estado_cuenta')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 }
 

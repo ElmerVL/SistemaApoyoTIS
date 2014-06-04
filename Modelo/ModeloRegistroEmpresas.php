@@ -2,15 +2,16 @@
 
 require('../Controlador/Conexion.php');
 
-function RegistrarUsuario($usuario, $contrasena1) {
+function RegistrarUsuario($usuario, $contrasena1,$habilitada) {
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $nombre_usuario_ge = $usuario;
-    $contrasena_usuario_ge = $contrasena1;
+    $nombre_usuario_ge = strtolower($usuario);
+    $contrasena_usuario_ge = strtolower($contrasena1);
+    $estado_cuenta = strtolower($habilitada);
 
-    $sql = "INSERT INTO Usuario (login,passwd)";
-    $sql.= "VALUES ('$nombre_usuario_ge','$contrasena_usuario_ge')";
+    $sql = "INSERT INTO Usuario (login,passwd,habilitada)";
+    $sql.= "VALUES ('$nombre_usuario_ge','$contrasena_usuario_ge','$estado_cuenta')";
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 }
 
@@ -39,8 +40,6 @@ function RegistrarGrupoEmpresa($usuario, $contrasena1, $nombre_largo, $nombre_co
     pg_query($con, $sql) or die("ERROR :( " . pg_last_error());
 
     crear_calendario($idusuario);
-//mensaje de registro exitoso
-    // mensaje de error en caso de usuario duplicado o en caso de nombre de grupo empresa duplicado
      header("Location: ../Vista/iu.ingresar.html");
      
 }
@@ -61,4 +60,3 @@ function crear_calendario($idusuario) {
 }
 
 ?>
-

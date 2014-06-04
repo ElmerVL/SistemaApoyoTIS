@@ -16,6 +16,7 @@ CREATE TABLE Usuario (
   idUsuario SERIAL NOT NULL,
   login VARCHAR(45) UNIQUE,
   passwd VARCHAR(45) NULL,
+  habilitada BOOL NOT NULL,
   PRIMARY KEY(idUsuario)
 );
 
@@ -436,8 +437,8 @@ INSERT INTO rol(tiporol)
 INSERT INTO rol(tiporol)
     VALUES ('socio');
 INSERT INTO usuario(
-             login, passwd)
-    VALUES ( 'admin', 'admin');
+             login, passwd,habilitada)
+    VALUES ( 'admin', 'admin',TRUE);
 
 INSERT INTO user_rol(
             usuario_idusuario, rol_codrol)
