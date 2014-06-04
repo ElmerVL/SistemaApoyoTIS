@@ -8,16 +8,16 @@ function crear_tabla_bajas_empresas() {
     $sql = "SELECT * FROM usuario as u , grupo_empresa as ge WHERE u.idusuario=ge.usuario_idusuario";
     $rows = $conexion->ejecutarSql($sql);
     $miarchivo = fopen('../Vista/Otros/tablaEmpresas.data', 'w');
-    $cadena = "<table border=1><tr> <td>GRUPO - EMPRESA</td><td>ESTADO</td></tr> ";
+    $cadena = "<table border=1><tr> <td>GRUPO - EMPRESA</td><td></td></tr> ";
     
     for ($i = 0; $i < count($rows); $i++) {
         $row = $rows[$i];
         $nombreEmpresa = $row['nombrelargoge'];
         $estado_cuenta = $row['habilitada'];
         if ($estado_cuenta == "t") {
-            $cadena .= "<tr><td>$nombreEmpresa</td> <td><a href=opcion.php?nombreGe=$nombreEmpresa>deshabilitar</a></td> </tr>";
+            $cadena .= "<tr><td>$nombreEmpresa</td><td></td><td><a href= ../Controlador/ControladorDeshabilitarCuentas.php?ge=$nombreEmpresa>deshabilitar</a></td> </tr>";
         } else {
-            $cadena .= "<tr><td>$nombreEmpresa</td> <td><a href=opcion.php?nombreGe=$nombreEmpresa>habilitar</a></td> </tr>";
+            $cadena .= "<tr><td>$nombreEmpresa</td><td><a href= ../Controlador/ControladorHabilitarCuentas.php?ge=$nombreEmpresa>habilitar</a></td><td></td></tr>";
         }
     }
     $cadena .= "</table>";

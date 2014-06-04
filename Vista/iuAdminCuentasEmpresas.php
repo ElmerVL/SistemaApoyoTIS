@@ -32,7 +32,7 @@ if (!$_SESSION['id_usuario']) {
                 <section id="contenido_administrador">
                     
                     <?php
-                    require '../Controlador/ControladorTablaBajasEmpresas.php';
+                    require '../Controlador/ControladorTablasEmpresas.php';
                     require ('../Vista/Otros/tablaEmpresas.data');
                     ?>    
                 </section>
