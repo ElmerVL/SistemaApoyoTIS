@@ -30,7 +30,11 @@ if (!$_SESSION['id_usuario']) {
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <section id="contenido_administrador">
-                    acá va la tabla de administracion de cuentas EMPRESAS
+                    
+                    <?php
+                    require '../Controlador/ControladorTablaBajasEmpresas.php';
+                    require ('../Vista/Otros/tablaEmpresas.data');
+                    ?>    
                 </section>
             </article>
             <footer id="pie">

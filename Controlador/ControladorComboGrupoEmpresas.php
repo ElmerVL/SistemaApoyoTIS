@@ -1,5 +1,5 @@
 <?php
-
+//llevar al modelo
 require ('../Controlador/Conexion.php');
 
 obtenerGrupoEmpresas();
