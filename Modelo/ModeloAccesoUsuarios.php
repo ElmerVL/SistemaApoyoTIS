@@ -6,14 +6,14 @@ function iniciarSesion($nombre_usuario, $contrasena_usuario) {
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $ingreso_nombre_usuario = $nombre_usuario;
-    $ingreso_contrasena_usuario = $contrasena_usuario;
+    $ingreso_nombre_usuario = strtolower($nombre_usuario);
+    $ingreso_contrasena_usuario = strtolower($contrasena_usuario);
 
     if (!isset($_SESSION)) {
         session_start();
     }
 
-    $consulta_usuario = "SELECT * FROM usuario WHERE login='$ingreso_nombre_usuario' AND passwd='$ingreso_contrasena_usuario'";
+    $consulta_usuario = "SELECT * FROM usuario WHERE login='$ingreso_nombre_usuario' AND passwd='$ingreso_contrasena_usuario' AND habilitada = TRUE";
     $consulta = pg_query($con, $consulta_usuario);
     $filas = pg_fetch_array($consulta);
     if (!$filas[0]) { //opcion1: Si el usuario NO existe o los datos son INCORRRECTOS

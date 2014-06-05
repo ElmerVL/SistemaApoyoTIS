@@ -31,7 +31,10 @@ if (!$_SESSION['id_usuario']) {
                     <a href='../Controlador/ControladorFinalizarSesion.php'><img src='imagenes/btn_cerrarSesion.png' width='100%' height='46' /></a>
                 </nav>
                 <section id="contenido_administrador">
-                    acá va la tabla de administracion de cuentas CONSULTORES
+                   <?php
+                    require '../Controlador/ControladorTablasConsultores.php';
+                    require ('../Vista/Otros/tablaConsultores.data');
+                    ?>    
                 </section>
             </article>
             <footer id="pie">

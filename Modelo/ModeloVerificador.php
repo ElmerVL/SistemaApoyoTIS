@@ -63,5 +63,31 @@ function verificarCorreoEmpresa($correo) {
     }
 }
 
+function verificarCorreoConsultor($correo) {
+    $conec = new Conexion();
+    $con = $conec->getConection();
+    $sql = "SELECT * FROM consultor where correoconsultor ='$correo'";
+    $result = pg_query($con, $sql);
+    $rows = pg_num_rows($result);
+    if ($rows == 0) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+}
+
+function verificarTelefonoConsultor($telefono) {
+    $conec = new Conexion();
+    $con = $conec->getConection();
+    $sql = "SELECT * FROM consultor where telefonoconsultor ='$telefono'";
+    $result = pg_query($con, $sql);
+    $rows = pg_num_rows($result);
+    if ($rows == 0) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+}
+
 
 ?>

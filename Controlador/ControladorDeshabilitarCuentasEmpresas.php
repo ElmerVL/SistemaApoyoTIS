@@ -1,6 +1,6 @@
 <?php
+require '../Modelo/ModeloDesHabilitarCuentasEmpresas.php';
 
-require '../Modelo/ModeloDeshabilitarCuentas.php';
 $cuenta_empresa = $_GET['ge'];
 
 if (!empty($_GET['ge'])) {

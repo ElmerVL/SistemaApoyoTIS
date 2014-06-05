@@ -6,7 +6,7 @@ function RegistrarUsuario($usuario, $contrasena1_consul,$habilitada) {
     $conec = new Conexion();
     $con = $conec->getConection();
 
-    $nombre_usuario_consultor = $usuario;
+    $nombre_usuario_consultor = strtolower($usuario);
     $contrasena_usuario_consultor = $contrasena1_consul;
     $estado_cuenta = $habilitada;
 
@@ -22,8 +22,8 @@ function RegistrarConsultor($usuario, $contrasena1_consul, $nombre_consul,$corre
 
     $nom_usuario = $usuario;
     $contrasena_consultor = $contrasena1_consul;
-    $nombre_consultor = $nombre_consul;
-    $correo_consultor = $correo_consul;
+    $nombre_consultor = strtolower($nombre_consul);
+    $correo_consultor = strtolower($correo_consul);
     $telefono_consultor = $telefono_consul;
 
     $sql_id = "SELECT idusuario FROM Usuario WHERE login='$usuario'";
